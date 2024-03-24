@@ -1,0 +1,297 @@
+<style>
+  div a {
+    text-decoration: none;
+    border: solid 2px black;
+    border-radius: 50%;
+    padding: auto 0.5rem;
+  }
+
+  .title {
+    margin-bottom: 5vh;
+  }
+  .card {
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent;
+  }
+  @media (max-width: 767px) {
+    .card {
+      margin: 3vh auto;
+    }
+  }
+  .cart {
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+  }
+  @media (max-width: 767px) {
+    .cart {
+      padding: 4vh;
+      border-bottom-left-radius: unset;
+      border-top-right-radius: 1rem;
+    }
+  }
+  .row {
+    margin: 0;
+  }
+  .title b {
+    font-size: 1.5rem;
+  }
+  .main {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%;
+  }
+  .col-2,
+  .col {
+    padding: 0 1vh;
+  }
+  a {
+    padding: 0 1vh;
+  }
+  .close {
+    margin-left: auto;
+    font-size: 0.7rem;
+  }
+  img {
+    width: 3.5rem;
+  }
+  .back-to-shop {
+    margin-top: 4.5rem;
+  }
+  h5 {
+    margin-top: 4vh;
+  }
+  hr {
+    margin-top: 1.25rem;
+  }
+  form {
+    padding: 2vh 0;
+  }
+  select {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+  }
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+  }
+  input:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  .btn {
+    background-color: #000;
+    border-color: #000;
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0;
+  }
+  .btn:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none;
+  }
+  .btn:hover {
+    color: white;
+  }
+  a {
+    color: black;
+  }
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  #code {
+    background-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.253),
+        rgba(255, 255, 255, 0.185)
+      ),
+      url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+  }
+</style>
+<div class="card">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <!-- Rabais standards -->
+      <div class="row border-top border-bottom">
+        <div class="row main align-items-center">
+          <h3><b>Standard</b></h3>
+          <!-- Ligne de tarification -->
+          <div class="col-12 d-flex">
+            <div>
+              <div class="h4 bold">Générale</div>
+              <div>$12.50</div>
+            </div>
+            <div class="col d-flex flex-row-reverse gap-3">
+              <div>
+                <svg
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1rem"
+                >
+                  <path
+                    d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm4.253 7.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+              </div>
+              <div href="#" class="mx-2">1</div>
+              <div>
+                <svg
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1rem"
+                >
+                  <path
+                    d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm0 1.5c-4.69 0-8.497 3.808-8.497 8.498s3.807 8.497 8.497 8.497 8.498-3.807 8.498-8.497-3.808-8.498-8.498-8.498zm-.747 7.75h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- Ligne de tarification -->
+          <div class="col-12 d-flex">
+            <div>
+              <div class="h4 bold">65+ ANS</div>
+              <div>$10.00</div>
+            </div>
+            <div class="col d-flex flex-row-reverse gap-3">
+              <div>
+                <svg
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1rem"
+                >
+                  <path
+                    d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm4.253 7.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+              </div>
+              <div href="#" class="mx-2">1</div>
+              <div>
+                <svg
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1rem"
+                >
+                  <path
+                    d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm0 1.5c-4.69 0-8.497 3.808-8.497 8.498s3.807 8.497 8.497 8.497 8.498-3.807 8.498-8.497-3.808-8.498-8.498-8.498zm-.747 7.75h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- Ligne de tarification -->
+          <div class="col-12 d-flex">
+            <div>
+              <div class="h4 bold">Enfant (3-13)</div>
+              <div>$9.00</div>
+            </div>
+            <div class="col d-flex flex-row-reverse gap-3">
+              <div>
+                <svg
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1rem"
+                >
+                  <path
+                    d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm4.253 7.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+              </div>
+              <div href="#" class="mx-2">1</div>
+              <div>
+                <svg
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1rem"
+                >
+                  <path
+                    d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm0 1.5c-4.69 0-8.497 3.808-8.497 8.498s3.807 8.497 8.497 8.497 8.498-3.807 8.498-8.497-3.808-8.498-8.498-8.498zm-.747 7.75h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Récompenses Show -->
+      <div class="row border-top border-bottom">
+        <div class="row main align-items-center">
+          <h3><b>Vos points récompense Show</b></h3>
+          <!-- Ligne de tarification -->
+          <div class="col-12 d-flex justify-content-between">
+            <p>Votre total de points</p>
+            <p>157 points</p>
+          </div>
+        </div>
+      </div>
+      <!-- Coupons / Code promos -->
+      <div class="row border-top">
+        <div class="row main align-items-center">
+          <h3><b>Bons commerciaux ou code promotionnel</b></h3>
+          <!-- Ligne de tarification -->
+          <div class="col-12 d-flex flex-column">
+            <p>
+              Ajoutez un code de votre bon ou un code promotionnel à appliquer à
+              vos billets (limite de un coupon par réservation) :
+            </p>
+            <input type="text" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
