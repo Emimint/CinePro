@@ -17,31 +17,72 @@
   <body>
     <!-- -------- ZONE DE TEST ------ -->
   
-    <div class="container-fluid" style="background-color: black;">
-      <!-- Item -->
+  <div class="container-fluid" style="background-color: black;">
       
-          <div class="col-md-10 col-lg-7 col-xl-6 d-flex p-2">
-              <!-- Head -->
+    <div class="col-md-10 col-lg-7 col-xl-6 d-flex p-2">
              
-              <div class="ui-head position-relative">
+      <div class="ui-head position-relative">
+                 <!-- Movie Name -->
+                 <h2><a href="#">Dune</a></h2>
                   <!-- Background Image -->
-                  <img src="image/dune.jpg" width="200" height="200" alt="" class="img-fluid bg-img">
-              </div>
+                  <img src="image/dune.jpg" width="300" height="200" alt="" class="img-fluid bg-img">
+      </div>
+      <div class="mt-3 m-3"> 
               <div class="mt-3 m-3">
                 <a href="#" class="btn btn-primary col-md-15 "><i class="fa fa-ticket"></i>Acheter un Ticket</a>
                  
               </div>
+              <div class="ui-details clearfix justify-content-around" style="position:relative">
+                
+                <div>
+                  <div style="color: white;"><strong>Durée</strong></div>
+                  <a href="#" class="badge bg-primary">143 min</a>
+                </div>
+                <div class="mb-3">
+                  <div style="color: white;"><strong>Classements:</strong></div>
+                  <span style="margin-right: 5px;"><a href="#" class="badge bg-primary">PG-13</a></span>
+                  <span style="margin-right: 5px;"><a href="#" class="badge bg-primary">4/5</a></span>
+                  <span><a href="#" class="badge bg-primary">8/10</a></span>
+              </div>
+                <div>
+                  <div style="color: white;"><strong>Genre</strong></div>
+                  <a href="#" class="badge bg-primary">Action</a>
+                  <a href="#" class="badge bg-primary">Adventures</a>
+                </div>
+               </div>
+               
+      </div> 
+    </div>
+    <div class="col-md-5 col-lg-5 col-xl-6 mt-5 " style="color: white;">
+
+            <div class="mt-3 m-3" >
+             
+              <h4><a href="#" id="moreInfoBtn" onclick=" moreInfo()">Plus Informations</a></h4>
+              <h4><a href="#" class="d-none" id="lessInfoBtn" onclick=" moreInfo()">Moins Informations</a></h4>
+            </div>  
            
-          </div>
-          <div class="col-md-5 col-lg-5 col-xl-6 mt-5 " style="color: white;">
+
               <!-- Review -->
-              <div class="ui-review">
-                  
+              <div class="ui-review" id="moreInfo">
+                <p>Nemo enim ipsam volup tatem quia volup tas sit asper natur aut odit aut fugit volup quia 
+                  volup tas sit asper natur aut odit aut fugit volup tatem sequi nesc iunt.</p>
+                <!-- Heading -->
+                <h5><span>RÉALISATEURS</span>:</h5>
+                <!-- Director Name -->
+                <h6>Denis Villeneuve</h6>
+                <!-- Heading -->
+                <h5><span>SCÉNARISTES</span>:</h5>
+                <!-- Writers -->
+                <h6>Denis Villeneuve, Eric Roth, Jon Spaihts</h6>
+                <!-- Heading -->
+                <h5><span>DISTRIBUTION</span>:</h5>
                   <!-- Paragraph -->
-                  <p >Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                  <p >Timothee Chalamet, Zendaya, Rebecca Ferguson, Javier Bardem, Stellan Skarsgard, Dave Bautista,
+                     Charlotte Rampling, Jason Momoa, Josh Brolin, Stephen McKinley Henderson,
+                     Florence Pugh, Austin Butler, Christopher Walken, Lea Seydoux, Souheila Yacoub</p>
       
               </div>
-          </div>
+    </div>
   
   </div>
   
@@ -52,5 +93,23 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script>
+        function moreInfo() {
+        var moreInfo = document.getElementById("moreInfo");
+        var moreInfoBtn = document.getElementById("moreInfoBtn");
+        var lessInfoBtn = document.getElementById("lessInfoBtn");
+        
+        if (moreInfo.style.display === "none") {
+            moreInfo.style.display = "block";
+            moreInfoBtn.classList.add("d-none");
+            lessInfoBtn.classList.remove("d-none");
+        } else {
+            moreInfo.style.display = "none";
+            moreInfoBtn.classList.remove("d-none");
+            lessInfoBtn.classList.add("d-none");
+        }
+    }
+      </script>
+
   </body>
 </html>
