@@ -1,0 +1,43 @@
+<style>
+  .section {
+    margin-bottom: 0.5rem;
+  }
+  .seat {
+    border-radius: 15px;
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .upside-down {
+    transform: rotateX(180deg);
+  }
+</style>
+<div class="room">
+  <div
+    class="d-flex flex-column justify-content-center align-items-center mx-auto"
+  >
+    <img src="screen.svg" alt="screen" class="mb-5" />
+    <div
+      id="seat-map"
+      class="container d-flex justify-content-center mx-auto px-5 upside-down"
+    ></div>
+    <div class="text-white m-2 text-center">
+      <div class="seat-info"></div>
+      <div class="current-seat"></div>
+      <div class="seat-selection">
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="movie-theater-map.js"></script>
