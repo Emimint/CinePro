@@ -8,7 +8,7 @@
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     width: 10%;
-    height: 800px;
+    height: 900px;
     margin-top: 5rem;
   }
   
@@ -42,7 +42,7 @@
     border: 1px solid #ccc;
     width: 90%;
     border-left: none;
-    height: 800px;
+    height: 900px;
     margin-top: 5rem;
   }
 
@@ -58,7 +58,9 @@
   table.example td {
    text-align: center !important;
   }
+  
   </style>
+
    <nav
    class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"
    aria-label="Main navigation"
@@ -111,7 +113,7 @@
        id="navbarNavDropdown"
      >
        <ul class="navbar-nav">
-         <!--li class="nav-item">
+         <li class="nav-item">
            <a class="nav-link" href="#"
              >Promotions</a
            >
@@ -130,7 +132,7 @@
          </li>
          <li class="nav-item">
            <a class="nav-link" href="#" data-target="clientList" onclick="myFunction()">Clients</a>
-         </li-->
+         </li>
         
          <li class="nav-item">
            <a class="nav-link" href="#"
@@ -204,22 +206,22 @@
      </div>
    </div>
  </nav>
-  
-  <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Films')" id="defaultOpen">Films</button>
-    <button class="tablinks" onclick="openTab(event, 'Clients')">Clients</button>
-    <button class="tablinks" onclick="openTab(event, 'Reservations')">Reservations</button>
-    <button class="tablinks" onclick="openTab(event, 'Promotions')">Promotions</button>
-    <button class="tablinks" onclick="openTab(event, 'Cinema')">Cinema</button>
+<div> 
+  <div class="tab d-flex flex-wrap">
+    <button class="tablinks btn btn-primary me-2 mb-2 d-block w-100" onclick="openTab(event, 'Films')" id="defaultOpen">Films</button>
+    <button class="tablinks btn btn-primary me-2 mb-2 d-block w-100" onclick="openTab(event, 'Clients')">Clients</button>
+    <button class="tablinks btn btn-primary me-2 mb-2 d-block w-100" onclick="openTab(event, 'Reservations')">Reservations</button>
+    <button class="tablinks btn btn-primary me-2 mb-2 d-block w-100" onclick="openTab(event, 'Promotions')">Promotions</button>
+    <button class="tablinks btn btn-primary me-2 mb-2 d-block w-100" onclick="openTab(event, 'Cinema')">Cinema</button>
    
   </div>
   <div id="Films" class="tabcontent">
     <div class="table-title">
       <div class="row">
-          <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
-              <h2 class="ml-lg-2 m-3">Liste de Films</h2>
+          <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
+              <h2 class="ml-lg-2 m-5">Liste de Films</h2>
           </div>
-          <div class="col-sm-6 p-5 d-flex justify-content-end  ">
+          <div class="col-lg-6 col-md-6 col-sm-12 p-5 d-flex justify-content-end  ">
             <a href="#addFilmModal" class="btn btn-dark ml-auto" data-toggle="modal">
                 <i class="fas fa-plus"></i>
                 <span>Ajouter un film</span>
@@ -533,10 +535,10 @@
   <div id="Clients" class="tabcontent">
     <div class="table-title">
       <div class="row">
-          <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
+          <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
               <h2 class="ml-lg-2 m-3">Liste de Clients</h2>
           </div>
-          <div class="col-sm-6 p-5 d-flex justify-content-end  ">
+          <div class="col-lg-6 col-md-6 col-sm-12 p-5 d-flex justify-content-end  ">
             <a href="#addFilmModal" class="btn btn-dark ml-auto" data-toggle="modal">
                 <i class="fas fa-plus"></i>
                 <span>Ajouter un client</span>
@@ -768,10 +770,10 @@
 <div id="Promotions" class="tabcontent">
   <div class="table-title">
     <div class="row">
-        <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
+        <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
             <h2 class="ml-lg-2 m-3">Liste des Promotionds</h2>
         </div>
-        <div class="col-sm-6 p-5 d-flex justify-content-end  ">
+        <div class="col-lg-6 col-md-6 col-sm-12 p-5 d-flex justify-content-end  ">
           <a href="#addFilmModal" class="btn btn-dark ml-auto" data-toggle="modal">
               <i class="fas fa-plus"></i>
               <span>Ajouter une Promotion</span>
@@ -1085,10 +1087,10 @@
 <div id="Reservations" class="tabcontent">
   <div class="table-title">
     <div class="row">
-      <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
+      <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
         <h2 class="ml-lg-2 m-3">Liste des Reservations</h2>
       </div>
-      <div class="col-sm-6 p-5 d-flex justify-content-end  ">
+      <div class="col-lg-6 col-md-6 col-sm-12 p-5 d-flex justify-content-end  ">
         <a href="#addFilmModal" class="btn btn-dark ml-auto" data-toggle="modal">
           <i class="fas fa-plus"></i>
           <span>Ajouter une Reservation</span>
@@ -1317,10 +1319,10 @@
  <div id="Cinema" class="tabcontent">
   <div class="table-title">
     <div class="row">
-        <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
+        <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
             <h2 class="ml-lg-2 m-3">Liste des Cinemas</h2>
         </div>
-        <div class="col-sm-6 p-5 d-flex justify-content-end  ">
+        <div class="col-lg-6 col-md-6 col-sm-12 p-5 d-flex justify-content-end  ">
           <a href="#addFilmModal" class="btn btn-dark ml-auto" data-toggle="modal">
               <i class="fas fa-plus"></i>
               <span>Ajouter un Cinema</span>
@@ -1484,10 +1486,10 @@
    
   </table>
  </div>
-
+</div> 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/v/bs5/dt-2.0.3/b-3.0.1/b-html5-3.0.1/date-1.5.2/r-3.0.1/sp-2.3.0/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script>
     // Initialisation de DataTables
     $(document).ready(function() {
