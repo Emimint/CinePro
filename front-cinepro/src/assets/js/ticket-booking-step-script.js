@@ -63,7 +63,7 @@ function generateSeatMap(rows, columns, sections) {
   for (let s = sections; s >= 1; s--) {
     seatMapHTML += `<div id="section-${s}" class="section d-flex flex-column">`;
     for (let i = 1; i <= rows; i++) {
-      seatMapHTML += `<div class="row d-flex flex-row">`;
+      seatMapHTML += `<div class="d-flex flex-row">`;
       for (let j = 1; j <= columns; j++) {
         const seatId = `seat-${s}-${i}-${j}`;
         seatMapHTML += `<div id="${seatId}" class="seat" onclick="toggleSeatStatus('${seatId}')" onmouseover="showSeatInfo('${seatId}','current-seat')">${upSideDownseatSvg}</div>`;
@@ -78,25 +78,20 @@ function generateSeatMap(rows, columns, sections) {
   return seatMapHTML;
 }
 
-function greet(){
-  alert("Hello");
-}
-function initSeatMap(){
-  
- // Example :
- const rows = 3; // 5 rows par section
- const columns = 4; // 3 columns par section
- const sections = 8;
- const theaterSeatMap = generateSeatMap(rows, columns, sections);
- const seatMap = document.getElementById("seat-map");
- seatMap.innerHTML = theaterSeatMap;
-
+function initSeatMap() {
+  // Example :
+  const rows = 3; // 5 rows par section
+  const columns = 4; // 3 columns par section
+  const sections = 8;
+  const theaterSeatMap = generateSeatMap(rows, columns, sections);
+  const seatMap = document.getElementById("seat-map");
+  seatMap.innerHTML = theaterSeatMap;
 }
 
- // Generer la legende :
- const seatInfo = document.querySelector(".seat-info");
- console.log(seatInfo);
- seatInfo.innerHTML = `    <div
+// Generer la legende :
+const seatInfo = document.querySelector(".seat-info");
+console.log(seatInfo);
+seatInfo.innerHTML = `    <div
      class="legend m-2 w-100 p-3 d-flex flex-column align-items-center"
    >
      <h2>Légende</h2>
@@ -116,5 +111,5 @@ function initSeatMap(){
      </div>
    </div>`;
 
- // Pour tester, exécutez la ligne suivante dans la console :
- // randomlyToggleSeats(rows, columns, sections);
+// Pour tester, exécutez la ligne suivante dans la console :
+// randomlyToggleSeats(rows, columns, sections);
