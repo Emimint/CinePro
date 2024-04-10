@@ -1,0 +1,186 @@
+<!-- Buttons ou lien pour ouvrir le modal -->
+<!-- PS: On remplacera avec le button de mainpage-navbar -->
+<a
+  class="btn btn-primary"
+  data-bs-toggle="offcanvas"
+  href="#offcanvasExample"
+  role="button"
+  aria-controls="offcanvasExample"
+>
+  Recherche (avec Link with href)
+</a>
+<button
+  class="btn btn-primary"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasExample"
+  aria-controls="offcanvasExample"
+>
+  Recherche (Button with data-bs-target)
+</button>
+
+<!-- Modal de recherche -->
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+  style="background-image: linear-gradient(to bottom, #0a0b0d, #011c46)"
+>
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title text-white" id="offcanvasExampleLabel">
+      Recherche
+    </h2>
+    <button
+      type="button"
+      class="btn-close btn-close-white text-reset"
+      id="search-modal-close-btn"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body py-2 flex-grow-0">
+    <div class="input-group mb-3 border border-1 rounded-2">
+      <input
+        type="text"
+        class="form-control bg-transparent border-0 text-white"
+        placeholder="Recherche"
+        aria-label="Recherche"
+        aria-describedby="button-addon2"
+      />
+      <span class="input-group-append">
+        <button
+          class="btn rounded-pill border-0 ms-n5 text-white"
+          type="button"
+        >
+          <i class="fa fa-search"></i>
+        </button>
+      </span>
+    </div>
+  </div>
+
+  <!-- Films trouves -->
+  <div class="container-fluid resultats mt-2 overflow-scroll flex-grow-1">
+    <div
+      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
+      style="max-width: 540px"
+    >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://m.media-amazon.com/images/M/MV5BN2QyZGU4ZDctOWMzMy00NTc5LThlOGQtODhmNDI1NmY5YzAwXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg"
+            class="img-fluid rounded-start"
+            alt="dune"
+          />
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+          <div class="card-body">
+            <h5 class="card-title">Dune: part two</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
+      style="max-width: 540px"
+    >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/0/05/Argylle_poster.jpg"
+            class="img-fluid rounded-start"
+            alt="Argylle_poster"
+          />
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+          <div class="card-body">
+            <h5 class="card-title">Argylle</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
+      style="max-width: 540px"
+    >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/0/05/Argylle_poster.jpg"
+            class="img-fluid rounded-start"
+            alt="Argylle_poster"
+          />
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+          <div class="card-body">
+            <h5 class="card-title">Argylle</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
+      style="max-width: 540px"
+    >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/0/05/Argylle_poster.jpg"
+            class="img-fluid rounded-start"
+            alt="Argylle_poster"
+          />
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+          <div class="card-body">
+            <h5 class="card-title">Argylle</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
+      style="max-width: 540px"
+    >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/0/05/Argylle_poster.jpg"
+            class="img-fluid rounded-start"
+            alt="Argylle_poster"
+          />
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+          <div class="card-body">
+            <h5 class="card-title">Argylle</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
+      style="max-width: 540px"
+    >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://m.media-amazon.com/images/M/MV5BN2QyZGU4ZDctOWMzMy00NTc5LThlOGQtODhmNDI1NmY5YzAwXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg"
+            class="img-fluid rounded-start"
+            alt="dune"
+          />
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+          <div class="card-body">
+            <h5 class="card-title">Dune: part two</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aucun resultat -->
+  <!-- <div
+    class="text-white p-3 m-2 fw-bold shadow flex-grow-1 d-flex align-items-center justify-content-center"
+  >
+    <p>Aucun resultat</p>
+  </div> -->
+</div>
