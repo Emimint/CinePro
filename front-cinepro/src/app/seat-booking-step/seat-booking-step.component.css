@@ -1,0 +1,21 @@
+.section {
+    margin-bottom: 0.5rem;
+  }
+.seat {
+    border-radius: 15px;
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upside-down {
+    transform: rotateX(180deg);
+}
