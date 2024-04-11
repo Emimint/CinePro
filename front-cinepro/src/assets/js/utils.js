@@ -25,6 +25,7 @@ function moreInfo() {
   }
 }
 
+// Show selection page component function to enable the date picker:
 $(function () {
   $("#datepicker").datepicker();
   $("#format").on("change", function () {
