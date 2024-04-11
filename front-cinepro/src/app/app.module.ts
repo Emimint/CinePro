@@ -6,6 +6,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { FooterComponent } from './footer/footer.component';
 import { TicketBookingStepComponent } from './ticket-booking-step/ticket-booking-step.component';
+import { SeatBookingStepComponent } from './seat-booking-step/seat-booking-step.component';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchModalComponent } from './search-modal/search-modal.component';
@@ -21,10 +22,11 @@ import { PaymentUserInterfaceComponent } from './payment-user-interface/payment-
     AccueilComponent,
     FooterComponent,
     TicketBookingStepComponent,
+    SeatBookingStepComponent,
+    MovieExperienceComponent,
     SearchModalComponent,
     MovieCarouselComponent,
     MovieTicketComponent,
-    MovieExperienceComponent,
     ContactComponent,
     PaymentUserInterfaceComponent,
   ],
