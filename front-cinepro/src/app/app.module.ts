@@ -30,7 +30,6 @@ import { MovieExperienceComponent } from './movie-experience/movie-experience.co
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
- 
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
