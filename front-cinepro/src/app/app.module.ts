@@ -8,6 +8,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { FooterComponent } from './footer/footer.component';
 import { TicketBookingStepComponent } from './ticket-booking-step/ticket-booking-step.component';
 import { SeatBookingStepComponent } from './seat-booking-step/seat-booking-step.component';
+import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SeatBookingStepComponent } from './seat-booking-step/seat-booking-step.
     AccueilComponent,
     FooterComponent,
     TicketBookingStepComponent,
-    SeatBookingStepComponent
+    SeatBookingStepComponent,
+    MovieExperienceComponent
   ],
   imports: [
     BrowserModule,
@@ -24,5 +26,6 @@ import { SeatBookingStepComponent } from './seat-booking-step/seat-booking-step.
   ],
   providers: [],
   bootstrap: [AppComponent]
+ 
 })
-export class AppModule { }
+export class AppModule {}
