@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="show-selection">
   <!-- Search bar elements: -->
   <div class="text-white">
@@ -5,7 +6,7 @@
       <div class="h1 p-3 mx-3">Tickets</div>
     </div>
     <div class="container-fluid px-3">
-      <div class="row gap-3 py-2 my-2 mx-2">
+      <div class="row gap-2 py-2 my-2 mx-2">
         <div
           class="col d-flex border border-1 rounded-2 align-items-center bg-dark"
         >
@@ -44,7 +45,7 @@
             class="bg-dark"
             type="text"
             id="datepicker"
-            size="30"
+            size="10"
             style="background-color: transparent; color: white"
           />
           <script>
@@ -100,4 +101,37 @@
       </div>
     </div>
   </div>
+  <div class="container-fluid">
+    <div class="row gap-1">
+      <!-- Movie-ticket component -->
+      <app-movie-ticket [backgroundColor]="''" class="col"></app-movie-ticket>
+      <!-- Movie show list -->
+      <main class="col">
+        <div class="album py-5 bg-transparent">
+          <div class="container">
+            <div class="row">
+              <app-movie-experience></app-movie-experience>
+
+              <app-movie-experience></app-movie-experience>
+
+              <app-movie-experience></app-movie-experience>
+
+              <app-movie-experience></app-movie-experience>
+
+              <app-movie-experience></app-movie-experience>
+
+              <app-movie-experience></app-movie-experience>
+
+              <app-movie-experience></app-movie-experience>
+
+              <app-movie-experience></app-movie-experience>
+
+              <app-movie-experience></app-movie-experience>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
 </div>
+<app-footer></app-footer>
