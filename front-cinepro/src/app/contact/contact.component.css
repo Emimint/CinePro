@@ -1,0 +1,10 @@
+.contact-background {
+  background-image: linear-gradient(
+      to left top,
+      rgba(71, 71, 70, 0.511),
+      rgba(0, 0, 0, 0.575) 70%
+    ),
+    url(https://images.unsplash.com/photo-1559570278-eb8d71d06403?q=80&w=1826&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  /* background-size: cover; */
+  background-position: center;
+}
