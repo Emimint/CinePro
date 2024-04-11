@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { FooterComponent } from './footer/footer.component';
 import { TicketBookingStepComponent } from './ticket-booking-step/ticket-booking-step.component';
+import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { MovieExperienceComponent } from './movie-experience/movie-experience.co
     AccueilComponent,
     FooterComponent,
     TicketBookingStepComponent,
+    MovieTicketComponent,
     MovieExperienceComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
