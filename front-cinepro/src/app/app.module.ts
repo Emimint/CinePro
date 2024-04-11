@@ -8,6 +8,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { FooterComponent } from './footer/footer.component';
 import { TicketBookingStepComponent } from './ticket-booking-step/ticket-booking-step.component';
 import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
+import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
     FooterComponent,
     TicketBookingStepComponent,
     MovieTicketComponent,
+    MovieExperienceComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
