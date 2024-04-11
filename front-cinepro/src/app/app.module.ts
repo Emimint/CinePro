@@ -6,6 +6,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { FooterComponent } from './footer/footer.component';
 import { TicketBookingStepComponent } from './ticket-booking-step/ticket-booking-step.component';
+import { SearchModalComponent } from './search-modal/search-modal.component';
 import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
@@ -17,6 +18,7 @@ import { MovieExperienceComponent } from './movie-experience/movie-experience.co
     AccueilComponent,
     FooterComponent,
     TicketBookingStepComponent,
+    SearchModalComponent,
     MovieCarouselComponent,
     MovieTicketComponent,
     MovieExperienceComponent,
