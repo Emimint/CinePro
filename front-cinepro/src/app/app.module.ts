@@ -26,12 +26,10 @@ import { MovieExperienceComponent } from './movie-experience/movie-experience.co
     SearchModalComponent,
     MovieCarouselComponent,
     MovieTicketComponent,
-    MovieExperienceComponent,
     ContactComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
- 
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
