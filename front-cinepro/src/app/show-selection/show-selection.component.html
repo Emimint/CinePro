@@ -1,0 +1,103 @@
+<div class="show-selection">
+  <!-- Search bar elements: -->
+  <div class="text-white">
+    <div>
+      <div class="h1 p-3 mx-3">Tickets</div>
+    </div>
+    <div class="container-fluid px-3">
+      <div class="row gap-3 py-2 my-2 mx-2">
+        <div
+          class="col d-flex border border-1 rounded-2 align-items-center bg-dark"
+        >
+          <select class="form-select form-select-lg bg-dark border-0">
+            <option selected>Godzilla</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <svg
+            class="pe-3"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="3rem"
+            height="3rem"
+          >
+            <path
+              d="M12 21.5h10M12 21.5a9.5 9.5 0 1 0 0-19 9.5 9.5 0 0 0 0 19Z"
+              stroke="currentcolor"
+              stroke-miterlimit="10"
+            ></path>
+            <path d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="white"></path>
+            <path
+              d="M12 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM7 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
+              stroke="currentcolor"
+              stroke-miterlimit="10"
+            ></path>
+          </svg>
+        </div>
+        <div
+          class="col d-flex border border-1 rounded-2 align-items-center bg-dark justify-content-between"
+        >
+          <input
+            placeholder="Date"
+            class="bg-dark"
+            type="text"
+            id="datepicker"
+            size="30"
+            style="background-color: transparent; color: white"
+          />
+          <script>
+            $("#datepicker").datepicker({
+              uiLibrary: "bootstrap5",
+            });
+          </script>
+          <svg
+            class="pe-3"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="2.5rem"
+            height="2.5rem"
+          >
+            <path
+              d="M9 6.25h6M17 6.25h3.75v14.5H3.25V6.25H7M6.75 3v4.5M17.25 3v4.5M7.5 10.5h9"
+              stroke="currentcolor"
+            ></path>
+          </svg>
+        </div>
+        <div
+          class="col d-flex border border-1 rounded-2 align-items-center bg-dark"
+        >
+          <select class="form-select form-select-lg bg-dark border-0">
+            <option selected>Vos cinémas</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <svg
+            class="pe-3"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="3rem"
+            height="3rem"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M12 21.5c5.167-4.813 7.75-8.646 7.75-11.5a7.75 7.75 0 0 0-15.5 0c0 2.854 2.583 6.687 7.75 11.5Z"
+              stroke="currentcolor"
+            ></path>
+            <path
+              clip-rule="evenodd"
+              d="M14.75 9.5a2.75 2.75 0 1 1-5.5 0 2.75 2.75 0 0 1 5.5 0Z"
+              stroke="currentcolor"
+              stroke-linecap="round"
+              stroke-linejoin="bevel"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
