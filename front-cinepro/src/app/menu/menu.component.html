@@ -1,3 +1,4 @@
+<app-search-modal></app-search-modal>
 <nav
   class="navbar navbar-expand-md navbar-dark bg-dark"
   aria-label="Main navigation"
@@ -49,7 +50,7 @@
       class="collapse navbar-collapse flex-row-reverse"
       id="navbarNavDropdown"
     >
-      <ul class="navbar-nav">
+      <ul class="navbar-nav align-items-center">
         <li class="nav-item">
           <a class="nav-link" href="#"
             ><svg
@@ -129,7 +130,7 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"
+          <a class="nav-link d-flex align-items-center" href="#"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -144,7 +145,15 @@
               <title>Search</title>
               <circle cx="10.5" cy="10.5" r="7.5" />
               <path d="M21 21l-5.2-5.2" /></svg
-            >Rechercher</a
+            ><a
+              class="nav-link"
+              data-bs-toggle="offcanvas"
+              href="#offcanvasExample"
+              role="button"
+              aria-controls="offcanvasExample"
+            >
+              Rechercher
+            </a></a
           >
         </li>
         <li class="nav-item">
