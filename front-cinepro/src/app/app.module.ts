@@ -14,6 +14,7 @@ import { MovieCarouselComponent } from './movie-carousel/movie-carousel.componen
 import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
+import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ShowSelectionComponent } from './show-selection/show-selection.componen
     MovieTicketComponent,
     ContactComponent,
     ShowSelectionComponent,
+    ShoppingCartModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
