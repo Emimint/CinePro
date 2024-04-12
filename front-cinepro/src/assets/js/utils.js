@@ -24,3 +24,11 @@ function moreInfo() {
     lessInfoBtn.classList.add("d-none");
   }
 }
+
+// Show selection page component function to enable the date picker:
+$(function () {
+  $("#datepicker").datepicker();
+  $("#format").on("change", function () {
+    $("#datepicker").datepicker("option", "dateFormat", $(this).val());
+  });
+});

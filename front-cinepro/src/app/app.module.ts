@@ -14,6 +14,7 @@ import { MovieCarouselComponent } from './movie-carousel/movie-carousel.componen
 import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
 import { PaymentUserComponent } from './payment-user/payment-user.component';
+import { ShowSelectionComponent } from './show-selection/show-selection.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PaymentUserComponent } from './payment-user/payment-user.component';
     MovieTicketComponent,
     ContactComponent,
     PaymentUserComponent,
+    ShowSelectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

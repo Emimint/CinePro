@@ -1,0 +1,31 @@
+.show-selection {
+    background-image: linear-gradient(to right bottom,
+            #0a0b0d,
+            #021d4b)
+}
+
+.form-select {
+    background-image: none;
+    padding: 0.5rem 1rem;
+    color: #8a8c8e;
+}
+
+.form-select:focus {
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none;
+
+}
+
+#datepicker {
+    border: none;
+    padding-left: 1rem;
+    font-size: larger;
+}
+
+#datepicker:focus-visible {
+    outline: none;
+    border: none;
+}
