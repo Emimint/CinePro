@@ -15,6 +15,7 @@ import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
 import { PaymentUserComponent } from './payment-user/payment-user.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
+import { BookingPageComponent } from './booking-page/booking-page.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ShowSelectionComponent } from './show-selection/show-selection.componen
     ContactComponent,
     PaymentUserComponent,
     ShowSelectionComponent,
+    BookingPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
