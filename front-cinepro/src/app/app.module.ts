@@ -13,6 +13,7 @@ import { SearchModalComponent } from './search-modal/search-modal.component';
 import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
+import { PaymentUserComponent } from './payment-user/payment-user.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ShowSelectionComponent } from './show-selection/show-selection.componen
     MovieCarouselComponent,
     MovieTicketComponent,
     ContactComponent,
+    PaymentUserComponent,
     ShowSelectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
