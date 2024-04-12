@@ -13,6 +13,7 @@ import { SearchModalComponent } from './search-modal/search-modal.component';
 import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
+import { PaymentUserComponent } from './payment-user/payment-user.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
 import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-modal.component';
 
@@ -29,6 +30,7 @@ import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-
     MovieCarouselComponent,
     MovieTicketComponent,
     ContactComponent,
+    PaymentUserComponent,
     ShowSelectionComponent,
     ShoppingCartModalComponent,
   ],
