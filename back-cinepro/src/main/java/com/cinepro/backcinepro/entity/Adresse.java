@@ -14,11 +14,17 @@ public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String code_postal;
-    private String numero_civique;
-    private String nom_rue;
+    private String adresseId;
+    private String codePostal;
+    private String numeroCivique;
+    private String nomRue;
     private String ville;
     private String pays;
+    private String cinemaId;
+
+    @OneToOne(mappedBy = "adresse")
+    @JsonIgnore
+    private Personne personne;
 
 }
 
