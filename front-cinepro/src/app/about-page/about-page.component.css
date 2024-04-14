@@ -1,0 +1,176 @@
+header {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    padding: 3rem;
+    box-sizing: border-box;
+    height: 95vh;
+    background-image: linear-gradient(to right bottom,
+        rgba(54, 59, 53, 0.8),
+        rgba(102, 86, 146, 0.8)),
+      url(https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  }
+
+  .header__logo-box {
+    position: absolute;
+    top: 2rem;
+    left: 4rem;
+  }
+
+  .header__logo {
+    height: 3.5rem;
+  }
+
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.4rem;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+  }
+
+  .heading-primary--sub {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 3s ease-in-out;
+  }
+
+  @keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-20rem);
+    }
+
+    80% {
+      transform: translateX(2rem);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(20rem);
+    }
+
+    80% {
+      transform: translateX(-2rem);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  .btn:link,
+  .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 20rem;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 0.5rem 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn--white {
+    background-color: #fff;
+    color: rgba(152, 150, 166, 0.816);
+  }
+
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.2s;
+  }
+
+  .btn--white::after {
+    background-color: #fff;
+  }
+
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }
+
+  .btn--animated {
+    animation: moveInUp 1s ease-in-out 1s;
+    animation-fill-mode: backwards;
+  }
+  .logo-mt{
+   
+        margin-top: 8rem; 
+  }
+
+
+  @media screen and (max-width: 500px) {
+    .header {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right {
+      float: none;
+    }
+  }
+  
+  /*# sourceMappingURL=main.css.map */
