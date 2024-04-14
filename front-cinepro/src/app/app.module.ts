@@ -16,6 +16,8 @@ import { MovieExperienceComponent } from './movie-experience/movie-experience.co
 import { PaymentUserComponent } from './payment-user/payment-user.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
 import { BookingPageComponent } from './booking-page/booking-page.component';
+import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-modal.component';
+import { FoodSectionComponent } from './food-section/food-section.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { BookingPageComponent } from './booking-page/booking-page.component';
     PaymentUserComponent,
     ShowSelectionComponent,
     BookingPageComponent,
+    ShoppingCartModalComponent,
+    FoodSectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
