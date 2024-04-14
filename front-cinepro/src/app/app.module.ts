@@ -17,6 +17,7 @@ import { PaymentUserComponent } from './payment-user/payment-user.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
 import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-modal.component';
 import { AboutPageComponent } from './about-page/about-page.component';
+import { FoodSectionComponent } from './food-section/food-section.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
     ShowSelectionComponent,
     ShoppingCartModalComponent,
     AboutPageComponent,
+    FoodSectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
