@@ -17,6 +17,8 @@ import { PaymentUserComponent } from './payment-user/payment-user.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
 import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-modal.component';
 import { PromoCarouselComponent } from './promo-carousel/promo-carousel.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { FoodSectionComponent } from './food-section/food-section.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { PromoCarouselComponent } from './promo-carousel/promo-carousel.componen
     ShowSelectionComponent,
     ShoppingCartModalComponent,
     PromoCarouselComponent,
+    MovieListComponent,
+    FoodSectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
