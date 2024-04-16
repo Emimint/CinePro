@@ -43,8 +43,9 @@
 
   .heading-primary--sub {
     display: block;
+    font-size: 1rem !important;
     font-weight: 100;
-    letter-spacing: 1.7rem;
+    letter-spacing: 1.2rem;
     animation: moveInRight 3s ease-in-out;
   }
 
