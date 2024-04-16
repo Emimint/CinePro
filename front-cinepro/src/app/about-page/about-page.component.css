@@ -1,14 +1,10 @@
-header {
+  header {
     font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-size: 1.2rem;
     line-height: 1.7;
     padding: 3rem;
     box-sizing: border-box;
     height: 95vh;
-    background-image: linear-gradient(to right bottom,
-        rgba(54, 59, 53, 0.8),
-        rgba(102, 86, 146, 0.8)),
+    background-image: linear-gradient(to right bottom, rgba(54, 59, 53, 0.8), rgba(102, 86, 146, 0.8)),
       url(https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     background-size: cover;
     background-position: top;
@@ -17,18 +13,12 @@ header {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   }
 
-  .header__logo-box {
-    position: absolute;
-    top: 2rem;
-    left: 4rem;
-  }
-
-  .header__logo {
-    height: 3.5rem;
-  }
-
   .header__text-box {
-    position: absolute;
+    max-height: calc(95vh - 10rem);
+    /* Adjust the max height for smaller screens */
+    overflow-y: auto;
+    margin-top: 5rem;
+    position: relative;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -44,7 +34,6 @@ header {
 
   .heading-primary--main {
     display: block;
-    font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.4rem;
     animation-name: moveInLeft;
@@ -54,10 +43,13 @@ header {
 
   .heading-primary--sub {
     display: block;
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 100;
     letter-spacing: 1.7rem;
     animation: moveInRight 3s ease-in-out;
+  }
+
+  p {
+    width: 50vw;
   }
 
   @keyframes moveInLeft {
@@ -108,7 +100,7 @@ header {
   .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1.5rem 4rem;
+    padding: 1rem 2rem;
     display: inline-block;
     border-radius: 20rem;
     transition: all 0.2s;
@@ -156,21 +148,76 @@ header {
     animation: moveInUp 1s ease-in-out 1s;
     animation-fill-mode: backwards;
   }
-  .logo-mt{
-   
-        margin-top: 8rem; 
+
+  .header__text-box::-webkit-scrollbar {
+    width: 0;
+    /* Set the width to 0 */
   }
 
+  /* Media queries for responsiveness */
+  @media screen and (max-width: 768px) {
 
-  @media screen and (max-width: 500px) {
-    .header {
-      float: none;
-      display: block;
-      text-align: left;
+    header {
+      padding: 1rem;
     }
-    .header-right {
-      float: none;
+
+    .header__text-box {
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: none;
+    }
+
+    .heading-primary--main {
+      font-size: 2rem;
+      /* Adjust the font size for smaller screens */
+      letter-spacing: 1.7rem;
+    }
+
+    .heading-primary--sub {
+      font-size: 1.5rem;
+      /* Adjust the font size for smaller screens */
+      letter-spacing: 1.2rem;
+    }
+
+    p {
+      width: 85vw;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 0.8rem;
+      /* Adjust the button padding for smaller screens */
+    }
+
+    .empty-div {
+      height: 5rem;
     }
   }
-  
-  /*# sourceMappingURL=main.css.map */
+
+  @media screen and (max-width: 576px) {
+    .header__text-box {
+      padding: none;
+    }
+
+    .heading-primary--main {
+      font-size: 1.5rem;
+      /* Further adjust the font size for even smaller screens */
+      letter-spacing: 1rem;
+    }
+
+    .heading-primary--sub {
+      font-size: 1.2rem;
+      /* Further adjust the font size for even smaller screens */
+      letter-spacing: 0.8rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.7rem;
+      /* Further adjust the button padding for even smaller screens */
+    }
+
+    .empty-div {
+      height: 10rem;
+    }
+  }
