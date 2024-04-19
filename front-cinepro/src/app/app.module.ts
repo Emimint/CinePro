@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -19,6 +20,7 @@ import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-
 import { PromoCarouselComponent } from './promo-carousel/promo-carousel.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
+import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,9 @@ import { FoodSectionComponent } from './food-section/food-section.component';
     PromoCarouselComponent,
     MovieListComponent,
     FoodSectionComponent,
+    MovieDescriptionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,CommonModule],
   providers: [],
   bootstrap: [AppComponent],
 })
