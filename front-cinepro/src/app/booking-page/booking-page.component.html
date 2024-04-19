@@ -43,16 +43,16 @@
             >
               <div
                 class="step-container-1 col uppercase"
-                onclick="displayStep(1)"
+                (click)="displayStep(1)"
               >
                 Tickets
               </div>
               <div class="col">></div>
-              <div class="step-container-2 col" onclick="displayStep(2)">
+              <div class="step-container-2 col" (click)="displayStep(2)">
                 Sieges
               </div>
               <div class="col">></div>
-              <div class="step-container-3 col" onclick="displayStep(3)">
+              <div class="step-container-3 col" (click)="displayStep(3)">
                 Paiement
               </div>
             </div>
@@ -71,15 +71,15 @@
             <div class="choix-rabais ">
               
               <app-ticket-booking-step></app-ticket-booking-step>
-              <button type="button" class="btn next-step mt-5" onclick="initSeatMap()">Suivant</button>
+              <button type="button" class="btn next-step mt-5" (click)="nextStep()">Suivant</button>
             </div>
           </div>
          
           <!------------ ETAPE 2 : CHOIX DES SIEGES ------------>
           <div class="step step-2">
             <app-seat-booking-step></app-seat-booking-step>
-            <button type="button" class="btn prev-step mt-5">Précédent</button>
-            <button type="button" class="btn next-step mt-5">Suivant</button>
+            <button type="button" class="btn prev-step mt-5" (click)="prevStep()">Précédent</button>
+            <button type="button" class="btn next-step mt-5" (click)="nextStep()">Suivant</button>
           </div>
   
           <!------------ ETAPE 3 : PAIEMENT ------------>
@@ -88,7 +88,7 @@
            <app-payment-user></app-payment-user>
           
             <div class="d-flex justify-content-end mt-5">
-              <button type="button" class="btn m-2 prev-step mt-5">Précédent</button>
+              <button type="button" class="btn m-2 prev-step mt-5" (click)="prevStep()">Précédent</button>
             </div>
           </div>
           <div
