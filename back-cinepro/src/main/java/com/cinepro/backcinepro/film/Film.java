@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,9 +22,9 @@ public class Film {
     private String doublage;
     private String titre;
     private String titreOriginal;
-    private String catetgorie;
+    private String categorie;
     private String description;
-    private String dateDeSortie;
+    private Date dateDeSortie;
 //    private List<Acteur> acteurs;
 //    private List<Realisateur> realisateurs;
     private int classement;

@@ -9,8 +9,8 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@Getter
-//@Setter
+@Getter
+@Setter
 @Entity
 public class Image {
     @Id
