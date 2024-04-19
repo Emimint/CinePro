@@ -1,9 +1,4 @@
-    <style>
-
-      
-    </style>
-
-    <nav
+<nav
       class="navbar navbar-expand-lg navbar-dark bg-dark"
       aria-label="Main navigation"
     >
@@ -55,26 +50,26 @@
         >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">Promotions</a>
+              <a class="nav-link" href="#" (click)="openTab('Promotions')">Promotions</a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
                 href="#"
                 data-target="filmList"
-                onclick="myFunction()"
+                (click)="openTab('Films')"
                 >Films</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Reservations</a>
+              <a class="nav-link" href="#" (click)="openTab('Reservations')">Reservations</a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
                 href="#"
                 data-target="clientList"
-                onclick="myFunction()"
+                (click)="openTab('Clients')"
                 >Clients</a
               >
             </li>
@@ -162,32 +157,32 @@
             class="nav-item mb-1"
             onclick="openTab(event, 'Films')"
           >
-            <a href="#">
+            <a href="#" (click)="openTab('Films')">
               <i class="fa fa-user"></i>
               Films
             </a>
           </li>
 
           <li class="nav-item mb-1" onclick="openTab(event, 'Clients')">
-            <a href="#">
-              <i class="fa fa-bookmark"></i>
+            <a href="#" (click)="openTab('Clients')">
+              <i class="fa fa-bookmark" ></i>
               Clients
             </a>
           </li>
           <li class="nav-item mb-1" onclick="openTab(event, 'Reservations')">
-            <a href="#">
+            <a href="#" (click)="openTab('Reservations')">
               <i class="fa fa-newspaper"></i>
               Reservations
             </a>
           </li>
           <li class="nav-item mb-1" onclick="openTab(event, 'Promotions')">
-            <a href="#">
+            <a href="#" (click)="openTab('Promotions')">
               <i class="fa fa-archway"></i>
               Promotions
             </a>
           </li>
           <li class="nav-item mb-1" onclick="openTab(event, 'Cinema')">
-            <a href="#">
+            <a href="#" (click)="openTab('Cinemas')">
               <i class="fa fa-graduation-cap"></i>
               Cinemas
             </a>
@@ -206,7 +201,7 @@
             <i class="fa fa-bars"></i>
           </a>
         </div>
-        <div id="Films" class="tabcontent">
+        <div *ngIf="currentTab === 'Films'" id="Films" class="tabcontent">
     <div class="table-title">
       <div class="row align-items-center">
           <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center" id="filmList">
@@ -354,7 +349,7 @@
      
     </table>
   </div>
-  <div id="Clients" class="tabcontent">
+  <div *ngIf="currentTab === 'Clients'" id="Clients" class="tabcontent">
     <div class="table-title">
       <div class="row align-items-center">
           <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
@@ -385,7 +380,7 @@
           <tr>
             <th>Thomas</th>
             <th>Hardy</th>
-            <th>ThomasHardy@gmail.com</th>
+            <th>ThomasHardy&#64;gmail.com</th>
             <th>90r parkdground poland Usa.</th>
             <th>(78-582552-9)</th>
             <th>Thomas1</th>
@@ -396,7 +391,7 @@
           <tr>
             <th>Dominique</th>
             <th>Perrier</th>
-            <th>dominiquePerrier@gmail.com</th>
+            <th>dominiquePerrier&#64;gmail.com</th>
             <th>90r ser57, Berlin poland Bermany.</th>
             <th>(78-5235-2-9)</th>
             <th>Dominique1</th>
@@ -406,7 +401,7 @@
           <tr>
             <th>Marai</th>
             <th>Andres</th>
-            <th>MarariAndres@gmail.com</th>
+            <th>MarariAndres&#64;gmail.com</th>
             <th>90r ser57, Berlin poland Bermany.</th>
             <th>(78-239-669)</th>
             <th>Marai1</th>
@@ -416,7 +411,7 @@
           <tr>
             <th>Vishwajeet</th>
             <th>Kumar</th>
-            <th>vishkumar234@gmail.com</th>
+            <th>vishkumar234&#64;gmail.com</th>
             <th> B-2 ser57 Nodia East Delhi,India.</th>
             <th>(78-555-229)</th>
             <th>Vishwajeet1</th>
@@ -468,7 +463,7 @@
      
     </table>
   </div>
-<div id="Promotions" class="tabcontent">
+<div *ngIf="currentTab === 'Promotions'" id="Promotions" class="tabcontent">
   <div class="table-title">
     <div class="row align-items-center">
         <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
@@ -489,7 +484,7 @@
           <th><i ></i>Pourcentage</th>
           <th><i ></i>Description</th>
           <th><i ></i>MontantFixe</th>
-          <th><i></i> </i>Date De Debut</th>
+          <th><i></i>Date De Debut</th>
           <th><i></i>Date De Fin</th>
           <th><i></i>Date De Creation</th>
           <th><i></i>Frequence</th>
@@ -587,7 +582,7 @@
     </tbody>
   </table>
 </div>
-<div id="Reservations" class="tabcontent">
+<div *ngIf="currentTab === 'Reservations'" id="Reservations" class="tabcontent">
   <div class="table-title">
     <div class="row align-items-center">
       <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
@@ -699,7 +694,7 @@
   </table>
 </div>
 
- <div id="Cinema" class="tabcontent">
+ <div *ngIf="currentTab === 'Cinemas'" id="Cinema" class="tabcontent">
   <div class="table-title">
     <div class="row align-items-center">
         <div class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center " id="filmList">
@@ -791,34 +786,5 @@
    
   </table>
  </div>
-      </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script>
-      // Initialisation de DataTables
-      $(document).ready(function () {
-        $(".example").DataTable({
-          responsive: true,
-          paging: true,
-        });
-      });
-    </script>
-    <script>
-      function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-      }
-      // Get the element with id="defaultOpen" and click on it
-      document.getElementById("defaultOpen").click();
-    </script>
+</div>
+</div>
