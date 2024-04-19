@@ -1,10 +1,7 @@
-package com.cinepro.backcinepro.service;
+package com.cinepro.backcinepro.salledecinema;
 
-import com.cinepro.backcinepro.entity.Cinema;
-import com.cinepro.backcinepro.entity.Personne;
-import com.cinepro.backcinepro.entity.SalleDeCinema;
-import com.cinepro.backcinepro.repository.PersonneRepository;
-import com.cinepro.backcinepro.repository.SalleDeCinemaRepository;
+import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
+import com.cinepro.backcinepro.salledecinema.SalleDeCinemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

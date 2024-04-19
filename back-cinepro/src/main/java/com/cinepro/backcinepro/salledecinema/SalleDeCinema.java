@@ -1,5 +1,6 @@
-package com.cinepro.backcinepro.entity;
+package com.cinepro.backcinepro.salledecinema;
 
+import com.cinepro.backcinepro.cinema.Cinema;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;

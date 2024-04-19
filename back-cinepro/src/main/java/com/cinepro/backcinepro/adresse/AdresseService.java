@@ -1,7 +1,7 @@
-package com.cinepro.backcinepro.service;
+package com.cinepro.backcinepro.adresse;
 
-import com.cinepro.backcinepro.entity.Adresse;
-import com.cinepro.backcinepro.repository.AdresseRepository;
+import com.cinepro.backcinepro.adresse.Adresse;
+import com.cinepro.backcinepro.adresse.AdresseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

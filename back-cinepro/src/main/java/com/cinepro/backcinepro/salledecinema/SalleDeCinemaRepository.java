@@ -1,7 +1,7 @@
-package com.cinepro.backcinepro.repository;
+package com.cinepro.backcinepro.salledecinema;
 
 
-import com.cinepro.backcinepro.entity.SalleDeCinema;
+import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
