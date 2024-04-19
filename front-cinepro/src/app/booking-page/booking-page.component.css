@@ -21,15 +21,9 @@
    overflow-x: hidden;
  }
 
- /*
-  .step {
-    display: none;
-    margin-bottom: 3rem;
-  }
-
-  .step-1 {
-    display: block;
-  } */
+ .step-container-1 {
+   color: #1759ab;
+ }
 
  .btn {
    border-radius: 0px;
