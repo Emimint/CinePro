@@ -1,6 +1,7 @@
 .section {
     margin-bottom: 0.5rem;
-  }
+}
+
 .seat {
     border-radius: 15px;
     width: 2rem;
@@ -14,8 +15,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: auto;
 }
 
 .upside-down {
     transform: rotateX(180deg);
 }
+
+#seat-map {
+    width: 700px;
+    height: 500px;
+}
+
+/* .seat-map {
+    width: 700px;
+    height: 500px;
+    overflow: auto;
+} */

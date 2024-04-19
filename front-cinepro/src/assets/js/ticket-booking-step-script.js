@@ -58,7 +58,7 @@ function randomlyToggleSeats(rows, columns, sections) {
 
 function generateSeatMap(rows, columns, sections) {
   let seatMapHTML =
-    '<div class="container d-flex justify-content-center mx-auto px-5 seat-map d-flex flex-wrap w-75 gap-5 justify-content-center mx-5 upside-down">';
+    '<div class="mx-auto px-5 seat-map d-flex flex-wrap gap-5 justify-content-center mx-5 upside-down">';
 
   for (let s = 1; s <= sections; s++) {
     // Iterate over sections in increasing order
