@@ -1,5 +1,6 @@
-package com.cinepro.backcinepro.entity;
+package com.cinepro.backcinepro.adresse;
 
+import com.cinepro.backcinepro.personne.Personne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;

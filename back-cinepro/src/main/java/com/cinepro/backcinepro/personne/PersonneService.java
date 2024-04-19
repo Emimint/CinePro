@@ -1,8 +1,8 @@
-package com.cinepro.backcinepro.service;
+package com.cinepro.backcinepro.personne;
 
 
-import com.cinepro.backcinepro.entity.Personne;
-import com.cinepro.backcinepro.repository.PersonneRepository;
+import com.cinepro.backcinepro.personne.Personne;
+import com.cinepro.backcinepro.personne.PersonneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
