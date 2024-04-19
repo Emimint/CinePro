@@ -1,7 +1,7 @@
 package com.cinepro.backcinepro.adresse;
 
 import com.cinepro.backcinepro.cinema.Cinema;
-import com.cinepro.backcinepro.personne.Personne;
+import com.cinepro.backcinepro.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,7 +30,7 @@ public class Adresse {
 
     @OneToOne(mappedBy = "adresse")
     @JsonIgnore
-    private Personne personne;
+    private User user;
 }
 
 
