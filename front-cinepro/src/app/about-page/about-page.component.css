@@ -1,0 +1,224 @@
+  header {
+    font-family: "Lato", sans-serif;
+    line-height: 1.7;
+    padding: 3rem;
+    box-sizing: border-box;
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba(54, 59, 53, 0.8), rgba(102, 86, 146, 0.8)),
+      url(https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  }
+
+  .header__text-box {
+    max-height: calc(95vh - 10rem);
+    /* Adjust the max height for smaller screens */
+    overflow-y: auto;
+    margin-top: 5rem;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .heading-primary--main {
+    display: block;
+    font-weight: 400;
+    letter-spacing: 3.4rem;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+  }
+
+  .heading-primary--sub {
+    display: block;
+    font-size: 1rem !important;
+    font-weight: 100;
+    letter-spacing: 1.2rem;
+    animation: moveInRight 3s ease-in-out;
+  }
+
+  p {
+    width: 50vw;
+  }
+
+  @keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-20rem);
+    }
+
+    80% {
+      transform: translateX(2rem);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(20rem);
+    }
+
+    80% {
+      transform: translateX(-2rem);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  .btn:link,
+  .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    display: inline-block;
+    border-radius: 20rem;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 0.5rem 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn--white {
+    background-color: #fff;
+    color: rgba(152, 150, 166, 0.816);
+  }
+
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.2s;
+  }
+
+  .btn--white::after {
+    background-color: #fff;
+  }
+
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }
+
+  .btn--animated {
+    animation: moveInUp 1s ease-in-out 1s;
+    animation-fill-mode: backwards;
+  }
+
+  .header__text-box::-webkit-scrollbar {
+    width: 0;
+    /* Set the width to 0 */
+  }
+
+  /* Media queries for responsiveness */
+  @media screen and (max-width: 768px) {
+
+    header {
+      padding: 1rem;
+    }
+
+    .header__text-box {
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: none;
+    }
+
+    .heading-primary--main {
+      font-size: 2rem;
+      /* Adjust the font size for smaller screens */
+      letter-spacing: 1.7rem;
+    }
+
+    .heading-primary--sub {
+      font-size: 1.5rem;
+      /* Adjust the font size for smaller screens */
+      letter-spacing: 1.2rem;
+    }
+
+    p {
+      width: 85vw;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 0.8rem;
+      /* Adjust the button padding for smaller screens */
+    }
+
+    .empty-div {
+      height: 5rem;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .header__text-box {
+      padding: none;
+    }
+
+    .heading-primary--main {
+      font-size: 1.5rem;
+      /* Further adjust the font size for even smaller screens */
+      letter-spacing: 1rem;
+    }
+
+    .heading-primary--sub {
+      font-size: 1.2rem;
+      /* Further adjust the font size for even smaller screens */
+      letter-spacing: 0.8rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.7rem;
+      /* Further adjust the button padding for even smaller screens */
+    }
+
+    .empty-div {
+      height: 10rem;
+    }
+  }
