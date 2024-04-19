@@ -1,5 +1,6 @@
 package com.cinepro.backcinepro.adresse;
 
+import com.cinepro.backcinepro.cinema.Cinema;
 import com.cinepro.backcinepro.personne.Personne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -8,8 +9,8 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+//@Getter
+//@Setter
 @Entity
 public class Adresse {
     @Id
@@ -25,8 +26,11 @@ public class Adresse {
 
     @OneToOne(mappedBy = "adresse")
     @JsonIgnore
-    private Personne personne;
+    private Cinema cinema;
 
+    @OneToOne(mappedBy = "adresse")
+    @JsonIgnore
+    private Personne personne;
 }
 
 
