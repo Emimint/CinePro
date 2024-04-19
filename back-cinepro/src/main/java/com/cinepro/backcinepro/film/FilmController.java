@@ -5,6 +5,7 @@ import com.cinepro.backcinepro.config.CloudinaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,6 +46,7 @@ public class FilmController {
     }
 
     @PostMapping("/upload")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> uploadMovie(@RequestParam("file") MultipartFile multipartFile,
                                               @RequestParam("titre") String titre,
                                               @RequestParam("langue") String langue,
@@ -91,6 +93,7 @@ public class FilmController {
     }
 
     @PutMapping("/update/{movieId}")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> updateMovie(@PathVariable Long movieId,
                                               @RequestParam("titre") String titre,
                                               @RequestParam("langue") String langue,
@@ -142,6 +145,7 @@ public class FilmController {
         return new ResponseEntity<>("Film mis à jour avec succès.", HttpStatus.OK);
     }
     @DeleteMapping("/delete/{movieId}")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> deleteMovie(@PathVariable Long movieId) throws IOException {
         Optional<Film> optionalMovie = filmService.findById(movieId);
         if (optionalMovie.isEmpty()) {
