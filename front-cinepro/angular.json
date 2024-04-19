@@ -30,7 +30,10 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
-            "scripts": ["src/assets/js/utils.js","src/assets/js/ticket-booking-step-script.js","src/assets/js/booking-page-script.js"],
+            "scripts": [
+              "src/assets/js/utils.js",
+              "src/assets/js/ticket-booking-step-script.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {

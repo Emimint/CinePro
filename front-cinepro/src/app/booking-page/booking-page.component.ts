@@ -1,33 +1,50 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-//declare function initSeatMap();
 @Component({
   selector: 'app-booking-page',
   templateUrl: './booking-page.component.html',
-  styleUrl: './booking-page.component.css'
+  styleUrls: ['./booking-page.component.css'],
 })
 export class BookingPageComponent {
-   
-  // ngOnInit(){
-  //   initSeatMap();
-  // }
   currentStep: number = 1;
+  formData: any = {};
 
-  displayStep(step: number) {
+  bookingDisplayStep(step: number) {
     this.currentStep = step;
+    this.updateProgressBar();
   }
 
-  nextStep() {
+  bookingNextStep() {
     if (this.currentStep < 3) {
       this.currentStep++;
+      this.updateProgressBar();
     }
   }
 
-  prevStep() {
+  bookingPrevStep() {
     if (this.currentStep > 1) {
       this.currentStep--;
+      this.updateProgressBar();
     }
   }
-  
 
+  updateProgressBar() {
+    const allSteps = document.querySelectorAll("[class^='step-container']");
+    allSteps.forEach((step: any) => {
+      step.style.color = 'gray';
+    });
+    const currentStepProgress = '.step-container-' + this.currentStep;
+    const currentStepElement = document.querySelector(
+      currentStepProgress
+    ) as HTMLElement;
+    if (currentStepElement) {
+      currentStepElement.style.color = '#1759ab';
+    }
+  }
+
+  submitForm() {
+    console.log('Form submitted:', this.formData);
+    this.formData = {};
+    this.currentStep = 1;
+  }
 }
