@@ -19,6 +19,7 @@ import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-
 import { PromoCarouselComponent } from './promo-carousel/promo-carousel.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FoodSectionComponent } from './food-section/food-section.component';
     PromoCarouselComponent,
     MovieListComponent,
     FoodSectionComponent,
+    LoginPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
