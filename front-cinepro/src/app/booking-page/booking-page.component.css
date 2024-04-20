@@ -1,0 +1,42 @@
+ #booking-container {
+   margin: auto;
+   padding: auto;
+ }
+
+
+ #booking-container .recapitulatif {
+   border: 2px solid black;
+   border-radius: 15px;
+   padding: 2rem;
+   font-size: 1rem;
+ }
+
+ #booking-container .recapitulatif h2 {
+   margin-top: 1rem;
+   font-size: 1.1rem;
+ }
+
+
+ #multi-step-form {
+   overflow-x: hidden;
+ }
+
+ .step-container-1 {
+   color: #1759ab;
+ }
+
+ .btn {
+   border-radius: 0px;
+   background-color: #1759ab;
+   color: white;
+   font-weight: bolder;
+   padding: 0.5rem 2rem;
+   margin: auto 0.5rem;
+   transition: all 0.5s;
+   border: none;
+ }
+
+ .btn:hover {
+   background-color: gray;
+   color: azure;
+ }

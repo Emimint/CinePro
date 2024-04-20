@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class MovieTicketComponent {
   @Input() backgroundColor: string = 'black';
+  @Input() color: string = 'black';
 }
