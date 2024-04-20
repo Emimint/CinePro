@@ -15,7 +15,9 @@ import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { MovieExperienceComponent } from './movie-experience/movie-experience.component';
 import { PaymentUserComponent } from './payment-user/payment-user.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
+import { BookingPageComponent } from './booking-page/booking-page.component';
 import { ShoppingCartModalComponent } from './shopping-cart-modal/shopping-cart-modal.component';
+import { AboutPageComponent } from './about-page/about-page.component';
 import { PromoCarouselComponent } from './promo-carousel/promo-carousel.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
@@ -37,7 +39,9 @@ import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.
     ContactComponent,
     PaymentUserComponent,
     ShowSelectionComponent,
+    BookingPageComponent,
     ShoppingCartModalComponent,
+    AboutPageComponent,
     PromoCarouselComponent,
     MovieListComponent,
     FoodSectionComponent,

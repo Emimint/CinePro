@@ -1,4 +1,4 @@
-const upSideDownseatSvg = `<svg fill="white" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  transform="rotate(180)"><path d="M6.75 21.5V20M17.25 21.5V20" stroke="currentcolor"></path><path clip-rule="evenodd" d="M18.144 19.75H5.856c-.746 0-1.356-.66-1.356-1.466L5.585 6.47c0-1.771 1.34-3.22 2.98-3.22h6.87c1.64 0 2.98 1.449 2.98 3.22L19.5 18.284c0 .806-.61 1.466-1.356 1.466Z" stroke="currentcolor"></path><path d="M10 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM10 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM14 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM14 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="currentcolor"></path><path d="M4.5 15.5h15M2.5 12v4.5H5M19 16.5h2.5V12" stroke="currentcolor"></path></svg>`;
+const seatSvg = `<svg fill="white" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.75 21.5V20M17.25 21.5V20" stroke="currentcolor"></path><path clip-rule="evenodd" d="M18.144 19.75H5.856c-.746 0-1.356-.66-1.356-1.466L5.585 6.47c0-1.771 1.34-3.22 2.98-3.22h6.87c1.64 0 2.98 1.449 2.98 3.22L19.5 18.284c0 .806-.61 1.466-1.356 1.466Z" stroke="currentcolor"></path><path d="M10 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM10 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM14 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM14 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="currentcolor"></path><path d="M4.5 15.5h15M2.5 12v4.5H5M19 16.5h2.5V12" stroke="currentcolor"></path></svg>`;
 
 function showSeatInfo(seatId, seatElement) {
   const allSeats = document.querySelectorAll(".seat");
@@ -58,40 +58,23 @@ function randomlyToggleSeats(rows, columns, sections) {
 
 function generateSeatMap(rows, columns, sections) {
   let seatMapHTML =
-    '<div class="seat-map d-flex flex-wrap w-75 gap-5 justify-content-center mx-5">';
+    '<div class="mx-auto px-5 seat-map d-flex flex-wrap gap-5 justify-content-center mx-5 upside-down">';
 
-  for (let s = sections; s >= 1; s--) {
+  for (let s = 1; s <= sections; s++) {
+    // Iterate over sections in increasing order
     seatMapHTML += `<div id="section-${s}" class="section d-flex flex-column">`;
     for (let i = 1; i <= rows; i++) {
       seatMapHTML += `<div class="d-flex flex-row">`;
       for (let j = 1; j <= columns; j++) {
         const seatId = `seat-${s}-${i}-${j}`;
-        seatMapHTML += `<div id="${seatId}" class="seat" onclick="toggleSeatStatus('${seatId}')" onmouseover="showSeatInfo('${seatId}','current-seat')">${upSideDownseatSvg}</div>`;
+        seatMapHTML += `<div id="${seatId}" class="seat" onclick="toggleSeatStatus('${seatId}')" onmouseover="showSeatInfo('${seatId}','current-seat')">${seatSvg}</div>`;
       }
       seatMapHTML += `</div>`;
     }
     seatMapHTML += `</div>`;
   }
 
-  seatMapHTML += "</div>";
-
-  return seatMapHTML;
-}
-
-function initSeatMap() {
-  // Example :
-  const rows = 3; // 5 rows par section
-  const columns = 4; // 3 columns par section
-  const sections = 8;
-  const theaterSeatMap = generateSeatMap(rows, columns, sections);
-  const seatMap = document.getElementById("seat-map");
-  seatMap.innerHTML = theaterSeatMap;
-}
-
-// Generer la legende :
-const seatInfo = document.querySelector(".seat-info");
-console.log(seatInfo);
-seatInfo.innerHTML = `    <div
+  seatMapHTML += `   </div><div
      class="legend m-2 w-100 p-3 d-flex flex-column align-items-center"
    >
      <h2>Légende</h2>
@@ -111,5 +94,11 @@ seatInfo.innerHTML = `    <div
      </div>
    </div>`;
 
-// Pour tester, exécutez la ligne suivante dans la console :
-// randomlyToggleSeats(rows, columns, sections);
+  return seatMapHTML;
+}
+
+function initSeatMap(rows, columns, sections) {
+  const theaterSeatMap = generateSeatMap(rows, columns, sections);
+  const seatMap = document.getElementById("seat-map");
+  seatMap.innerHTML = theaterSeatMap;
+}
