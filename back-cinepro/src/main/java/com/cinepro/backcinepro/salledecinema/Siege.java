@@ -1,4 +1,4 @@
-package com.cinepro.backcinepro.siege;
+package com.cinepro.backcinepro.salledecinema;
 
 import com.cinepro.backcinepro.adresse.Adresse;
 import com.cinepro.backcinepro.salledecinema.SalleDeCinema;

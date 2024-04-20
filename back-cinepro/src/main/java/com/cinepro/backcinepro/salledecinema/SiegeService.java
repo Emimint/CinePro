@@ -1,5 +1,7 @@
-package com.cinepro.backcinepro.siege;
+package com.cinepro.backcinepro.salledecinema;
 
+import com.cinepro.backcinepro.salledecinema.Siege;
+import com.cinepro.backcinepro.salledecinema.SiegeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
