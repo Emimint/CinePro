@@ -22,8 +22,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { PromoCarouselComponent } from './promo-carousel/promo-carousel.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
-import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +46,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     PromoCarouselComponent,
     MovieListComponent,
     FoodSectionComponent,
-    MovieDescriptionComponent,
     LoginPageComponent,
+    MovieDescriptionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,CommonModule],
   providers: [],
