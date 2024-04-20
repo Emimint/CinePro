@@ -22,7 +22,12 @@ public class Acteur {
     private String nomActeur;
     private String prenomActeur;
 
-    @ManyToMany(fetch = EAGER)
+    @ManyToMany
+    @JoinTable(
+            name = "acteur_film",
+            joinColumns = @JoinColumn(name = "acteur_id"),
+            inverseJoinColumns = @JoinColumn(name = "film_id")
+    )
     private List<Film> films;
 
 }

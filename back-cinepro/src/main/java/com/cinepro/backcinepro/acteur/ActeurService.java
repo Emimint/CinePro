@@ -14,26 +14,19 @@ public class ActeurService {
 
     @Autowired
     ActeurRepository acteurRepository;
-
     public List<Acteur> findAll() {
         return acteurRepository.findAll();
     }
-
     public Optional<Acteur> findById(Long id) {
         return acteurRepository.findById(id);
     }
-
     public Acteur save(Acteur acteur) {
         return acteurRepository.save(acteur);
     }
-
     public void delete(Long id) {
         acteurRepository.deleteById(id);
     }
-
     public boolean exists(Long id){
         return acteurRepository.existsById(id);
     }
-
-
 }

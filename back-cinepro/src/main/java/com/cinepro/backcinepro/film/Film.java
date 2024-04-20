@@ -43,6 +43,5 @@ public class Film {
 
     //ajout Tity
     @ManyToMany(mappedBy = "films")
-    @JsonIgnore
     private List<Acteur> acteurs;
 }
