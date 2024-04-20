@@ -2,12 +2,13 @@
     margin-bottom: 1rem;
 }
 
-  /* Style the tab */
+/* Style the tab */
 .tab {
     float: left;
     border: 1px solid #ccc;
     padding-left: 1rem;
     background-color: #f1f1f1;
+    overflow-x: hidden;
 }
 
 .tabcontent {
@@ -16,7 +17,9 @@
     border-left: none;
 }
 
-table,th,td {
+table,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
 }
@@ -29,7 +32,8 @@ table.example td {
     text-align: center !important;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     font-family: "Ubuntu", sans-serif;
 }
@@ -63,4 +67,8 @@ html, body {
 .mynav li a i {
     width: 25px;
     text-align: center;
+}
+
+.empty-div {
+    min-height: 25vh;
 }
