@@ -6,6 +6,7 @@ import { ShowSelectionComponent } from './show-selection/show-selection.componen
 import { BookingPageComponent } from './booking-page/booking-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.component';
+import { FoodSectionComponent } from './food-section/food-section.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/accueil', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'booking', component: BookingPageComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'admin-agent-movie', component: AdminAgentMovieComponent },
+  { path: 'food-section', component: FoodSectionComponent },
 ];
 
 @NgModule({
