@@ -22,8 +22,8 @@ public class Cinema {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(
             name = "adresse_id",
-            referencedColumnName = "adresse_id",
-            foreignKey = @ForeignKey(name = "FK_cinema_adresse", foreignKeyDefinition = "FOREIGN KEY (adresse_id) REFERENCES adresse(adresse_id) ON DELETE CASCADE")
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_cinema_adresse", foreignKeyDefinition = "FOREIGN KEY (adresse_id) REFERENCES adresse(id) ON DELETE CASCADE")
     )
     @JsonIgnore
     private Adresse adresse;
