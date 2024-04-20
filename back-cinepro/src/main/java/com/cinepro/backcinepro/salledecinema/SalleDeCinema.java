@@ -1,9 +1,12 @@
 package com.cinepro.backcinepro.salledecinema;
 
 import com.cinepro.backcinepro.cinema.Cinema;
+import com.cinepro.backcinepro.siege.Siege;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -28,4 +31,9 @@ public class SalleDeCinema {
     @JsonIgnore
     private Cinema cinema;
 
+    @OneToMany(mappedBy = "salleDeCinema")
+    private List<Siege> sieges;
+
+//    @OneToMany(mappedBy = "salleDeCinema")
+//    private List<Seance> seances;
 }
