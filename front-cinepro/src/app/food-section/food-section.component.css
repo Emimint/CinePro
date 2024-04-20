@@ -57,4 +57,13 @@ img {
   padding: .5rem;
   margin: 2rem;
   backdrop-filter: blur(3px);
+  transition: all .5s;
+}
+
+.shopping-cart-container:hover {
+  transform: translateY(-1rem);
+}
+
+.shopping-cart-container a {
+  cursor: pointer;
 }
