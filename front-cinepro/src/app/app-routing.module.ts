@@ -4,6 +4,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ContactComponent } from './contact/contact.component';
 import { ShowSelectionComponent } from './show-selection/show-selection.component';
 import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
+import { AboutPageComponent } from './about-page/about-page.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'booking', component: ShowSelectionComponent },
   { path: 'movie-ticket', component: MovieTicketComponent },
+  { path: 'about', component: AboutPageComponent },
 ];
 
 @NgModule({
