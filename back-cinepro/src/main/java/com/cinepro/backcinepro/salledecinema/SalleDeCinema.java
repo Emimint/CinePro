@@ -22,8 +22,8 @@ public class SalleDeCinema {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "cinema_id",
-            referencedColumnName = "cinema_id",
-            foreignKey = @ForeignKey(name = "FK_SalleDeCinema_cinema", foreignKeyDefinition = "FOREIGN KEY (cinema_id) REFERENCES cinema(cinema_id) ON DELETE CASCADE")
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_salledecinema_cinema", foreignKeyDefinition = "FOREIGN KEY (cinema_id) REFERENCES cinema(id) ON DELETE CASCADE")
     )
     @JsonIgnore
     private Cinema cinema;
