@@ -1,10 +1,12 @@
 package com.cinepro.backcinepro.film;
 
+import com.cinepro.backcinepro.realisateur.Realisateur;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -38,4 +40,7 @@ public class Film {
     )
     @JsonIgnore
     private Image image;
+
+    @ManyToMany(mappedBy = "films")
+    private List<Realisateur> realisateurs;
 }
