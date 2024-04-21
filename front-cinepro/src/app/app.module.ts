@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -22,6 +23,7 @@ import { PromoCarouselComponent } from './promo-carousel/promo-carousel.componen
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +47,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MovieListComponent,
     FoodSectionComponent,
     LoginPageComponent,
+    MovieDescriptionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,CommonModule],
   providers: [],
   bootstrap: [AppComponent],
 })
