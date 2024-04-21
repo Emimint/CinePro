@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="food-section">
   <h2 class="text-white my-5 mx-5 pt-5 fw-bold">Notre sélection</h2>
   <ul class="nav nav-tabs pt-3">
@@ -18,6 +19,7 @@
     </li>
   </ul>
   <main>
+    <app-shopping-cart-modal></app-shopping-cart-modal>
     <div class="album py-5">
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -84,5 +86,33 @@
         </div>
       </div>
     </div>
+
+    <footer class="shopping-footer footer fixed-bottom">
+      <div class="d-flex flex-row-reverse">
+        <div class="shopping-cart-container shadow-lg rounded-pill">
+          <div class="position-relative d-inline-block">
+            <a data-bs-toggle="modal" data-bs-target="#shoppingCartModal">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="3rem"
+                height="3rem"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19.029 13h2.971l-.266 1h-2.992l.287-1zm.863-3h2.812l.296-1h-2.821l-.287 1zm-.576 2h4.387l.297-1h-4.396l-.288 1zm2.684-9l-.743 2h-1.929l-3.474 12h-11.239l-4.615-11h14.812l-.564 2h-11.24l2.938 7h8.428l3.432-12h4.194zm-14.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm5.9-7-.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"
+                />
+              </svg>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                99+
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </main>
 </div>
+<app-footer></app-footer>
