@@ -9,16 +9,20 @@ export class AppComponent implements OnInit {
   title = 'front-cinepro';
 
   ngOnInit(): void {
-    if (!navigator.geolocation) {
-      alert(
-        'Vous devez activer la géolocalisation dans les paramètres de votre navigateur.'
-      );
-      return;
+    if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
+      if (!navigator.geolocation) {
+        alert(
+          'Vous devez activer la géolocalisation dans les paramètres de votre navigateur.'
+        );
+        return;
+      } else {
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log('latitude: ', position.coords.latitude);
+          console.log('longitude: ', position.coords.longitude);
+        });
+      }
     } else {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log('latitude: ', position.coords.latitude);
-        console.log('longitude: ', position.coords.longitude);
-      });
+      console.warn('Window or navigator object is not available.');
     }
   }
 }
