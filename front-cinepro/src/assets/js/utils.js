@@ -32,3 +32,65 @@ $(function () {
     $("#datepicker").datepicker("option", "dateFormat", $(this).val());
   });
 });
+
+// Theater list component function to toggle the display of the moreInfo div :
+function toggleActive(element) {
+  var allElements = document.querySelectorAll(".list-group-item");
+  allElements.forEach(function (el) {
+    el.classList.remove("active");
+  });
+  element.classList.add("active");
+}
+
+function initMap() {
+  const infoLocation = document.getElementById("info-location");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        centerMapOnLocation([
+          position.coords.longitude,
+          position.coords.latitude,
+        ]);
+      });
+    } else {
+      infoLocation.innerHTML =
+        "Vous devez activer la géolocalisation dans les paramètres de votre navigateur.";
+    }
+  }
+
+  var map = L.map("map").setView([0, 0], 13);
+
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution:
+      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map);
+
+  var markers = [];
+
+  function addMarker(lng, lat, name) {
+    var marker = L.marker([lng, lat]).addTo(map);
+    marker.bindPopup(name);
+    markers.push(marker);
+  }
+
+  function centerMapOnLocation(location) {
+    var latitude = location[0];
+    var longitude = location[1];
+
+    map.setView([latitude, longitude], 12);
+
+    var positionClient = L.marker([longitude, latitude])
+      .addTo(map)
+      .bindPopup("Votre position")
+      .openPopup();
+  }
+
+  $('a[data-bs-toggle="tab"]').on("shown.bs.tab", function (e) {
+    if (e.target.hash === "#carte") {
+      map.invalidateSize();
+    }
+  });
+  getLocation();
+}
