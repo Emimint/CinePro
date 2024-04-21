@@ -23,6 +23,7 @@ import { PromoCarouselComponent } from './promo-carousel/promo-carousel.componen
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.component';
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 
 @NgModule({
@@ -47,9 +48,16 @@ import { MovieDescriptionComponent } from './movie-description/movie-description
     MovieListComponent,
     FoodSectionComponent,
     LoginPageComponent,
+    AdminAgentMovieComponent,
     MovieDescriptionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,CommonModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
