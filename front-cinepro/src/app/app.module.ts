@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -23,6 +24,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.component';
+import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,15 @@ import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.
     FoodSectionComponent,
     LoginPageComponent,
     AdminAgentMovieComponent,
+    MovieDescriptionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
