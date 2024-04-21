@@ -25,6 +25,8 @@ import { FoodSectionComponent } from './food-section/food-section.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.component';
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
+import { TheaterListComponent } from './theater-list/theater-list.component';
+import { TheaterListContainerComponent } from './theater-list-container/theater-list-container.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { MovieDescriptionComponent } from './movie-description/movie-description
     LoginPageComponent,
     AdminAgentMovieComponent,
     MovieDescriptionComponent,
+    TheaterListComponent,
+    TheaterListContainerComponent,
   ],
   imports: [
     BrowserModule,
