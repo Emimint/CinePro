@@ -1,9 +1,9 @@
 <main>
-  <div class="album py-5 bg-dark">
+  <div class="album py-5 bg-transparent">
     <h2 class="text-white mb-3 mx-5">Films à l'affiche</h2>
     <div class="container">
-      <div class="d-flex justify-content-between my-3">
-        <div class="dropdown">
+      <ul class="nav nav-pills d-flex justify-content-between m-3">
+        <li class="nav-item dropdown">
           <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
@@ -22,8 +22,8 @@
               <a class="dropdown-item" href="#">...</a>
             </li>
           </ul>
-        </div>
-        <div class="dropdown">
+        </li>
+        <li class="nav-item dropdown">
           <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
@@ -39,8 +39,8 @@
               <a class="dropdown-item" href="#">Régulier</a>
             </li>
           </ul>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -86,7 +86,7 @@
                 explicabo.
               </p>
               <div class="d-flex flex-column w-50 mx-auto">
-                <a class="btn"
+                <a class="btn" routerLink="/description"
                   >Voir la fiche
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
