@@ -34,7 +34,7 @@ public class Film {
     @JoinColumn(
             name = "image_id",
             referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "FK_movie_image", foreignKeyDefinition = "FOREIGN KEY (image_id) REFERENCES image(id) ON DELETE CASCADE")
+            foreignKey = @ForeignKey(name = "FK_film_image", foreignKeyDefinition = "FOREIGN KEY (image_id) REFERENCES image(id) ON DELETE CASCADE")
     )
     @JsonIgnore
     private Image image;
