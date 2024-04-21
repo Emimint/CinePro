@@ -1,7 +1,5 @@
 package com.cinepro.backcinepro.salledecinema;
 
-import com.cinepro.backcinepro.salledecinema.Siege;
-import com.cinepro.backcinepro.salledecinema.SiegeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +20,8 @@ public class SiegeService {
         return siegeRepository.findById(id);
     }
 
-    public Siege save(Siege siege) {
-        return siegeRepository.save(siege);
+    public void save(Siege siege) {
+         siegeRepository.save(siege);
     }
 
     public void delete(Long id) {

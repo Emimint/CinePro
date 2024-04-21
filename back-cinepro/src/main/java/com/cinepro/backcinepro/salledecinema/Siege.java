@@ -1,7 +1,6 @@
 package com.cinepro.backcinepro.salledecinema;
 
-import com.cinepro.backcinepro.adresse.Adresse;
-import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
+import com.cinepro.backcinepro.cinema.Cinema;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,29 +14,22 @@ import lombok.*;
 public class Siege {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCombine;
-    private String numeroSiege;
+    private Long id;
+    private String idCombine;
+    private String siege;
     private String rangee;
     private String section;
     private boolean estReserve;
 
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(
-            name = "salledecinema_id",
+            name = "salleDeCinema_id",
             referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "FK_salledecinema_siege", foreignKeyDefinition = "FOREIGN KEY (salledecinema_id) REFERENCES salledecinema(id) ON DELETE CASCADE")
+            foreignKey = @ForeignKey(name = "FK_siege_salledecinema", foreignKeyDefinition = "FOREIGN KEY (salleDeCinema_id) REFERENCES SalleDeCinema(id) ON DELETE CASCADE")
     )
     @JsonIgnore
     private SalleDeCinema salleDeCinema;
-
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(
-//            name = "reservation_id",
-//            referencedColumnName = "id",
-//            foreignKey = @ForeignKey(name = "FK_reservation_siege", foreignKeyDefinition = "FOREIGN KEY (reservation_id) REFERENCES reservation(id) ON DELETE CASCADE")
-//    )
-//    @JsonIgnore
-//    private Reservation reservation;
 
 
 }

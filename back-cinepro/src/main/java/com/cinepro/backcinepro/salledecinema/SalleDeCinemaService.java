@@ -2,11 +2,14 @@ package com.cinepro.backcinepro.salledecinema;
 
 import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
 import com.cinepro.backcinepro.salledecinema.SalleDeCinemaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class SalleDeCinemaService {
     @Autowired
     SalleDeCinemaRepository salleDeCinemaRepository;
