@@ -1,10 +1,12 @@
 package com.cinepro.backcinepro.film;
 
+import com.cinepro.backcinepro.realisateur.Realisateur;
+import com.cinepro.backcinepro.acteur.Acteur;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -24,11 +26,10 @@ public class Film {
     private String titreOriginal;
     private String categorie;
     private String description;
+    private String duree;
+    private String videoUrl;
     private Date dateDeSortie;
-//    private List<Acteur> acteurs;
-//    private List<Realisateur> realisateurs;
     private int classement;
-
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(
@@ -38,4 +39,20 @@ public class Film {
     )
     @JsonIgnore
     private Image image;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(
+            name = "film_realisateur",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "realisateur_id")
+    )
+    private List<Realisateur> realisateurs;
+    
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(
+            name = "film_acteur",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "acteur_id")
+    )
+    private Set<Acteur> acteurs=new HashSet<>();
 }
