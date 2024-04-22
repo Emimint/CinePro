@@ -1,5 +1,6 @@
 package com.cinepro.backcinepro.film;
 
+import com.cinepro.backcinepro.realisateur.Realisateur;
 import com.cinepro.backcinepro.acteur.Acteur;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -28,7 +29,6 @@ public class Film {
     private String duree;
     private String videoUrl;
     private Date dateDeSortie;
-//    private List<Realisateur> realisateurs;
     private int classement;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -40,6 +40,14 @@ public class Film {
     @JsonIgnore
     private Image image;
 
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(
+            name = "film_realisateur",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "realisateur_id")
+    )
+    private List<Realisateur> realisateurs;
+    
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "film_acteur",
