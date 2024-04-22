@@ -32,19 +32,4 @@ public class Image {
         this.imageUrl = imageUrl;
         this.imageId = imageId;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, imageUrl, imageId); // Assuming id, name, imageUrl, and imageId uniquely identify an image
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Image)) return false;
-        Image other = (Image) obj;
-        return id != null && id.equals(other.getId());
-    }
-
-
 }
