@@ -19,12 +19,4 @@ public class Realisateur {
     private Long id;
     private String nomRealisateur;
     private String prenomRealisateur;
-
-    @ManyToMany
-    @JoinTable(
-            name = "realisateur_film",
-            joinColumns = @JoinColumn(name = "realisateur_id"),
-            inverseJoinColumns = @JoinColumn(name = "film_id")
-    )
-    private List<Film> films;
 }

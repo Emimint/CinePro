@@ -29,7 +29,6 @@ public class Film {
     private String duree;
     private String videoUrl;
     private Date dateDeSortie;
-//    private List<Realisateur> realisateurs;
     private int classement;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -41,7 +40,12 @@ public class Film {
     @JsonIgnore
     private Image image;
 
-    @ManyToMany(mappedBy = "films")
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(
+            name = "film_realisateur",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "realisateur_id")
+    )
     private List<Realisateur> realisateurs;
     
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
