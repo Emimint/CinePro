@@ -5,8 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -27,7 +26,6 @@ public class Film {
     private String categorie;
     private String description;
     private Date dateDeSortie;
-//    private List<Acteur> acteurs;
 //    private List<Realisateur> realisateurs;
     private int classement;
 
@@ -41,7 +39,11 @@ public class Film {
     @JsonIgnore
     private Image image;
 
-    //ajout Tity
-    @ManyToMany(mappedBy = "films")
-    private List<Acteur> acteurs;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(
+            name = "film_acteur",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "acteur_id")
+    )
+    private Set<Acteur> acteurs=new HashSet<>();
 }
