@@ -16,7 +16,15 @@ export class FilmService {
     return this.httpClient.get<Film[]>(this.apiServerUrl + 'films/tous');
   }
 
-  // public fetchFilmImage(movieId: number): Observable<Image> {
-  //   return this.httpClient.get<Image>(this.imageURL + `image/${movieId}`);
-  // }
+  public getFilm(filmId: number): Observable<Film> {
+    return this.httpClient.get<Film>(
+      this.apiServerUrl + `films/film/${filmId}`
+    );
+  }
+
+  public fetchFilmImage(movieId: number): Observable<Image> {
+    return this.httpClient.get<Image>(
+      this.apiServerUrl + `films/image/${movieId}`
+    );
+  }
 }

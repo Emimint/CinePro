@@ -19,11 +19,23 @@ export class MovieListComponent implements OnInit {
 
   public getFilms(): void {
     this.filmService.list().subscribe(
-      (response: Film[]) => {
-        this.films = response;
+      (films) => {
+        this.films = films;
+        this.films.forEach((film) => this.fetchFilmImage(film));
       },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
+      (error) => {
+        console.error('Error fetching movies:', error);
+      }
+    );
+  }
+
+  fetchFilmImage(movie: Film): void {
+    this.filmService.fetchFilmImage(movie.id).subscribe(
+      (image) => {
+        movie.image = image;
+      },
+      (error) => {
+        console.error('Error fetching image for movie:', error);
       }
     );
   }

@@ -43,18 +43,18 @@
       </ul>
     </div>
     <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
+      <div class="row">
+        <div *ngFor="let film of films" class="col-md-6 col-lg-4">
+          <div class="card shadow-sm m-2">
             <img
-              src="https://cdn.lesnumeriques.com/optim/news/21/217982/ced1aced-dune-2-le-blockbuster-fait-le-plein-de-nouvelles-affiches-eblouissantes__1200_1200__77-1-841-765.jpg"
-              class="d-block w-100"
-              alt="img1"
+              src="{{ film.image?.imageUrl }}"
+              class="w-100"
+              alt="{{ film.titre }}"
               width="100%"
               height="225"
             />
-            <h5 class="card-title mx-2">Card title</h5>
-            <small class="mx-2">Categorie</small>
+            <h5 class="card-title mx-2">{{ film.titre }}</h5>
+            <small class="mx-2">{{ film.categorie }}</small>
             <div class="card-body">
               <p
                 class="card-text"
@@ -64,26 +64,7 @@
                   white-space: nowrap;
                 "
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-                repellat doloribus eaque. Excepturi quae maiores assumenda ad
-                veniam fugiat ipsam nihil nesciunt alias corporis ducimus,
-                laborum culpa dolores labore quas. Mollitia, minima cum ex
-                maiores corrupti numquam! Delectus, impedit quis cupiditate
-                animi ipsum aut enim pariatur minus, numquam dignissimos
-                reiciendis nam eligendi quas, nihil quisquam explicabo ipsam
-                facere nesciunt ipsa! Dolorem sint quisquam ipsum temporibus
-                iste libero molestias laudantium ut ipsam quas assumenda
-                consequuntur laborum asperiores, molestiae beatae non quasi
-                nesciunt obcaecati voluptate sed esse reprehenderit animi
-                officiis? Commodi, voluptatibus. Voluptate placeat doloribus
-                autem tempore recusandae ex nisi necessitatibus, error quod
-                eveniet eaque alias, asperiores fuga enim rerum quis culpa rem
-                natus sint? Voluptas exercitationem nemo, ratione facere
-                reprehenderit quis. Harum iusto, eius, voluptatem sit sapiente
-                quidem aperiam, optio quibusdam minima animi laudantium eveniet
-                assumenda fugiat ipsa? Autem obcaecati neque aperiam optio,
-                voluptas molestias? Quaerat obcaecati fuga delectus nostrum
-                explicabo.
+                {{ film.description }}
               </p>
               <div class="d-flex flex-column w-50 mx-auto">
                 <a class="btn" routerLink="/description"
