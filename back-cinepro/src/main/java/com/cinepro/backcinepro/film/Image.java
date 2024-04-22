@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 
 import lombok.*;
 
+import java.util.Objects;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,5 +32,4 @@ public class Image {
         this.imageUrl = imageUrl;
         this.imageId = imageId;
     }
-
 }
