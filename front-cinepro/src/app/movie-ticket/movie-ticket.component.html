@@ -32,7 +32,7 @@
                 href="#"
                 class="badge bg-primary"
                 style="height: 2rem; line-height: 1.2rem; text-decoration: none"
-                >143 min</a
+                >{{ film.duree }}</a
               >
             </div>
             <div class="col">
@@ -106,19 +106,12 @@
       <!-- Heading -->
       <h5><span>RÉALISATEURS</span>:</h5>
       <!-- Director Name -->
-      <h6>Denis Villeneuve</h6>
-      <!-- Heading -->
-      <h5><span>SCÉNARISTES</span>:</h5>
-      <!-- Writers -->
-      <h6>Denis Villeneuve, Eric Roth, Jon Spaihts</h6>
+      <h6>{{ film.listeRealisateurs }}</h6>
       <!-- Heading -->
       <h5><span>DISTRIBUTION</span>:</h5>
       <!-- Paragraph -->
       <p>
-        Timothee Chalamet, Zendaya, Rebecca Ferguson, Javier Bardem, Stellan
-        Skarsgard, Dave Bautista, Charlotte Rampling, Jason Momoa, Josh Brolin,
-        Stephen McKinley Henderson, Florence Pugh, Austin Butler, Christopher
-        Walken, Lea Seydoux, Souheila Yacoub
+        {{ film.listeActeurs }}
       </p>
     </div>
   </div>

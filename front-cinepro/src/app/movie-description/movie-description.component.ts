@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FilmService } from '../services/film.service';
+import { Film } from '../models/film';
 
 @Component({
   selector: 'app-movie-description',
@@ -7,12 +9,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './movie-description.component.css',
 })
 export class MovieDescriptionComponent implements OnInit {
-  filmId: number;
+  film: Film;
   showMoreInfo: any[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private filmService: FilmService,
+    private route: ActivatedRoute
+  ) {}
   ngOnInit(): void {
-    this.filmId = +this.route.snapshot.paramMap.get('filmId');
+    var filmId: Number = +this.route.snapshot.paramMap.get('filmId');
+    if (filmId) {
+      this.getFilm(+filmId);
+    }
   }
 
   toggleMoreInfo(): void {
@@ -21,5 +29,11 @@ export class MovieDescriptionComponent implements OnInit {
     } else {
       this.showMoreInfo = [];
     }
+  }
+
+  getFilm(id: number): void {
+    this.filmService.getFilm(id).subscribe((film) => {
+      this.film = film;
+    });
   }
 }

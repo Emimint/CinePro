@@ -7,6 +7,10 @@ export class Film {
   doublage?: string;
   categorie?: string;
   titre?: string;
+  duree?: string;
+  videoUrl?: string;
+  listeActeurs?: string;
+  listeRealisateurs?: string;
   titreOriginal?: string;
   description?: string;
   dateDeSortie?: Date;

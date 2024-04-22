@@ -71,6 +71,10 @@ public class FilmController {
                                               @RequestParam("doublage") String doublage,
                                               @RequestParam("titreOriginal") String titreOriginal,
                                               @RequestParam("categorie") String categorie,
+                                             @RequestParam("listeActeurs") String listeActeurs,
+                                             @RequestParam("listeRealisateurs") String listeRealisateurs,
+                                             @RequestParam("duree") String duree,
+                                             @RequestParam("videoUrl") String videoUrl,
                                               @RequestParam("description") String description,
                                               @RequestParam("dateDeSortie") String dateDeSortieStr) throws IOException {
         BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
@@ -100,7 +104,11 @@ public class FilmController {
         film.setDoublage(doublage);
         film.setTitreOriginal(titreOriginal);
         film.setCategorie(categorie);
+        film.setListeActeurs(listeActeurs);
+        film.setListeRealisateurs(listeRealisateurs);
         film.setDescription(description);
+        film.setDuree(duree);
+        film.setVideoUrl(videoUrl);
         film.setDateDeSortie(dateDeSortie);
         film.setClassement(filmService.getClassement(film));
         film.setImage(image);
@@ -111,16 +119,22 @@ public class FilmController {
 
     @PutMapping("/update/{filmId}")
     @PreAuthorize("hasRole('ADMINISTRATEUR')")
-    public ResponseEntity<String> updateFilm(@PathVariable Long filmId,
-                                              @RequestParam("titre") String titre,
-                                              @RequestParam("langue") String langue,
-                                              @RequestParam("soustitre") String soustitre,
-                                              @RequestParam("doublage") String doublage,
-                                              @RequestParam("titreOriginal") String titreOriginal,
-                                              @RequestParam("categorie") String categorie,
-                                              @RequestParam("description") String description,
-                                              @RequestParam("dateDeSortie") String dateDeSortieStr,
-                                              @RequestParam(value = "file", required = false) MultipartFile multipartFile) {
+    public ResponseEntity<String> updateFilm(
+            @PathVariable Long filmId,
+            @RequestParam("titre") String titre,
+            @RequestParam("langue") String langue,
+            @RequestParam("soustitre") String soustitre,
+            @RequestParam("doublage") String doublage,
+            @RequestParam("duree") String duree,
+            @RequestParam("videoUrl") String videoUrl,
+            @RequestParam("listeActeurs") String listeActeurs,
+            @RequestParam("listeRealisateurs") String listeRealisateurs,
+            @RequestParam("titreOriginal") String titreOriginal,
+            @RequestParam("categorie") String categorie,
+            @RequestParam("description") String description,
+            @RequestParam("dateDeSortie") String dateDeSortieStr,
+            @RequestParam(value = "file", required = false) MultipartFile multipartFile
+    ) {
         Optional<Film> optionalFilm = filmService.findById(filmId);
         if (optionalFilm.isEmpty()) {
             return new ResponseEntity<>("Film non trouvé", HttpStatus.NOT_FOUND);
@@ -132,8 +146,8 @@ public class FilmController {
 
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date releaseDate = dateFormat.parse(dateDeSortieStr);
-            film.setDateDeSortie(releaseDate);
+            Date dateDeSortie = dateFormat.parse(dateDeSortieStr);
+            film.setDateDeSortie(dateDeSortie);
         } catch (ParseException e) {
             return new ResponseEntity<>("Format de date invalide! Utilisez yyyy-MM-dd", HttpStatus.BAD_REQUEST);
         }
@@ -156,6 +170,18 @@ public class FilmController {
                 return new ResponseEntity<>("Erreur de téléversement de l'image.", HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
+
+        film.setLangue(langue);
+        film.setSoustitre(soustitre);
+        film.setDoublage(doublage);
+        film.setTitreOriginal(titreOriginal);
+        film.setCategorie(categorie);
+        film.setListeActeurs(listeActeurs);
+        film.setListeRealisateurs(listeRealisateurs);
+        film.setDescription(description);
+        film.setDuree(duree);
+        film.setVideoUrl(videoUrl);
+        film.setClassement(filmService.getClassement(film));
 
         filmService.save(film);
 
