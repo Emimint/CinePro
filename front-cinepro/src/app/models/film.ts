@@ -5,6 +5,7 @@ export class Film {
   langue?: string;
   soustitre?: string;
   doublage?: string;
+  categorie?: string;
   titre?: string;
   titreOriginal?: string;
   description?: string;

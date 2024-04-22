@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'booking', component: BookingPageComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'admin-agent-movie', component: AdminAgentMovieComponent },
-  { path: 'description', component: MovieDescriptionComponent },
+  { path: 'description/:filmId', component: MovieDescriptionComponent },
   { path: 'food-section', component: FoodSectionComponent },
 ];
 

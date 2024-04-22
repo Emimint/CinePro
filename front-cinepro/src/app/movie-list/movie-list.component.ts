@@ -14,7 +14,6 @@ export class MovieListComponent implements OnInit {
   constructor(private filmService: FilmService) {}
   ngOnInit(): void {
     this.getFilms();
-    console.log(this.films);
   }
 
   public getFilms(): void {
@@ -29,13 +28,13 @@ export class MovieListComponent implements OnInit {
     );
   }
 
-  fetchFilmImage(movie: Film): void {
-    this.filmService.fetchFilmImage(movie.id).subscribe(
+  fetchFilmImage(film: Film): void {
+    this.filmService.fetchFilmImage(film.id).subscribe(
       (image) => {
-        movie.image = image;
+        film.image = image;
       },
       (error) => {
-        console.error('Error fetching image for movie:', error);
+        console.error("Erreur lors de la recuperation de l'image:", error);
       }
     );
   }
