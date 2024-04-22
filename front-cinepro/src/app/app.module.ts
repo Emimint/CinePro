@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
+import { TimeFormatPipe } from './time-format.pipe';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -50,6 +51,7 @@ import { MovieDescriptionComponent } from './movie-description/movie-description
     LoginPageComponent,
     AdminAgentMovieComponent,
     MovieDescriptionComponent,
+    TimeFormatPipe,
   ],
   imports: [
     BrowserModule,
