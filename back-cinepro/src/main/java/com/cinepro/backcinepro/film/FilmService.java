@@ -23,8 +23,8 @@ public class FilmService {
         return filmRepository.findById(id);
     }
 
-    public Film save(Film movie) {
-        return filmRepository.save(movie);
+    public Film save(Film film) {
+        return filmRepository.save(film);
     }
 
     public void delete(Long id) {

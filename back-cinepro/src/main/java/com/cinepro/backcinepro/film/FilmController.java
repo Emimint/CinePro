@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/allMovies")
-//@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/films")
+@CrossOrigin(origins = "http://localhost:4200")
 public class FilmController {
 
     @Autowired
@@ -33,27 +33,48 @@ public class FilmController {
     @Autowired
     private ImageService imageService;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Film>> getAllMovies() {
-        List<Film> movies = filmService.findAll();
-        return new ResponseEntity<List<Film>>(movies, HttpStatus.OK);
+    @GetMapping("/tous")
+    public ResponseEntity<List<Film>> getAllFilms() {
+        List<Film> films = filmService.findAll();
+        return new ResponseEntity<List<Film>>(films, HttpStatus.OK);
     }
 
-    @GetMapping("/movie/{id}")
-    public ResponseEntity<Film> getMovie(@PathVariable Long id) {
-        Optional<Film> movie = filmService.findById(id);
-        return movie.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    @GetMapping("/film/{id}")
+    public ResponseEntity<Film> getFilm(@PathVariable Long id) {
+        Optional<Film> film = filmService.findById(id);
+        return film.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    @GetMapping("/image/{filmId}")
+    public ResponseEntity<Image> getFilmImage(@PathVariable Long filmId) {
+        Optional<Film> optionalFilm = filmService.findById(filmId);
+        if (optionalFilm.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Film film = optionalFilm.get();
+        Image image = film.getImage();
+        if (image == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Indicates that the request was successful but there is no content to return
+        }
+
+        return new ResponseEntity<>(image, HttpStatus.OK);
+    }
+
 
     @PostMapping("/upload")
     @PreAuthorize("hasRole('ADMINISTRATEUR')")
-    public ResponseEntity<String> uploadMovie(@RequestParam("file") MultipartFile multipartFile,
+    public ResponseEntity<String> uploadFilm(@RequestParam("file") MultipartFile multipartFile,
                                               @RequestParam("titre") String titre,
                                               @RequestParam("langue") String langue,
                                               @RequestParam("soustitre") String soustitre,
                                               @RequestParam("doublage") String doublage,
                                               @RequestParam("titreOriginal") String titreOriginal,
                                               @RequestParam("categorie") String categorie,
+                                             @RequestParam("listeActeurs") String listeActeurs,
+                                             @RequestParam("listeRealisateurs") String listeRealisateurs,
+                                             @RequestParam("duree") String duree,
+                                             @RequestParam("videoUrl") String videoUrl,
                                               @RequestParam("description") String description,
                                               @RequestParam("dateDeSortie") String dateDeSortieStr) throws IOException {
         BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
@@ -76,47 +97,57 @@ public class FilmController {
             return new ResponseEntity<>("Format de date invalide! Utilisez yyyy-MM-dd", HttpStatus.BAD_REQUEST);
         }
 
-        Film movie = new Film();
-        movie.setTitre(titre);
-        movie.setLangue(langue);
-        movie.setSoustitre(soustitre);
-        movie.setDoublage(doublage);
-        movie.setTitreOriginal(titreOriginal);
-        movie.setCategorie(categorie);
-        movie.setDescription(description);
-        movie.setDateDeSortie(dateDeSortie);
-        movie.setClassement(filmService.getClassement(movie));
-        movie.setImage(image); // Set the image for the movie
-        filmService.save(movie);
+        Film film = new Film();
+        film.setTitre(titre);
+        film.setLangue(langue);
+        film.setSoustitre(soustitre);
+        film.setDoublage(doublage);
+        film.setTitreOriginal(titreOriginal);
+        film.setCategorie(categorie);
+        film.setListeActeurs(listeActeurs);
+        film.setListeRealisateurs(listeRealisateurs);
+        film.setDescription(description);
+        film.setDuree(duree);
+        film.setVideoUrl(videoUrl);
+        film.setDateDeSortie(dateDeSortie);
+        film.setClassement(filmService.getClassement(film));
+        film.setImage(image);
+        filmService.save(film);
 
-        return new ResponseEntity<>("Movie ajouté avec succès ! ", HttpStatus.OK);
+        return new ResponseEntity<>("Film ajouté avec succès ! ", HttpStatus.OK);
     }
 
-    @PutMapping("/update/{movieId}")
+    @PutMapping("/update/{filmId}")
     @PreAuthorize("hasRole('ADMINISTRATEUR')")
-    public ResponseEntity<String> updateMovie(@PathVariable Long movieId,
-                                              @RequestParam("titre") String titre,
-                                              @RequestParam("langue") String langue,
-                                              @RequestParam("soustitre") String soustitre,
-                                              @RequestParam("doublage") String doublage,
-                                              @RequestParam("titreOriginal") String titreOriginal,
-                                              @RequestParam("categorie") String categorie,
-                                              @RequestParam("description") String description,
-                                              @RequestParam("dateDeSortie") String dateDeSortieStr,
-                                              @RequestParam(value = "file", required = false) MultipartFile multipartFile) {
-        Optional<Film> optionalMovie = filmService.findById(movieId);
-        if (optionalMovie.isEmpty()) {
+    public ResponseEntity<String> updateFilm(
+            @PathVariable Long filmId,
+            @RequestParam("titre") String titre,
+            @RequestParam("langue") String langue,
+            @RequestParam("soustitre") String soustitre,
+            @RequestParam("doublage") String doublage,
+            @RequestParam("duree") String duree,
+            @RequestParam("videoUrl") String videoUrl,
+            @RequestParam("listeActeurs") String listeActeurs,
+            @RequestParam("listeRealisateurs") String listeRealisateurs,
+            @RequestParam("titreOriginal") String titreOriginal,
+            @RequestParam("categorie") String categorie,
+            @RequestParam("description") String description,
+            @RequestParam("dateDeSortie") String dateDeSortieStr,
+            @RequestParam(value = "file", required = false) MultipartFile multipartFile
+    ) {
+        Optional<Film> optionalFilm = filmService.findById(filmId);
+        if (optionalFilm.isEmpty()) {
             return new ResponseEntity<>("Film non trouvé", HttpStatus.NOT_FOUND);
         }
 
-        Film movie = optionalMovie.get();
-        movie.setTitre(titre);
-        movie.setDescription(description);
+        Film film = optionalFilm.get();
+        film.setTitre(titre);
+        film.setDescription(description);
 
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date releaseDate = dateFormat.parse(dateDeSortieStr);
-            movie.setDateDeSortie(releaseDate);
+            Date dateDeSortie = dateFormat.parse(dateDeSortieStr);
+            film.setDateDeSortie(dateDeSortie);
         } catch (ParseException e) {
             return new ResponseEntity<>("Format de date invalide! Utilisez yyyy-MM-dd", HttpStatus.BAD_REQUEST);
         }
@@ -134,33 +165,45 @@ public class FilmController {
                         (String) result.get("public_id"));
                 imageService.save(newImage);
 
-                movie.setImage(newImage);
+                film.setImage(newImage);
             } catch (IOException e) {
                 return new ResponseEntity<>("Erreur de téléversement de l'image.", HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        filmService.save(movie);
+        film.setLangue(langue);
+        film.setSoustitre(soustitre);
+        film.setDoublage(doublage);
+        film.setTitreOriginal(titreOriginal);
+        film.setCategorie(categorie);
+        film.setListeActeurs(listeActeurs);
+        film.setListeRealisateurs(listeRealisateurs);
+        film.setDescription(description);
+        film.setDuree(duree);
+        film.setVideoUrl(videoUrl);
+        film.setClassement(filmService.getClassement(film));
+
+        filmService.save(film);
 
         return new ResponseEntity<>("Film mis à jour avec succès.", HttpStatus.OK);
     }
-    @DeleteMapping("/delete/{movieId}")
+    @DeleteMapping("/delete/{filmId}")
     @PreAuthorize("hasRole('ADMINISTRATEUR')")
-    public ResponseEntity<String> deleteMovie(@PathVariable Long movieId) throws IOException {
-        Optional<Film> optionalMovie = filmService.findById(movieId);
-        if (optionalMovie.isEmpty()) {
+    public ResponseEntity<String> deleteFilm(@PathVariable Long filmId) throws IOException {
+        Optional<Film> optionalFilm = filmService.findById(filmId);
+        if (optionalFilm.isEmpty()) {
             return new ResponseEntity<>("Film non trouvé", HttpStatus.NOT_FOUND);
         }
 
-        Film movie = optionalMovie.get();
+        Film film = optionalFilm.get();
 
-        Image image = movie.getImage();
+        Image image = film.getImage();
         if (image != null) {
             imageService.delete(image.getId());
             cloudinaryService.delete(image.getImageId());
         }
 
-        filmService.delete(movieId);
+        filmService.delete(filmId);
 
         return new ResponseEntity<>("Film supprimé avec succès.", HttpStatus.OK);
     }
