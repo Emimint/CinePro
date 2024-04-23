@@ -96,13 +96,31 @@
           </thead>
           <tbody *ngFor="let film of films">
             <tr class="align-middle">
-              <td>{{ film.titreOriginal | truncate : 20 }}</td>
+              <td>
+                <span
+                  [matTooltip]="film.titreOriginal"
+                  matTooltipPosition="above"
+                  >{{ film.titreOriginal | truncate : 20 }}</span
+                >
+              </td>
               <td>{{ film.titre }}</td>
               <td>{{ film.categorie }}</td>
               <td>{{ film.doublage }}</td>
               <td>{{ film.dateDeSortie | date : "shortDate" }}</td>
-              <td>{{ film.listeRealisateurs | truncate : 20 }}</td>
-              <td>{{ film.listeActeurs | truncate : 20 }}</td>
+              <td>
+                <span
+                  [matTooltip]="film.listeRealisateurs"
+                  matTooltipPosition="above"
+                  >{{ film.listeRealisateurs | truncate : 20 }}</span
+                >
+              </td>
+              <td>
+                <span
+                  [matTooltip]="film.listeActeurs"
+                  matTooltipPosition="above"
+                  >{{ film.listeActeurs | truncate : 20 }}</span
+                >
+              </td>
               <td>{{ film.videoUrl }}</td>
               <td>{{ film.classement }}</td>
               <td>
