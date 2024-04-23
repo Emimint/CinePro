@@ -4,7 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TimeFormatPipe } from './time-format.pipe';
+import { TruncatePipe } from './text-format.pipe';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -28,6 +30,7 @@ import { FoodSectionComponent } from './food-section/food-section.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.component';
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import { MovieDescriptionComponent } from './movie-description/movie-description
     AdminAgentMovieComponent,
     MovieDescriptionComponent,
     TimeFormatPipe,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
@@ -62,8 +66,9 @@ import { MovieDescriptionComponent } from './movie-description/movie-description
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    MatTooltipModule,
   ],
-  providers: [provideHttpClient(withFetch())],
+  providers: [provideHttpClient(withFetch()), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
