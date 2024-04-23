@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { TimeFormatPipe } from './time-format.pipe';
+import { TruncatePipe } from './text-format.pipe';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -54,6 +55,7 @@ import { MovieDescriptionComponent } from './movie-description/movie-description
     AdminAgentMovieComponent,
     MovieDescriptionComponent,
     TimeFormatPipe,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
