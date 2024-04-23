@@ -9,12 +9,16 @@
       <div class="row gap-2 py-2 my-2 mx-2">
         <div
           class="col d-flex border border-1 rounded-2 align-items-center bg-dark"
+          *ngIf="films.length > 0"
         >
-          <select class="form-select form-select-lg bg-dark border-0">
-            <option selected>Godzilla</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <select
+            class="form-select form-select-lg bg-dark border-0"
+            [(ngModel)]="selectedMovieId"
+            (change)="onMovieSelection()"
+          >
+            <option *ngFor="let film of films" [value]="film.id">
+              {{ film.titre }}
+            </option>
           </select>
           <svg
             class="pe-3"
@@ -103,8 +107,25 @@
   </div>
   <div class="container-fluid">
     <div class="row gap-1">
-      <!-- Movie-ticket component -->
-      <app-movie-ticket [backgroundColor]="''" [color]="'white'" class="col"></app-movie-ticket>
+      <ng-container *ngIf="selectedMovieId; else noMovieSelected">
+        <!-- Movie-ticket component -->
+        <app-movie-ticket
+          [backgroundColor]="''"
+          [color]="'white'"
+          class="col"
+          [filmId]="selectedMovieId"
+          [showVideo]="true"
+        ></app-movie-ticket>
+      </ng-container>
+
+      <ng-template #noMovieSelected>
+        <div
+          class="col d-flex justify-content-center align-items-center bg-dark text-white mh-25"
+        >
+          <p>Choississez un film</p>
+        </div>
+      </ng-template>
+
       <!-- Movie show list -->
       <main class="col">
         <div class="album py-5 bg-transparent">
