@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FilmService } from '../services/film.service';
 import { Film } from '../models/film';
 
@@ -11,10 +12,14 @@ export class MovieTicketComponent {
   @Input() backgroundColor: string = 'black';
   @Input() color: string = 'black';
   @Input() filmId: string;
+  @Input() showVideo: boolean = true;
 
   film: Film;
 
-  constructor(private filmService: FilmService) {}
+  constructor(
+    private filmService: FilmService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     if (this.filmId) {
@@ -38,5 +43,9 @@ export class MovieTicketComponent {
         console.error("Erreur lors de la recuperation de l'image:", error);
       }
     );
+  }
+
+  getSafeVideoUrl(): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.film.videoUrl);
   }
 }

@@ -3,6 +3,18 @@
   [style.background-color]="backgroundColor === 'black' ? 'black' : ''"
   [style.color]="color === 'black' ? 'black' : 'white'"
 >
+  <div
+    *ngIf="showVideo"
+    class="ratio ratio-16x9"
+    style="max-width: auto; height: 400px"
+  >
+    <iframe
+      *ngIf="film?.videoUrl"
+      [src]="getSafeVideoUrl()"
+      title="YouTube video"
+      allowfullscreen
+    ></iframe>
+  </div>
   <div class="container">
     <div class="row p-2 w-100">
       <div class="col-sm-12 col-lg-4 m-3">
