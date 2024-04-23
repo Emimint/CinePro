@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { TimeFormatPipe } from './time-format.pipe';
 import { AppComponent } from './app.component';
@@ -62,7 +63,7 @@ import { MovieDescriptionComponent } from './movie-description/movie-description
     ReactiveFormsModule,
     CommonModule,
   ],
-  providers: [],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
