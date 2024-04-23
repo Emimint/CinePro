@@ -2,9 +2,12 @@ package com.cinepro.backcinepro.cinema;
 
 
 import com.cinepro.backcinepro.adresse.Adresse;
+import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -27,4 +30,8 @@ public class Cinema {
     )
     @JsonIgnore
     private Adresse adresse;
+
+
+    @OneToMany(mappedBy = "cinema")
+    private List<SalleDeCinema> salleDeCinemas;
 }
