@@ -1,0 +1,277 @@
+<app-menu></app-menu>
+<div class="container py-5 mt-5">
+  <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="profile-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#profile"
+        type="button"
+        role="tab"
+        aria-controls="profile"
+        aria-selected="true"
+      >
+        <i class="fas fa-user-astronaut"></i> Profile
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="messages-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#messages"
+        type="button"
+        role="tab"
+        aria-controls="messages"
+        aria-selected="false"
+      >
+        <i class="far fa-envelope-open"></i> Messages
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="settings-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#settings"
+        type="button"
+        role="tab"
+        aria-controls="settings"
+        aria-selected="false"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 -960 960 960"
+          width="24"
+          fill="currentColor"
+        >
+          <path
+            d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm0-160q17 0 28.5-11.5T520-480q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480q0 17 11.5 28.5T480-440Zm0-160q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm320 440H160q-33 0-56.5-23.5T80-240v-160q33 0 56.5-23.5T160-480q0-33-23.5-56.5T80-560v-160q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v160q-33 0-56.5 23.5T800-480q0 33 23.5 56.5T880-400v160q0 33-23.5 56.5T800-160Zm0-80v-102q-37-22-58.5-58.5T720-480q0-43 21.5-79.5T800-618v-102H160v102q37 22 58.5 58.5T240-480q0 43-21.5 79.5T160-342v102h640ZM480-480Z"
+          />
+        </svg>
+        Réservations
+      </button>
+    </li>
+  </ul>
+  <div class="border-grey bg-white p-3 tab-content">
+    <div
+      class="tab-pane show active"
+      id="profile"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+    >
+      <section class="vh-100">
+        <div class="container py-5 h-100 bg-dark">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col col-lg-6 mb-4 mb-lg-0">
+              <div class="card mb-3" style="border-radius: 0.5rem">
+                <div class="row g-0">
+                  <div
+                    class="col-md-4 gradient-custom text-center"
+                    style="
+                      border-top-left-radius: 0.5rem;
+                      border-bottom-left-radius: 0.5rem;
+                    "
+                  >
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                      alt="Avatar"
+                      class="img-fluid my-5"
+                      style="width: 80px"
+                    />
+                    <h5>Marie Horwitz</h5>
+                    <p>Courriel: marie&#64;gmail.com</p>
+                    <i class="far fa-edit mb-5"></i>
+                  </div>
+                  <div class="col-md-8">
+                    <div>
+                      <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupFile01"
+                          >Upload</label
+                        >
+                        <input
+                          type="file"
+                          class="form-control"
+                          id="inputGroupFile01"
+                        />
+                      </div>
+                    </div>
+                    <div class="card-body p-4">
+                      <h6>Information</h6>
+                      <hr class="mt-0 mb-4" />
+                      <div class="row pt-1">
+                        <div class="col-6 mb-3">
+                          <h6>Email</h6>
+                          <p class="text-muted">info&#64;example.com</p>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Phone</h6>
+                          <p class="text-muted">123 456 789</p>
+                        </div>
+                      </div>
+                      <h6>Projects</h6>
+                      <hr class="mt-0 mb-4" />
+                      <div class="row pt-1">
+                        <div class="col-6 mb-3">
+                          <h6>Recent</h6>
+                          <p class="text-muted">Lorem ipsum</p>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Most Viewed</h6>
+                          <p class="text-muted">Dolor sit amet</p>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-start">
+                        <a href="#!"
+                          ><i class="fab fa-facebook-f fa-lg me-3"></i
+                        ></a>
+                        <a href="#!"
+                          ><i class="fab fa-twitter fa-lg me-3"></i
+                        ></a>
+                        <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div
+      class="tab-pane"
+      id="messages"
+      role="tabpanel"
+      aria-labelledby="messages-tab"
+    >
+      <main role="main" class="vh-100 container bootdey.com">
+        <div
+          class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue rounded box-shadow"
+        ></div>
+
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+          <div class="media text-muted pt-3">
+            <div class="d-flex justify-content-between">
+              <p>
+                <strong class="d-block text-gray-dark"
+                  >Info sur votre reservation</strong
+                >
+              </p>
+              <div>Aujourd'hui</div>
+            </div>
+            <p
+              class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
+            >
+              Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+              tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+              fermentum massa justo sit amet risus.
+            </p>
+          </div>
+          <div class="media text-muted pt-3">
+            <div class="d-flex justify-content-between">
+              <p>
+                <strong class="d-block text-gray-dark"
+                  >Promotions du mois</strong
+                >
+              </p>
+              <div>22/05/2024</div>
+            </div>
+            <p
+              class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
+            >
+              Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+              tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+              fermentum massa justo sit amet risus.
+            </p>
+          </div>
+          <small class="d-block text-right mt-3">
+            <a href="#">Tous les messages</a>
+          </small>
+        </div>
+      </main>
+    </div>
+    <div
+      class="tab-pane"
+      id="settings"
+      role="tabpanel"
+      aria-labelledby="settings-tab"
+    >
+      <div
+        class="vh-100 container py-5 scrollable-container"
+        style="overflow-y: auto"
+      >
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Card 1 -->
+          <div class="col">
+            <div class="card">
+              <img
+                src="https://www.bdc.ca/globalassets/digizuite/40415-bdc-qr-code.jpg?v=498d76"
+                class="card-img-top"
+                alt="QR Code"
+              />
+              <div class="card-body">
+                <p class="card-text">Date: 12/12/2023<br />Cinema: Theater 1</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="card-link">Envoyez par courriel</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col">
+            <div class="card">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                class="card-img-top"
+                alt="QR Code"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Movie Title 2</h5>
+                <p class="card-text">Date: 12/02/2024<br />Cinema: Theater 2</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="card-link">Envoyez par courriel</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img
+                src="https://www.bdc.ca/globalassets/digizuite/40415-bdc-qr-code.jpg?v=498d76"
+                class="card-img-top"
+                alt="QR Code"
+              />
+              <div class="card-body">
+                <p class="card-text">Date: 12/12/2023<br />Cinema: Theater 1</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="card-link">Envoyez par courriel</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="https://www.bdc.ca/globalassets/digizuite/40415-bdc-qr-code.jpg?v=498d76"
+                class="card-img-top"
+                alt="QR Code"
+              />
+              <div class="card-body">
+                <p class="card-text">Date: 12/12/2023<br />Cinema: Theater 1</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="card-link">Envoyez par courriel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,36 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #eee
+}
+
+.border-grey {
+    border: 1px solid;
+    border-end-start-radius: 5px;
+    border-end-end-radius: 5px;
+    border-top: none;
+    border-color: #dee2e6
+}
+
+.active {
+    background-color: white
+}
+
+#myTab {
+    background-color: #dee2e6
+}
+
+.nav-link {
+    color: #666
+}
+
+.scrollable-container::-webkit-scrollbar {
+    width: 0;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+.scrollable-container {
+    /* Optional: Adjust container styles as needed */
+    overflow-y: auto;
+    height: 100vh;
+}

@@ -140,6 +140,29 @@
           </a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="/profile">
+            <svg
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M16.75 8a4.75 4.75 0 1 1-9.5 0 4.75 4.75 0 0 1 9.5 0Z"
+                stroke="currentcolor"
+                stroke-linejoin="bevel"
+              ></path>
+              <path
+                d="M4.427 20.75s-2.019-6 7.573-6 7.573 6 7.573 6"
+                stroke="currentcolor"
+                stroke-linejoin="bevel"
+              ></path></svg
+            >Profile
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" (click)="logout()" style="cursor: pointer"
             ><svg
               fill="currentcolor"
