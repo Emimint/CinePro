@@ -31,6 +31,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.component';
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MovieDescriptionComponent,
     TimeFormatPipe,
     TruncatePipe,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
