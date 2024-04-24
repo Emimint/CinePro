@@ -1,4 +1,5 @@
 <app-search-modal></app-search-modal>
+<app-login-page></app-login-page>
 <nav
   class="navbar navbar-expand-lg navbar-dark bg-dark"
   aria-label="Main navigation"
@@ -110,7 +111,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a
+            class="nav-link"
+            data-bs-toggle="modal"
+            href="#loginModal"
+            role="button"
+            aria-controls="loginModal"
+          >
             <svg
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -129,11 +136,16 @@
                 stroke="currentcolor"
                 stroke-linejoin="bevel"
               ></path></svg
-            >Compte
+            >Connexion
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center" href="#"
+          <a
+            class="nav-link"
+            data-bs-toggle="offcanvas"
+            href="#offcanvasExample"
+            role="button"
+            aria-controls="offcanvasExample"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -149,15 +161,7 @@
               <circle cx="10.5" cy="10.5" r="7.5" />
               <path d="M21 21l-5.2-5.2" />
             </svg>
-            <a
-              class="nav-link"
-              data-bs-toggle="offcanvas"
-              href="#offcanvasExample"
-              role="button"
-              aria-controls="offcanvasExample"
-            >
-              Rechercher
-            </a>
+            Rechercher
           </a>
         </li>
         <li class="nav-item">
