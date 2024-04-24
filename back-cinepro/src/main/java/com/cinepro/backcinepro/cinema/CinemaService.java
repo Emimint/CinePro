@@ -2,6 +2,7 @@ package com.cinepro.backcinepro.cinema;
 
 import com.cinepro.backcinepro.cinema.Cinema;
 import com.cinepro.backcinepro.cinema.CinemaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 
 @Service
+@Transactional
 public class CinemaService {
     @Autowired
     CinemaRepository cinemaRepository;
