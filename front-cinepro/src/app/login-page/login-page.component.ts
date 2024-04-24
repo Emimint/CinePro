@@ -44,6 +44,7 @@ export class LoginPageComponent {
           .subscribe(
             (response) => {
               console.log('Enregistrement réussi');
+              this.resetForm();
             },
             (error) => {
               console.log("Erreur lors de l'enregistrement.");
@@ -55,12 +56,16 @@ export class LoginPageComponent {
         this.authService.login(email, password).subscribe(
           (response) => {
             console.log('Login réussi');
+            this.resetForm();
           },
           (error) => {
             console.log('Erreur de connexion');
           }
         );
       }
+    } else {
+      console.log('Formulaire invalide');
+      this.resetForm();
     }
   }
 
@@ -82,5 +87,11 @@ export class LoginPageComponent {
       /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{10,20}$/;
     const valid = passwordRegex.test(control.value);
     return valid ? null : { invalidPassword: true };
+  }
+
+  private resetForm(): void {
+    if (this.loginForm) {
+      this.loginForm.reset();
+    }
   }
 }

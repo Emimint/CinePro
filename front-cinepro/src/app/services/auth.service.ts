@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -12,7 +11,7 @@ export class AuthService {
   private apiServerUrl = environment.apiUrl;
   private tokenKey = 'token';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {
     return this.http
@@ -23,7 +22,7 @@ export class AuthService {
       .pipe(
         map((response) => {
           localStorage.setItem(this.tokenKey, response.token);
-          this.router.navigateByUrl(this.router.url);
+          window.location.reload();
           return response;
         }),
         catchError(this.handleError)
@@ -47,7 +46,7 @@ export class AuthService {
       .pipe(
         map((response) => {
           localStorage.setItem(this.tokenKey, response.token);
-          this.router.navigateByUrl(this.router.url);
+          window.location.reload();
           return response;
         }),
         catchError(this.handleError)
