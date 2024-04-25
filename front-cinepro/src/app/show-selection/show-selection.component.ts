@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Film } from '../models/film';
 import { FilmService } from '../services/film.service';
+import { Seance } from '../models/seance';
 
 @Component({
   selector: 'app-show-selection',
@@ -9,7 +10,9 @@ import { FilmService } from '../services/film.service';
 })
 export class ShowSelectionComponent implements OnInit {
   films: Film[] = [];
-  selectedMovieId: number;
+  seances: Seance[] = [];
+  filmId: string = '';
+  selectedMovie: Film;
 
   constructor(private filmService: FilmService) {}
   ngOnInit(): void {
@@ -40,6 +43,8 @@ export class ShowSelectionComponent implements OnInit {
   }
 
   onMovieSelection(): void {
-    console.log('Selected Movie ID:', this.films[this.selectedMovieId]);
+    this.selectedMovie = this.films.filter(
+      (film: Film) => film.id === Number(this.filmId)
+    )[0];
   }
 }
