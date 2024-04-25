@@ -1,5 +1,6 @@
 package com.cinepro.backcinepro.film;
 
+import com.cinepro.backcinepro.seance.Seance;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,4 +40,7 @@ public class Film {
     )
     @JsonIgnore
     private Image image;
+
+    @OneToMany(mappedBy = "film")
+    private List<Seance> seances;
 }
