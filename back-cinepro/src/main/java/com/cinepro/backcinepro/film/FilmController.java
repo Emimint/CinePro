@@ -68,6 +68,22 @@ public class FilmController {
         return new ResponseEntity<>(image, HttpStatus.OK);
     }
 
+    @GetMapping("/seances/{filmId}")
+    public ResponseEntity<List<Seance>> getFilmSeances(@PathVariable Long filmId) {
+        Optional<Film> optionalFilm = filmService.findById(filmId);
+        if (optionalFilm.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Film film = optionalFilm.get();
+        List<Seance> seances = filmService.getSeancesByFilmId(filmId);
+        if (seances == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(seances, HttpStatus.OK);
+    }
+
 
     @PostMapping("/upload")
     @PreAuthorize("hasRole('ADMINISTRATEUR')")
@@ -235,10 +251,21 @@ public class FilmController {
 
         Film film = optionalFilm.get();
 
+        List<Seance> seances = film.getSeances();
+        if (seances != null && !seances.isEmpty()) {
+            for (Seance seance : seances) {
+                seanceService.delete(seance.getId());
+            }
+        }
+
         Image image = film.getImage();
         if (image != null) {
-            imageService.delete(image.getId());
-            cloudinaryService.delete(image.getImageId());
+            try {
+                imageService.delete(image.getId());
+                cloudinaryService.delete(image.getImageId());
+            } catch (IOException e) {
+                return new ResponseEntity<>("Erreur lors de la suppression de l'image.", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
 
         filmService.delete(filmId);

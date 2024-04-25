@@ -1,9 +1,14 @@
 package com.cinepro.backcinepro.cinema;
 
 import com.cinepro.backcinepro.adresse.Adresse;
+import com.cinepro.backcinepro.adresse.AdresseService;
 import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
 import com.cinepro.backcinepro.salledecinema.SalleDeCinemaRepository;
 import com.cinepro.backcinepro.salledecinema.SalleDeCinemaService;
+import com.cinepro.backcinepro.seance.Seance;
+import com.cinepro.backcinepro.seance.SeanceService;
+import com.cinepro.backcinepro.siege.Siege;
+import com.cinepro.backcinepro.siege.SiegeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +29,15 @@ public class CinemaController {
 
     @Autowired
     private SalleDeCinemaService salleDeCinemaService;
+
+    @Autowired
+    private SiegeService siegeService;
+
+    @Autowired
+    private SeanceService seanceService;
+
+    @Autowired
+    private AdresseService adresseService;
 
     @Autowired
     private SalleDeCinemaRepository salleDeCinemaRepository;
@@ -109,6 +123,8 @@ public class CinemaController {
             salleDeCinema.setTotalDesSieges(salleDeCinema.getNbrSieges() * salleDeCinema.getNbrRangees() * salleDeCinema.getNbrSections());
             salleDeCinema.setCinema(cinema);
 
+            cinema.setNbreDeSalles(numSalleDeCinemas);
+
             salleDeCinemaService.save(salleDeCinema);
         }
     }
@@ -127,11 +143,40 @@ public class CinemaController {
 
     @DeleteMapping("/supprimer/{id}")
     @PreAuthorize("hasRole('ADMINISTRATEUR')")
-    public ResponseEntity<Void> deleteCinema(@PathVariable Long id) {
-        if (!cinemaService.exists(id)) {
+    public ResponseEntity<String> deleteCinema(@PathVariable Long id) {
+        Optional<Cinema> optionalCinema = cinemaService.getCinemaById(id);
+        if (optionalCinema.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
+        Cinema cinema = optionalCinema.get();
+
+        Adresse adresse = cinema.getAdresse();
+        if (adresse != null) {
+            adresseService.delete(adresse.getId());
+        }
+
+        List<SalleDeCinema> salleDeCinemas = cinema.getSallesDeCinemas();
+        if (salleDeCinemas != null && !salleDeCinemas.isEmpty()) {
+            for (SalleDeCinema salleDeCinema : salleDeCinemas) {
+                List<Seance> seances = salleDeCinema.getSeances();
+                if (seances != null && !seances.isEmpty()) {
+                    for (Seance seance : seances) {
+                        List<Siege> sieges = seance.getSieges();
+                        if (sieges != null && !sieges.isEmpty()) {
+                            for (Siege siege : sieges) {
+                                siegeService.delete(siege.getId());
+                            }
+                        }
+                        seanceService.delete(seance.getId());
+                    }
+                }
+            }
+        }
+
+
         cinemaService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+
+        return new ResponseEntity<String>("Cinéma supprimé avec succès. ", HttpStatus.OK);
     }
 }
