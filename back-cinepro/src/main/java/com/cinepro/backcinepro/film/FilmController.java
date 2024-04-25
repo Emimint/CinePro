@@ -2,6 +2,10 @@ package com.cinepro.backcinepro.film;
 
 
 import com.cinepro.backcinepro.config.CloudinaryService;
+import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
+import com.cinepro.backcinepro.salledecinema.SalleDeCinemaService;
+import com.cinepro.backcinepro.seance.Seance;
+import com.cinepro.backcinepro.seance.SeanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/films")
@@ -32,6 +33,12 @@ public class FilmController {
 
     @Autowired
     private ImageService imageService;
+
+    @Autowired
+    private SalleDeCinemaService salleDeCinemaService;
+
+    @Autowired
+    private SeanceService seanceService;
 
     @GetMapping("/tous")
     public ResponseEntity<List<Film>> getAllFilms() {
@@ -114,7 +121,38 @@ public class FilmController {
         film.setImage(image);
         filmService.save(film);
 
+        initSeances(film);
+
         return new ResponseEntity<>("Film ajouté avec succès ! ", HttpStatus.OK);
+    }
+
+    private void initSeances(Film film) {
+        Random random = new Random();
+        int numSeances = random.nextInt(6) + 10;
+
+        for (int i = 0; i < numSeances; i++) {
+            Seance seance = new Seance();
+            seance.setFilm(film);
+
+            Calendar calendar = new GregorianCalendar();
+            calendar.add(Calendar.MONTH, 1);
+            int hourOfDay = random.nextInt(10) + 13;
+            int minute = random.nextInt(12) * 5;
+            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            calendar.set(Calendar.MINUTE, minute);
+            seance.setHeureDebut(calendar.getTime());
+
+            seance.setUltraAVX(random.nextBoolean());
+            seance.setImax(random.nextBoolean());
+            seance.setTroisD(random.nextBoolean());
+
+            List<SalleDeCinema> salles = salleDeCinemaService.list();
+            int randomIndex = random.nextInt(salles.size());
+            SalleDeCinema salleDeCinema = salles.get(randomIndex);
+            seance.setSalleDeCinema(salleDeCinema);
+
+            seanceService.save(seance);
+        }
     }
 
     @PutMapping("/update/{filmId}")

@@ -2,6 +2,8 @@ package com.cinepro.backcinepro.cinema;
 
 import com.cinepro.backcinepro.adresse.Adresse;
 import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
+import com.cinepro.backcinepro.salledecinema.SalleDeCinemaRepository;
+import com.cinepro.backcinepro.salledecinema.SalleDeCinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/cinemas")
@@ -18,6 +21,12 @@ public class CinemaController {
 
     @Autowired
     private CinemaService cinemaService;
+
+    @Autowired
+    private SalleDeCinemaService salleDeCinemaService;
+
+    @Autowired
+    private SalleDeCinemaRepository salleDeCinemaRepository;
 
     @GetMapping("/tous")
     public ResponseEntity<List<Cinema>> getAllCinemas() {
@@ -39,7 +48,7 @@ public class CinemaController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        List<SalleDeCinema> salleDeCinemas = optionalCinema.get().getSalleDeCinemas();
+        List<SalleDeCinema> salleDeCinemas = salleDeCinemaRepository.findByCinemaId(id);
         return new ResponseEntity<>(salleDeCinemas, HttpStatus.OK);
     }
 
@@ -59,13 +68,51 @@ public class CinemaController {
     }
 
 
-
     @PostMapping("/ajouter")
     @PreAuthorize("hasRole('ADMINISTRATEUR')")
-    public ResponseEntity<Cinema> addCinema(@RequestBody Cinema cinema) {
-        Cinema savedCinema = cinemaService.save(cinema);
-        return new ResponseEntity<>(savedCinema, HttpStatus.CREATED);
+    public ResponseEntity<String> addCinema(
+            @RequestParam("nomCinema") String nomCinema,
+            @RequestParam("ville") String ville,
+            @RequestParam("codePostal") String codePostal,
+            @RequestParam("nomRue") String nomRue,
+            @RequestParam("pays") String pays,
+            @RequestParam("numeroCivique") String numeroCivique
+    ) {
+        Adresse adresse = new Adresse();
+        adresse.setVille(ville);
+        adresse.setCodePostal(codePostal);
+        adresse.setNomRue(nomRue);
+        adresse.setPays(pays);
+        adresse.setNumeroCivique(numeroCivique);
+
+        Cinema cinema = new Cinema();
+        cinema.setNomCinema(nomCinema);
+        cinema.setAdresse(adresse);
+
+        cinemaService.save(cinema);
+
+        initCinema(cinema);
+
+        return new ResponseEntity<>("Cinéma ajouté avec succès ! ", HttpStatus.OK);
     }
+
+    private void initCinema(Cinema cinema) {
+        Random random = new Random();
+        int numSalleDeCinemas = random.nextInt(8) + 3; // Generate random number between 3 and 10
+
+        for (int i = 0; i < numSalleDeCinemas; i++) {
+            SalleDeCinema salleDeCinema = new SalleDeCinema();
+            salleDeCinema.setNumero(i + 1);
+            salleDeCinema.setNbrSieges(random.nextInt(3) + 4);
+            salleDeCinema.setNbrRangees(random.nextInt(3) + 2);
+            salleDeCinema.setNbrSections(random.nextInt(5) + 4);
+            salleDeCinema.setTotalDesSieges(salleDeCinema.getNbrSieges() * salleDeCinema.getNbrRangees() * salleDeCinema.getNbrSections());
+            salleDeCinema.setCinema(cinema);
+
+            salleDeCinemaService.save(salleDeCinema);
+        }
+    }
+
 
     @PutMapping("/modifier/{id}")
     @PreAuthorize("hasRole('ADMINISTRATEUR')")

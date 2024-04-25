@@ -4,6 +4,7 @@ package com.cinepro.backcinepro.seance;
 import com.cinepro.backcinepro.film.Film;
 import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
 import com.cinepro.backcinepro.siege.Siege;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,9 +24,9 @@ public class Seance {
     @GeneratedValue
     private Long id;
     private Date heureDebut;
-    private String ultraAVX;
-    private String imax;
-    private String troisD;
+    private boolean ultraAVX;
+    private boolean imax;
+    private boolean troisD;
 
     @OneToMany(mappedBy = "seance")
     private List<Siege> sieges;
@@ -34,11 +35,13 @@ public class Seance {
     @JoinColumn(
             name = "salle_de_cinema_id"
     )
+    @JsonIgnore
     private SalleDeCinema salleDeCinema;
 
     @ManyToOne
     @JoinColumn(
             name = "film_id"
     )
+    @JsonIgnore
     private Film film;
 }
