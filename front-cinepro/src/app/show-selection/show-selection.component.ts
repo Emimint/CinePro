@@ -43,8 +43,21 @@ export class ShowSelectionComponent implements OnInit {
   }
 
   onMovieSelection(): void {
-    this.selectedMovie = this.films.filter(
+    this.selectedMovie = this.films.find(
       (film: Film) => film.id === Number(this.filmId)
-    )[0];
+    );
+    this.getSeances();
+  }
+
+  getSeances(): void {
+    this.filmService.getFilmSeances(this.selectedMovie.id).subscribe(
+      (seances) => {
+        this.seances = seances;
+        console.log(this.seances);
+      },
+      (error) => {
+        console.error('Error fetching seances:', error);
+      }
+    );
   }
 }

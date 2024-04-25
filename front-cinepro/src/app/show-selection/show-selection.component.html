@@ -252,23 +252,12 @@
         <div class="album py-5 bg-transparent">
           <div class="container">
             <div class="row">
-              <app-movie-experience></app-movie-experience>
-
-              <app-movie-experience></app-movie-experience>
-
-              <app-movie-experience></app-movie-experience>
-
-              <app-movie-experience></app-movie-experience>
-
-              <app-movie-experience></app-movie-experience>
-
-              <app-movie-experience></app-movie-experience>
-
-              <app-movie-experience></app-movie-experience>
-
-              <app-movie-experience></app-movie-experience>
-
-              <app-movie-experience></app-movie-experience>
+              <div *ngFor="let seance of seances">
+                <app-movie-experience
+                  [seance]="seance"
+                  [selectedMovie]="selectedMovie"
+                ></app-movie-experience>
+              </div>
             </div>
           </div>
         </div>
