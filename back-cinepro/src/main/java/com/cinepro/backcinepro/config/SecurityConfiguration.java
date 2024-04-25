@@ -31,9 +31,13 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfiguration {
 
     private static final String[] WHITE_LIST_URL = {
-            "/allMovies/all",
-            "/allMovies/movie/{id}",
-            "/allMovies/image/{id}",
+            "/films/tous",
+            "/films/film/{id}",
+            "/films/image/{id}",
+            "/cinemas/tous",
+            "/cinemas/{id}",
+            "/cinemas/salle-de-cinema/{id}",
+            "/cinemas/adresse/{id}",
             "/api/v1/auth/**",
             "/v2/api-docs",
             "/v3/api-docs",

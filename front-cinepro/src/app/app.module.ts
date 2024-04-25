@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TimeFormatPipe } from './time-format.pipe';
+import { TruncatePipe } from './text-format.pipe';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -27,6 +32,8 @@ import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 import { TheaterListComponent } from './theater-list/theater-list.component';
 import { TheaterListContainerComponent } from './theater-list-container/theater-list-container.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -54,15 +61,20 @@ import { TheaterListContainerComponent } from './theater-list-container/theater-
     MovieDescriptionComponent,
     TheaterListComponent,
     TheaterListContainerComponent,
+    TimeFormatPipe,
+    TruncatePipe,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    MatTooltipModule,
   ],
-  providers: [],
+  providers: [provideHttpClient(withFetch()), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
