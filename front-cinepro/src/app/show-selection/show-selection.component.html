@@ -47,16 +47,13 @@
           <input
             placeholder="Date"
             class="bg-dark"
-            type="text"
+            type="date"
             id="datepicker"
             size="10"
             style="background-color: transparent; color: white"
+            [(ngModel)]="selectedDate"
+            (change)="getSeances()"
           />
-          <script>
-            $("#datepicker").datepicker({
-              uiLibrary: "bootstrap5",
-            });
-          </script>
           <svg
             class="pe-3"
             fill="none"
@@ -248,8 +245,15 @@
       </ng-template>
 
       <!-- Movie show list -->
-      <main class="col">
+      <main *ngIf="seances.length > 0; else noSeances" class="col">
         <div class="album py-5 bg-transparent">
+          <h3>
+            {{
+              selectedDate !== "null"
+                ? "Toutes les seances"
+                : "Seances pour " + (selectedDate | date)
+            }}
+          </h3>
           <div class="container">
             <div class="row">
               <div *ngFor="let seance of seances">
@@ -262,6 +266,15 @@
           </div>
         </div>
       </main>
+      <ng-template #noSeances>
+        <div
+          class="col d-flex justify-content-center align-items-center bg-transparent text-white mh-25"
+        >
+          <p class="border border-2 rounded-pill p-3">
+            {{ seances.length === 0 ? "Aucune seance" : "" }}
+          </p>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

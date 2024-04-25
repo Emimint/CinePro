@@ -13,6 +13,7 @@ export class ShowSelectionComponent implements OnInit {
   seances: Seance[] = [];
   filmId: string = '';
   selectedMovie: Film;
+  selectedDate: Date | null = null;
 
   constructor(private filmService: FilmService) {}
   ngOnInit(): void {
@@ -43,6 +44,8 @@ export class ShowSelectionComponent implements OnInit {
   }
 
   onMovieSelection(): void {
+    console.log('Selected movie:', this.selectedMovie);
+    console.log('Selected date:', this.selectedDate);
     this.selectedMovie = this.films.find(
       (film: Film) => film.id === Number(this.filmId)
     );
@@ -50,14 +53,33 @@ export class ShowSelectionComponent implements OnInit {
   }
 
   getSeances(): void {
-    this.filmService.getFilmSeances(this.selectedMovie.id).subscribe(
-      (seances) => {
-        this.seances = seances;
-        console.log(this.seances);
-      },
-      (error) => {
-        console.error('Error fetching seances:', error);
-      }
-    );
+    if (!this.selectedDate) {
+      this.filmService.getFilmSeances(this.selectedMovie.id).subscribe(
+        (seances) => {
+          this.seances = seances;
+          console.log(this.seances);
+        },
+        (error) => {
+          console.error('Error fetching seances:', error);
+        }
+      );
+    } else {
+      this.filmService.getFilmSeances(this.selectedMovie.id).subscribe(
+        (seances) => {
+          this.seances = seances.filter((seance) => {
+            const selectedDate = new Date(this.selectedDate);
+            const seanceDate = new Date(seance.heureDebut);
+            return (
+              selectedDate.getFullYear() === seanceDate.getFullYear() &&
+              selectedDate.getMonth() === seanceDate.getMonth() &&
+              selectedDate.getDate() === seanceDate.getDate()
+            );
+          });
+        },
+        (error) => {
+          console.error('Error fetching seances:', error);
+        }
+      );
+    }
   }
 }
