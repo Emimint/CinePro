@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Film } from '../models/film';
 import { FilmService } from '../services/film.service';
 import { Seance } from '../models/seance';
+import { Cinema } from '../models/cinema';
 
 @Component({
   selector: 'app-show-selection',
@@ -11,8 +12,10 @@ import { Seance } from '../models/seance';
 export class ShowSelectionComponent implements OnInit {
   films: Film[] = [];
   seances: Seance[] = [];
+  cinemas: Cinema[] = [];
   filmId: string = '';
   selectedMovie: Film;
+  selectedCinema: Cinema;
   selectedDate: Date | null = null;
 
   constructor(private filmService: FilmService) {}
@@ -44,12 +47,13 @@ export class ShowSelectionComponent implements OnInit {
   }
 
   onMovieSelection(): void {
-    console.log('Selected movie:', this.selectedMovie);
-    console.log('Selected date:', this.selectedDate);
     this.selectedMovie = this.films.find(
       (film: Film) => film.id === Number(this.filmId)
     );
+    this.selectedDate = null;
+    this.selectedCinema = null;
     this.getSeances();
+    this.getCinemas();
   }
 
   getSeances(): void {
@@ -81,5 +85,25 @@ export class ShowSelectionComponent implements OnInit {
         }
       );
     }
+  }
+
+  getCinemas(): void {
+    this.filmService.getFilmCinemas(this.selectedMovie.id).subscribe(
+      (cinemas) => {
+        this.cinemas = cinemas;
+      },
+      (error) => {
+        console.error('Error fetching cinemas:', error);
+      }
+    );
+    console.log('cinemas', this.cinemas);
+  }
+
+  onCinemaSelection(): void {
+    console.log('Selected cinema:', this.selectedCinema);
+    this.selectedCinema = this.cinemas.find(
+      (cinema: Cinema) => cinema.id === Number(this.cinemaId)
+    );
+    console.log('Selected cinema:', this.selectedCinema);
   }
 }

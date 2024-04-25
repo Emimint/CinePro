@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Film } from '../models/film';
 import { Image } from '../models/image';
 import { Seance } from '../models/seance';
+import { Cinema } from '../models/cinema';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +27,12 @@ export class FilmService {
   public getFilmSeances(filmId: number): Observable<Seance[]> {
     return this.httpClient.get<Seance[]>(
       `${this.apiServerUrl}films/seances/${filmId}`
+    );
+  }
+
+  public getFilmCinemas(filmId: number): Observable<Cinema[]> {
+    return this.httpClient.get<Cinema[]>(
+      `${this.apiServerUrl}films/cinemas/${filmId}`
     );
   }
 
