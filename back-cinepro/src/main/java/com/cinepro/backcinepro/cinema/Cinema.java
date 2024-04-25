@@ -21,6 +21,7 @@ public class Cinema {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomCinema;
+    private int nbreDeSalles;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(
@@ -33,5 +34,6 @@ public class Cinema {
 
 
     @OneToMany(mappedBy = "cinema")
-    private List<SalleDeCinema> salleDeCinemas;
+    @JsonIgnore
+    private List<SalleDeCinema> sallesDeCinemas;
 }

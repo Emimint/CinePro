@@ -15,7 +15,7 @@ public class SalleDeCinemaService {
     @Autowired
     SalleDeCinemaRepository salleDeCinemaRepository;
 
-    public List<SalleDeCinema> list(){ return salleDeCinemaRepository.findByOrderById();}
+    public List<SalleDeCinema> list(){ return salleDeCinemaRepository.findAll();}
 
     public Optional<SalleDeCinema> getOne(Long id){ return salleDeCinemaRepository.findById(id);}
 
