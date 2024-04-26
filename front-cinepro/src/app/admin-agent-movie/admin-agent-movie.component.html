@@ -1,5 +1,183 @@
 <app-menu></app-menu>
 <div class="container-fluid">
+  <div
+    class="modal fade"
+    id="addFilmModal"
+    tabindex="-1"
+    aria-labelledby="addFilmModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content justify-content-center align-items-center p-2">
+        <section class="px-1 m-2">
+          <div
+            class="container h-100 bg-white border rounded border-0 rounded-3 m-2"
+          >
+            <form [formGroup]="addForm" (ngSubmit)="onAddFilm()">
+              <div class="mb-3">
+                <label for="titre" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="titre"
+                  formControlName="titre"
+                  placeholder="Enter movie title"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="langue" class="form-label">Language</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="langue"
+                  formControlName="langue"
+                  placeholder="Enter movie language"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="soustitre" class="form-label">Subtitle</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="soustitre"
+                  formControlName="soustitre"
+                  placeholder="Enter movie subtitle"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="doublage" class="form-label">Dubbing</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="doublage"
+                  formControlName="doublage"
+                  placeholder="Enter movie dubbing"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="categorie" class="form-label">Category</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="categorie"
+                  formControlName="categorie"
+                  placeholder="Enter movie category"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="duree" class="form-label">Duration</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="duree"
+                  formControlName="duree"
+                  placeholder="Enter movie duration"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="videoUrl" class="form-label">Video URL</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="videoUrl"
+                  formControlName="videoUrl"
+                  placeholder="Enter movie video URL"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="listeActeurs" class="form-label">Actors</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="listeActeurs"
+                  formControlName="listeActeurs"
+                  placeholder="Enter movie actors"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="listeRealisateurs" class="form-label"
+                  >Directors</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="listeRealisateurs"
+                  formControlName="listeRealisateurs"
+                  placeholder="Enter movie directors"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="titreOriginal" class="form-label"
+                  >Original Title</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="titreOriginal"
+                  formControlName="titreOriginal"
+                  placeholder="Enter movie original title"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  rows="3"
+                  formControlName="description"
+                  placeholder="Enter movie description"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="dateDeSortie" class="form-label"
+                  >Release Date</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="dateDeSortie"
+                  formControlName="dateDeSortie"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="classement" class="form-label">Rating</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="classement"
+                  formControlName="classement"
+                  placeholder="Enter movie rating"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="input-group-text form-label" for="file"
+                  >Upload</label
+                >
+                <input
+                  type="file"
+                  class="form-control"
+                  id="file"
+                  (change)="onFileChange($event)"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <div class="h-100">
+              <a
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                >Close</a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
   <div class="p-0 d-flex h-100">
     <div
       id="bdSidebar"
@@ -69,9 +247,9 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
               <button
-                href="#addFilmModal"
+                data-bs-target="#addFilmModal"
                 class="btn btn-dark"
-                data-toggle="modal"
+                data-bs-toggle="modal"
               >
                 <i class="fas fa-plus"></i>
                 <span>Ajouter un film</span>
@@ -133,12 +311,15 @@
                 <div
                   class="d-flex justify-content-between align-items-center px-1"
                 >
-                  <a href="#" class="update-icon"
+                  <a
+                    href="#"
+                    class="update-icon"
+                    data-bs-toggle="modal"
+                    data-bs-target="#updateFilmModal"
+                    (click)="openUpdateModal(film)"
                     ><i class="fas fa-pencil-alt"></i
                   ></a>
-                  <a href="#" class="delete-icon"
-                    ><i class="fas fa-trash-alt"></i
-                  ></a>
+                  <a class="delete-icon"><i class="fas fa-trash-alt"></i></a>
                 </div>
               </td>
             </tr>

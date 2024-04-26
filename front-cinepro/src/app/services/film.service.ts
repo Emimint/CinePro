@@ -36,10 +36,10 @@ export class FilmService {
     );
   }
 
-  public addFilm(film: Film): Observable<Film> {
+  public addFilm(formData: FormData): Observable<any> {
     return this.httpClient.post<Film>(
       this.apiServerUrl + 'films/ajouter',
-      film
+      formData
     );
   }
 
@@ -52,6 +52,13 @@ export class FilmService {
   public fetchFilmImage(movieId: number): Observable<Image> {
     return this.httpClient.get<Image>(
       this.apiServerUrl + `films/image/${movieId}`
+    );
+  }
+
+  public updateFilm(filmId: number, formData: FormData): Observable<string> {
+    return this.httpClient.put<string>(
+      `${this.apiServerUrl}films/update/${filmId}`,
+      formData
     );
   }
 

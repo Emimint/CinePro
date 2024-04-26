@@ -64,12 +64,11 @@ export class ShowSelectionComponent implements OnInit {
       (cinema: Cinema) => cinema.nomCinema === selectedCinemaName
     );
 
-    //loop over the seances and filter by the selected cinema id
-    this.seances = this.seances.filter(
-      (seance: Seance) =>
-        this.filmService.getCinemaBySeance(seance.id)?.id ===
-        this.selectedCinema.id
-    );
+    // this.seances = this.seances.filter(
+    //   (seance: Seance) =>
+    //     this.filmService.getCinemaBySeance(seance.id)?.id ===
+    //     this.selectedCinema.id
+    // );
   }
 
   getSeances(): void {
