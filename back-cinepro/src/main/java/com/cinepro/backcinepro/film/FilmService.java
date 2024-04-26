@@ -1,6 +1,7 @@
 package com.cinepro.backcinepro.film;
 
 
+import com.cinepro.backcinepro.cinema.Cinema;
 import com.cinepro.backcinepro.seance.Seance;
 import com.cinepro.backcinepro.seance.SeanceRepository;
 import jakarta.transaction.Transactional;
@@ -26,6 +27,10 @@ public class FilmService {
 
     public Optional<Film> findById(Long id) {
         return filmRepository.findById(id);
+    }
+
+    public List<Cinema> findCinemasByFilmId(Long filmId) {
+        return filmRepository.findCinemasByFilmId(filmId);
     }
 
     public Film save(Film film) {

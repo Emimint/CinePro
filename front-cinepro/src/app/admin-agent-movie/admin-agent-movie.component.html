@@ -82,6 +82,7 @@
         <table class="example display table table-striped" style="width: 100%">
           <thead>
             <tr>
+              <th><i></i>ID</th>
               <th><i></i>Titre Originale</th>
               <th><i></i>Titre</th>
               <th><i></i>Categorie</th>
@@ -96,6 +97,7 @@
           </thead>
           <tbody *ngFor="let film of films">
             <tr class="align-middle">
+              <td>{{ film.id }}</td>
               <td>
                 <span
                   [matTooltip]="film.titreOriginal"
@@ -121,7 +123,11 @@
                   >{{ film.listeActeurs | truncate : 20 }}</span
                 >
               </td>
-              <td>{{ film.videoUrl }}</td>
+              <td>
+                <span [matTooltip]="film.videoUrl" matTooltipPosition="above">{{
+                  film.videoUrl | truncate : 20
+                }}</span>
+              </td>
               <td>{{ film.classement }}</td>
               <td>
                 <div
