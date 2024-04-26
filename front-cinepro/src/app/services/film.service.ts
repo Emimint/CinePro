@@ -30,6 +30,19 @@ export class FilmService {
     );
   }
 
+  public getCinemaBySeance(seanceId: number): Observable<Cinema> {
+    return this.httpClient.get<Cinema>(
+      `${this.apiServerUrl}/by-seance/${seanceId}`
+    );
+  }
+
+  public addFilm(film: Film): Observable<Film> {
+    return this.httpClient.post<Film>(
+      this.apiServerUrl + 'films/ajouter',
+      film
+    );
+  }
+
   public getFilmCinemas(filmId: number): Observable<Cinema[]> {
     return this.httpClient.get<Cinema[]>(
       `${this.apiServerUrl}films/cinemas/${filmId}`

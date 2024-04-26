@@ -42,6 +42,9 @@ public class CinemaController {
     @Autowired
     private SalleDeCinemaRepository salleDeCinemaRepository;
 
+    @Autowired
+    private CinemaRepository cinemaRepository;
+
     @GetMapping("/tous")
     public ResponseEntity<List<Cinema>> getAllCinemas() {
         List<Cinema> cinemas = cinemaService.list();
@@ -64,6 +67,22 @@ public class CinemaController {
 
         List<SalleDeCinema> salleDeCinemas = salleDeCinemaRepository.findByCinemaId(id);
         return new ResponseEntity<>(salleDeCinemas, HttpStatus.OK);
+    }
+
+    @GetMapping("/by-seance/{seanceId}")
+    public ResponseEntity<Cinema> getCinemaBySeance(@PathVariable Long seanceId) {
+        Optional<Seance> optionalSeance = seanceService.findById(seanceId);
+        if (optionalSeance.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Seance seance = optionalSeance.get();
+        Optional<Cinema> optionalCinema = cinemaRepository.findCinemaBySallesDeCinemasSeancesContains(seance);
+
+        return optionalCinema.map(
+                cinema -> new ResponseEntity<>(cinema, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND)
+                );
     }
 
     @GetMapping("/adresse/{id}")
