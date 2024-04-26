@@ -32,6 +32,8 @@ import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { AddFilmModalComponent } from './add-film-modal/add-film-modal.component';
+import { GenericModalComponent } from './generic-modal/generic-modal.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     TimeFormatPipe,
     TruncatePipe,
     ProfilePageComponent,
+    AddFilmModalComponent,
+    GenericModalComponent,
   ],
   imports: [
     BrowserModule,

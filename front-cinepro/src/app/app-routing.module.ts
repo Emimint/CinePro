@@ -9,6 +9,8 @@ import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { GenericModalComponent } from './generic-modal/generic-modal.component';
+import { AddFilmModalComponent } from './add-film-modal/add-film-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/accueil', pathMatch: 'full' },
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'description/:filmId', component: MovieDescriptionComponent },
   { path: 'food-section', component: FoodSectionComponent },
   { path: 'profile', component: ProfilePageComponent },
+  { path: 'generic-modal', component: GenericModalComponent },
+  { path: 'add-film-modal', component: AddFilmModalComponent },
 ];
 
 @NgModule({

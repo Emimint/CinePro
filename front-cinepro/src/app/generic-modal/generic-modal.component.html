@@ -1,0 +1,35 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#genericModal">
+    Ouvrir le modal générique
+  </button>
+  
+<div class="modal fade" [id]="modalId" tabindex="-1" aria-labelledby="genericModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content justify-content-center align-items-center p-2">
+            <section class="px-1 m-2">
+                <div class="container h-100 bg-white border rounded border-0 rounded-3 m-2">
+                    <form class="py-3 px-2" action="#" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+                        <h5 class="modal-title" id="genericModalLabel">{{ modalTitle }}</h5>
+                        <div class="row">
+                            <ng-container *ngFor="let field of formFields">
+                                <div class="col-md-6 mt-1">
+                                    <div class="form-outline mb-2">
+                                        <label class="form-label" [for]="field.id">{{ field.label }}</label>
+                                        <input type="text" [id]="field.id" class="form-control form-control-lg"
+                                            [formControlName]="field.name" />
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <!-- Submit button -->
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-dark btn-block">Ajouter</button>
+                        </div>
+                    </form>
+                    <div class="h-100">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
