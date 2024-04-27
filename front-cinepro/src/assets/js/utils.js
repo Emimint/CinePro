@@ -67,21 +67,13 @@ function initMap() {
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
-  var markers = [];
-
-  function addMarker(lng, lat, name) {
-    var marker = L.marker([lng, lat]).addTo(map);
-    marker.bindPopup(name);
-    markers.push(marker);
-  }
-
   function centerMapOnLocation(location) {
     var latitude = location[0];
     var longitude = location[1];
 
     map.setView([latitude, longitude], 12);
 
-    var positionClient = L.marker([longitude, latitude])
+    L.marker([longitude, latitude])
       .addTo(map)
       .bindPopup("Votre position")
       .openPopup();

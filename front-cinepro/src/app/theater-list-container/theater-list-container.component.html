@@ -82,7 +82,7 @@
               <div class="row">
                 <div class="col">
                   <!--    1) Numbers of results to show-->
-                  <div>10 cinémas trouvés</div>
+                  <div>{{ cinemas.length }} cinémas trouvés</div>
                   <!--    1.1) Get user location: -->
                   <p id="info-location"></p>
 
@@ -91,7 +91,7 @@
                     class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary mb-4"
                     style="max-height: 500px; overflow-y: auto"
                   >
-                    <app-theater-list></app-theater-list>
+                    <app-theater-list [cinemas]="cinemas"></app-theater-list>
                   </div>
                 </div>
               </div>
