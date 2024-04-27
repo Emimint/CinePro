@@ -8,6 +8,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { AdminAgentMovieComponent } from './admin-agent-movie/admin-agent-movie.component';
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 import { FoodSectionComponent } from './food-section/food-section.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/accueil', pathMatch: 'full' },
@@ -17,8 +18,9 @@ const routes: Routes = [
   { path: 'booking', component: BookingPageComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'admin-agent-movie', component: AdminAgentMovieComponent },
-  { path: 'description', component: MovieDescriptionComponent },
+  { path: 'description/:filmId', component: MovieDescriptionComponent },
   { path: 'food-section', component: FoodSectionComponent },
+  { path: 'profile', component: ProfilePageComponent },
 ];
 
 @NgModule({
