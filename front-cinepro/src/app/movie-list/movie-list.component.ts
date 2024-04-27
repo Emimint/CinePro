@@ -10,6 +10,7 @@ import { FilmService } from '../services/film.service';
 })
 export class MovieListComponent implements OnInit {
   films: Film[] = [];
+  selectedGenre: string = '';
 
   constructor(private filmService: FilmService) {}
   ngOnInit(): void {
@@ -38,4 +39,18 @@ export class MovieListComponent implements OnInit {
       }
     );
   }
+
+    filterByGenre(): void {  
+      var filteredGenre;
+      // Si aucun genre n'est sélectionné, afficher tous les films
+      if (!this.selectedGenre||this.selectedGenre==='Tous') {
+        filteredGenre=this.films;
+      } else {
+        // Filtrer les films par genre
+        filteredGenre = this.films.filter(film => film.categorie.toLowerCase().includes(this.selectedGenre.toLowerCase()));
+        
+      }
+      return filteredGenre;
+    }
+
 }

@@ -12,16 +12,16 @@
           >
             Tous les genres
           </button>
+
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Comédie</a></li>
-            <li>
-              <a class="dropdown-item" href="#">Drame</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">...</a>
-            </li>
-          </ul>
+            <li><a class="dropdown-item"  (click)="selectedGenre = 'Tous'; filterByGenre()">Tous</a></li>
+            <li><a class="dropdown-item"  (click)="selectedGenre = 'Action'; filterByGenre()">Action</a></li>
+            <li><a class="dropdown-item"  (click)="selectedGenre = 'Comédie'; filterByGenre()">Comédie</a></li>
+            <li><a class="dropdown-item"  (click)="selectedGenre = 'Drame'; filterByGenre()">Drame</a></li>
+            <li><a class="dropdown-item"  (click)="selectedGenre = 'Fantaisie'; filterByGenre()">Fantaisie</a></li>
+            <li><a class="dropdown-item"  (click)="selectedGenre = 'Horreur'; filterByGenre()">Horreur</a></li>
+            </ul>
+          
         </li>
         <li class="nav-item dropdown">
           <button
@@ -43,8 +43,8 @@
       </ul>
     </div>
     <div class="container">
-      <div class="row">
-        <div *ngFor="let film of films" class="col-md-6 col-lg-4">
+      <div class="row">       
+        <div *ngFor="let film of filterByGenre()" class="col-md-6 col-lg-4">
           <div class="card shadow-sm m-2">
             <img
               src="{{ film.image?.imageUrl }}"
