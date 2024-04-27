@@ -40,14 +40,17 @@ export class MovieListComponent implements OnInit {
     );
   }
 
-   
-  filterByGenre(film: Film): boolean {  
-       // Si aucun genre n'est sélectionné, afficher tous les films
-    if (!this.selectedGenre || this.selectedGenre === '...')
-       {       return true;     } 
-    else {       
-      // Sinon, vérifier si le genre du film correspond au genre sélectionnéreturn 
-      film.categorie === this.selectedGenre;     
-    }   } 
+    filterByGenre(): void {  
+      var filteredGenre;
+      // Si aucun genre n'est sélectionné, afficher tous les films
+      if (!this.selectedGenre||this.selectedGenre==='Tous') {
+        filteredGenre=this.films;
+      } else {
+        // Filtrer les films par genre
+        filteredGenre = this.films.filter(film => film.categorie.toLowerCase().includes(this.selectedGenre.toLowerCase()));
+        
+      }
+      return filteredGenre;
+    }
 
 }
