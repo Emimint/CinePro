@@ -24,28 +24,11 @@ export class TheaterListContainerComponent implements AfterViewInit {
       (cinemas) => {
         this.cinemas = cinemas;
         this.getCinemasAddresses();
-        initMap(this.getCinemasPositions());
       },
       (error) => {
         console.error('Error fetching cinemas:', error);
       }
     );
-  }
-
-  public getCinemasPositions(): {
-    name: string;
-    longitude: number;
-    latitude: number;
-  }[] {
-    this.cinemasPositions = [];
-    this.cinemas.forEach((cinema) => {
-      this.cinemasPositions.push({
-        name: cinema.nomCinema,
-        longitude: cinema.adresse.longitude,
-        latitude: cinema.adresse.latitude,
-      });
-    });
-    return this.cinemasPositions;
   }
 
   public getCinemasAddresses(): void {
@@ -58,7 +41,11 @@ export class TheaterListContainerComponent implements AfterViewInit {
             longitude: cinema.adresse.longitude,
             latitude: cinema.adresse.latitude,
           });
-          initMap(this.cinemasPositions);
+          try {
+            initMap(this.cinemasPositions);
+          } catch (error) {
+            console.warn('initMap not ready');
+          }
         },
         (error) => {
           console.error('Error fetching address for cinema:', error);
