@@ -21,6 +21,8 @@ public class Adresse {
     private String nomRue;
     private String ville;
     private String pays;
+    private Double longitude;
+    private Double latitude;
 
     @OneToOne(mappedBy = "adresse")
     @JsonIgnore

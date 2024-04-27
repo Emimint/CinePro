@@ -109,7 +109,9 @@ public class CinemaController {
             @RequestParam("codePostal") String codePostal,
             @RequestParam("nomRue") String nomRue,
             @RequestParam("pays") String pays,
-            @RequestParam("numeroCivique") String numeroCivique
+            @RequestParam("numeroCivique") String numeroCivique,
+            @RequestParam("latitude") Double latitude,
+            @RequestParam("longitude") Double longitude
     ) {
         Adresse adresse = new Adresse();
         adresse.setVille(ville);
@@ -117,6 +119,8 @@ public class CinemaController {
         adresse.setNomRue(nomRue);
         adresse.setPays(pays);
         adresse.setNumeroCivique(numeroCivique);
+        adresse.setLatitude(latitude);
+        adresse.setLongitude(longitude);
 
         Cinema cinema = new Cinema();
         cinema.setNomCinema(nomCinema);
