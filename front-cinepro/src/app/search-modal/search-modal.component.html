@@ -1,14 +1,12 @@
-
 <!-- Modal de recherche -->
 <div
   class="offcanvas offcanvas-end"
   tabindex="-1"
   id="offcanvasExample"
   aria-labelledby="offcanvasExampleLabel"
-  style="background-image: linear-gradient(to bottom, #0a0b0d, #011c46)">
-  
+  style="background-image: linear-gradient(to bottom, #0a0b0d, #011c46)"
+>
   <div class="offcanvas-header">
-
     <h2 class="offcanvas-title text-white" id="offcanvasExampleLabel">
       Recherche
     </h2>
@@ -47,15 +45,16 @@
   </div>
 
   <!-- Films trouves -->
-  <ng-container *ngIf="films.length>0; else pasResultat">
-  <div class="container-fluid resultats mt-2 overflow-scroll flex-grow-1">
-    <div
-      class="card mb-5 resultat bg-transparent text-white shadow-lg border-2 "
-      style="max-width: 540px">
-      <div class="row g-0 ">
-        <div *ngFor="let film of films" >
-          <div class="col-md-7 ">
-            <!-- <div class="card shadow-sm m-2"> -->
+  <ng-container *ngIf="films.length > 0; else pasResultat">
+    <div class="container-fluid resultats mt-2 overflow-scroll flex-grow-1">
+      <div
+        class="card mb-5 resultat bg-transparent text-white shadow-lg border-2"
+        style="max-width: 540px"
+      >
+        <div class="row g-0">
+          <div *ngFor="let film of films">
+            <div class="col-md-7">
+              <!-- <div class="card shadow-sm m-2"> -->
               <img
                 src="{{ film.image?.imageUrl }}"
                 class="w-100"
@@ -64,24 +63,28 @@
                 height="225"
                 margin="10"
               />
-          </div>
-          <div class="col-md-12 d-flex align-items-center">
-            <div class="card-body">
-              <h5 class="card-title"> <a routerLink="/description/{{ film.id }}">{{film.titre }} </a></h5>
+            </div>
+            <div class="col-md-12 d-flex align-items-center">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a routerLink="/description/{{ film.id }}"
+                    >{{ film.titre }}
+                  </a>
+                </h5>
+                <p>Categorie: {{ film.categorie }}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</ng-container>
-<ng-template #pasResultat>
-
-  <!-- Aucun resultat -->
-  <div
-    class="text-white p-3 m-2 fw-bold shadow flex-grow-1 d-flex align-items-center justify-content-center"
-  >
-    <p>Aucun resultat</p>
-  </div>
-</ng-template>
+  </ng-container>
+  <ng-template #pasResultat>
+    <!-- Aucun resultat -->
+    <div
+      class="text-white p-3 m-2 fw-bold shadow flex-grow-1 d-flex align-items-center justify-content-center"
+    >
+      <p>Aucun resultat</p>
+    </div>
+  </ng-template>
 </div>
