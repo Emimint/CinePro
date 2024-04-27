@@ -1,0 +1,887 @@
+<app-menu></app-menu>
+<div class="container-fluid">
+  <div
+    class="modal fade"
+    id="addFilmModal"
+    tabindex="-1"
+    aria-labelledby="addFilmModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content justify-content-center align-items-center p-2">
+        <section class="px-1 m-2">
+          <div
+            class="container h-100 bg-white border rounded border-0 rounded-3 m-2"
+          >
+            <form [formGroup]="addForm" (ngSubmit)="onAddFilm()">
+              <div class="mb-3">
+                <label for="titre" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="titre"
+                  formControlName="titre"
+                  placeholder="Enter movie title"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="langue" class="form-label">Language</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="langue"
+                  formControlName="langue"
+                  placeholder="Enter movie language"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="soustitre" class="form-label">Subtitle</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="soustitre"
+                  formControlName="soustitre"
+                  placeholder="Enter movie subtitle"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="doublage" class="form-label">Dubbing</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="doublage"
+                  formControlName="doublage"
+                  placeholder="Enter movie dubbing"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="categorie" class="form-label">Category</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="categorie"
+                  formControlName="categorie"
+                  placeholder="Enter movie category"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="duree" class="form-label">Duration</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="duree"
+                  formControlName="duree"
+                  placeholder="Enter movie duration"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="videoUrl" class="form-label">Video URL</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="videoUrl"
+                  formControlName="videoUrl"
+                  placeholder="Enter movie video URL"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="listeActeurs" class="form-label">Actors</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="listeActeurs"
+                  formControlName="listeActeurs"
+                  placeholder="Enter movie actors"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="listeRealisateurs" class="form-label"
+                  >Directors</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="listeRealisateurs"
+                  formControlName="listeRealisateurs"
+                  placeholder="Enter movie directors"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="titreOriginal" class="form-label"
+                  >Original Title</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="titreOriginal"
+                  formControlName="titreOriginal"
+                  placeholder="Enter movie original title"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  rows="3"
+                  formControlName="description"
+                  placeholder="Enter movie description"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="dateDeSortie" class="form-label"
+                  >Release Date</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="dateDeSortie"
+                  formControlName="dateDeSortie"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="classement" class="form-label">Rating</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="classement"
+                  formControlName="classement"
+                  placeholder="Enter movie rating"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="input-group-text form-label" for="file"
+                  >Upload</label
+                >
+                <input
+                  type="file"
+                  class="form-control"
+                  id="file"
+                  (change)="onFileChange($event)"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <div class="h-100">
+              <a
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                >Close</a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-0 d-flex h-100">
+    <div
+      id="bdSidebar"
+      class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white offcanvas-lg offcanvas-start"
+    >
+      <ul class="mynav nav nav-pills flex-column mb-auto">
+        <li [class.active]="currentTab === 'Films'" class="nav-item mb-1">
+          <a (click)="openTab('Films')">
+            <i class="fa fa-film"></i>
+            Films
+          </a>
+        </li>
+
+        <li [class.active]="currentTab === 'Clients'" class="nav-item mb-1">
+          <a (click)="openTab('Clients')">
+            <i class="fa-regular fa-film"></i>
+            <i class="fa fa-user"></i>
+            Clients
+          </a>
+        </li>
+
+        <li
+          [class.active]="currentTab === 'Reservations'"
+          class="nav-item mb-1"
+        >
+          <a (click)="openTab('Reservations')">
+            <i class="fa fa-newspaper"></i>
+            Reservations
+          </a>
+        </li>
+
+        <li [class.active]="currentTab === 'Promotions'" class="nav-item mb-1">
+          <a (click)="openTab('Promotions')">
+            <i class="fa fa-percent"></i>
+            Promotions
+          </a>
+        </li>
+
+        <li [class.active]="currentTab === 'Cinemas'" class="nav-item mb-1">
+          <a (click)="openTab('Cinemas')">
+            <i class="fa fa-store"></i>
+            Cinemas
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bg-light flex-fill">
+      <div class="p-2 d-md-none d-flex text-white bg-dark">
+        <a
+          href="#"
+          class="text-white"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#bdSidebar"
+        >
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <div *ngIf="currentTab === 'Films'" id="Films" class="tabcontent">
+        <div class="table-title">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center"
+              id="filmList"
+            >
+              <h2 class="ml-lg-2 m-5">Liste de Films</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
+              <button
+                data-bs-target="#addFilmModal"
+                class="btn btn-dark"
+                data-bs-toggle="modal"
+              >
+                <i class="fas fa-plus"></i>
+                <span>Ajouter un film</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="example display table table-striped" style="width: 100%">
+          <thead>
+            <tr>
+              <th><i></i>ID</th>
+              <th><i></i>Titre Originale</th>
+              <th><i></i>Titre</th>
+              <th><i></i>Categorie</th>
+              <th><i></i>Doublage</th>
+              <th><i></i>Date de Sortie</th>
+              <th><i></i>Liste Realisateur</th>
+              <th><i></i>Liste Acteur</th>
+              <th><i></i>URL</th>
+              <th><i></i>Classement</th>
+              <th><i></i>Details</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let film of films">
+            <tr class="align-middle">
+              <td>{{ film.id }}</td>
+              <td>
+                <span
+                  [matTooltip]="film.titreOriginal"
+                  matTooltipPosition="above"
+                  >{{ film.titreOriginal | truncate : 20 }}</span
+                >
+              </td>
+              <td>{{ film.titre }}</td>
+              <td>{{ film.categorie }}</td>
+              <td>{{ film.doublage }}</td>
+              <td>{{ film.dateDeSortie | date : "shortDate" }}</td>
+              <td>
+                <span
+                  [matTooltip]="film.listeRealisateurs"
+                  matTooltipPosition="above"
+                  >{{ film.listeRealisateurs | truncate : 20 }}</span
+                >
+              </td>
+              <td>
+                <span
+                  [matTooltip]="film.listeActeurs"
+                  matTooltipPosition="above"
+                  >{{ film.listeActeurs | truncate : 20 }}</span
+                >
+              </td>
+              <td>
+                <span [matTooltip]="film.videoUrl" matTooltipPosition="above">{{
+                  film.videoUrl | truncate : 20
+                }}</span>
+              </td>
+              <td>{{ film.classement }}</td>
+              <td>
+                <div
+                  class="d-flex justify-content-between align-items-center px-1"
+                >
+                  <a
+                    href="#"
+                    class="update-icon"
+                    data-bs-toggle="modal"
+                    data-bs-target="#updateFilmModal"
+                    (click)="openUpdateModal(film)"
+                    ><i class="fas fa-pencil-alt"></i
+                  ></a>
+                  <a class="delete-icon"><i class="fas fa-trash-alt"></i></a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="currentTab === 'Clients'" id="Clients" class="tabcontent">
+        <div class="table-title">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center"
+              id="filmList"
+            >
+              <h2 class="ml-lg-2 m-3">Liste de Clients</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
+              <button
+                href="#addFilmModal"
+                class="btn btn-dark"
+                data-toggle="modal"
+              >
+                <i class="fas fa-plus"></i>
+                <span>Ajouter un client</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="example display table table-striped" style="width: 100%">
+          <thead>
+            <tr>
+              <th><i></i>Nom</th>
+              <th><i></i>Prenom</th>
+              <th><i></i>Email</th>
+              <th><i></i>Addresse</th>
+              <th><i></i>Telephone</th>
+              <th><i></i>Mot de Passe</th>
+              <th><i></i>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Thomas</th>
+              <th>Hardy</th>
+              <th>ThomasHardy&#64;gmail.com</th>
+              <th>90r parkdground poland Usa.</th>
+              <th>(78-582552-9)</th>
+              <th>Thomas1</th>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <th>Dominique</th>
+              <th>Perrier</th>
+              <th>dominiquePerrier&#64;gmail.com</th>
+              <th>90r ser57, Berlin poland Bermany.</th>
+              <th>(78-5235-2-9)</th>
+              <th>Dominique1</th>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <th>Marai</th>
+              <th>Andres</th>
+              <th>MarariAndres&#64;gmail.com</th>
+              <th>90r ser57, Berlin poland Bermany.</th>
+              <th>(78-239-669)</th>
+              <th>Marai1</th>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <th>Vishwajeet</th>
+              <th>Kumar</th>
+              <th>vishkumar234&#64;gmail.com</th>
+              <th>B-2 ser57 Nodia East Delhi,India.</th>
+              <th>(78-555-229)</th>
+              <th>Vishwajeet1</th>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        *ngIf="currentTab === 'Promotions'"
+        id="Promotions"
+        class="tabcontent"
+      >
+        <div class="table-title">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center"
+              id="filmList"
+            >
+              <h2 class="ml-lg-2 m-3">Liste des Promotions</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
+              <button
+                href="#addFilmModal"
+                class="btn btn-dark"
+                data-toggle="modal"
+              >
+                <i class="fas fa-plus"></i>
+                <span>Ajouter une Promotion</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="example display table table-striped" style="width: 100%">
+          <thead>
+            <tr>
+              <th><i></i>Code Promotion</th>
+              <th><i></i>Pourcentage</th>
+              <th><i></i>Description</th>
+              <th><i></i>MontantFixe</th>
+              <th><i></i>Date De Debut</th>
+              <th><i></i>Date De Fin</th>
+              <th><i></i>Date De Creation</th>
+              <th><i></i>Frequence</th>
+              <th><i></i>Est valide</th>
+              <th><i></i>Est Cumulable</th>
+              <th><i></i>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#2344</td>
+              <td>100%</td>
+              <td>50$</td>
+              <td>
+                Ticket de cinema gratuit a l'achat d'une carte cadeau de 50$
+              </td>
+              <td>2024-03-30</td>
+              <td>2024-04-30</td>
+              <td>2024-03-30</td>
+              <td>1</td>
+              <td>oui</td>
+              <td>non</td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        *ngIf="currentTab === 'Reservations'"
+        id="Reservations"
+        class="tabcontent"
+      >
+        <div class="table-title">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center"
+              id="filmList"
+            >
+              <h2 class="ml-lg-2 m-3">Liste des Reservations</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
+              <button
+                href="#addFilmModal"
+                class="btn btn-dark"
+                data-toggle="modal"
+              >
+                <i class="fas fa-plus"></i>
+                <span>Ajouter une Reservation</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="example display table table-striped" style="width: 100%">
+          <thead>
+            <tr>
+              <th><a>Liste de siege</a></th>
+              <th><a></a>Salle de Cinema</th>
+              <th><a></a>Cinema</th>
+              <th><a></a>Seance</th>
+              <th><a></a>Date</th>
+              <th><a></a>Heure</th>
+              <th><i></i>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a href="#" class="update-icon"
+                  ><i class="fas fa-pencil-alt"></i
+                ></a>
+                <a href="#" class="delete-icon"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="currentTab === 'Cinemas'" id="Cinema" class="tabcontent">
+        <div class="table-title">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 col-md-6 col-sm-12 p-0 flex justify-content-lg-start justify-content-center"
+              id="filmList"
+            >
+              <h2 class="ml-lg-2 m-3">Liste des Cinemas</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
+              <button
+                href="#addFilmModal"
+                class="btn btn-dark"
+                data-toggle="modal"
+              >
+                <i class="fas fa-plus"></i>
+                <span>Ajouter un Cinema</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="example display table table-striped" style="width: 100%">
+          <thead>
+            <tr>
+              <th><i></i>ID Cinema</th>
+              <th><i></i>Nom du Cinema</th>
+              <th><i></i>Adresse</th>
+              <th><i></i>Details</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let cinema of cinemas">
+            <tr>
+              <td>{{ cinema.id }}</td>
+              <td>{{ cinema.nomCinema }}</td>
+              <td>{{ getCinemaAddress(cinema) }}</td>
+              <td>
+                <div
+                  class="d-flex justify-content-between align-items-center px-1"
+                >
+                  <a href="#" class="update-icon"
+                    ><i class="fas fa-pencil-alt"></i
+                  ></a>
+                  <a href="#" class="delete-icon"
+                    ><i class="fas fa-trash-alt"></i
+                  ></a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="empty-div"></div>
+  <app-footer></app-footer>
+</div>

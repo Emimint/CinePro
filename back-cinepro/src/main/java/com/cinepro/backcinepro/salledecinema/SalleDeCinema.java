@@ -1,9 +1,14 @@
 package com.cinepro.backcinepro.salledecinema;
 
 import com.cinepro.backcinepro.cinema.Cinema;
+import com.cinepro.backcinepro.seance.Seance;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.List;
 
 import java.util.List;
 
@@ -19,20 +24,18 @@ public class SalleDeCinema {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int numero;
+    private int nbrSieges;
+    private int nbrRangees;
+    private int nbrSections;
     private int totalDesSieges;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(
-            name = "cinema_id",
-            referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "FK_salledecinema_cinema", foreignKeyDefinition = "FOREIGN KEY (cinema_id) REFERENCES cinema(id) ON DELETE CASCADE")
-    )
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "cinema_id",nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Cinema cinema;
 
     @OneToMany(mappedBy = "salleDeCinema")
-    private List<Siege> sieges;
+    private List<Seance> seances;
 
-//    @OneToMany(mappedBy = "salleDeCinema")
-//    private List<Seance> seances;
 }

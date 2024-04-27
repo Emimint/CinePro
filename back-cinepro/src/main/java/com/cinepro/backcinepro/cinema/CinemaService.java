@@ -2,11 +2,16 @@ package com.cinepro.backcinepro.cinema;
 
 import com.cinepro.backcinepro.cinema.Cinema;
 import com.cinepro.backcinepro.cinema.CinemaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
+@Transactional
 public class CinemaService {
     @Autowired
     CinemaRepository cinemaRepository;
@@ -15,12 +20,12 @@ public class CinemaService {
         return cinemaRepository.findByOrderById();
     }
 
-    public Optional<Cinema> getOne(Long id){
+    public Optional<Cinema> getCinemaById(Long id) {
         return cinemaRepository.findById(id);
     }
 
-    public void save(Cinema cinema){
-        cinemaRepository.save(cinema);
+    public Cinema save(Cinema cinema){
+        return cinemaRepository.save(cinema);
     }
 
     public void delete(Long id){

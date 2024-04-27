@@ -1,8 +1,22 @@
 <div class="card text-white m-2">
   <div class="card-header d-flex" style="background-color: #111723">
-    <h5>Movie experience</h5>
+    <div class="d-flex gap-2">
+      <h5>{{ seance.ultraAVX ? "UltraAVX" : "" }}</h5>
+      <h5>{{ seance.imax ? "IMAX" : "" }}</h5>
+      <h5>{{ seance.troisD ? "3D" : "" }}</h5>
+      <h5>
+        {{
+          !seance.ultraAVX && !seance.troisD && !seance.imax ? "Regulier" : ""
+        }}
+      </h5>
+    </div>
     <p class="mx-5 border rounded border-2 px-2">
-      <span style="font-weight: bold">FR</span>
+      <span style="font-weight: bold">{{ selectedMovie.langue }}</span>
+    </p>
+    <p class="mx-5 bold px-2">
+      <span style="font-weight: bold">{{
+        selectedMovie.soustitre === "none" ? "" : selectedMovie.soustitre
+      }}</span>
     </p>
   </div>
   <div
@@ -11,12 +25,13 @@
   >
     <div>
       <div class="d-flex">
-        <button class="btn btn-primary mx-2 px-4" style="font-weight: bold">
-          6:00 pm
-        </button>
-        <button class="btn btn-primary mx-2 px-4" style="font-weight: bold">
-          9:45 pm
-        </button>
+        <a
+          class="btn btn-primary mx-2 px-4"
+          routerLink="/booking"
+          style="font-weight: bold"
+        >
+          {{ seance.heureDebut | date : "shortTime" }}
+        </a>
       </div>
       <hr style="height: 2px" />
       <div class="d-flex justify-content-center">

@@ -1,6 +1,7 @@
 <app-search-modal></app-search-modal>
+<app-login-page></app-login-page>
 <nav
-  class="navbar navbar-expand-md navbar-dark bg-dark"
+  class="navbar navbar-expand-lg navbar-dark bg-dark"
   aria-label="Main navigation"
 >
   <div class="container-fluid">
@@ -52,7 +53,7 @@
     >
       <ul class="navbar-nav align-items-center">
         <li class="nav-item">
-          <a class="nav-link" href="#"
+          <a class="nav-link" routerLink="/food-section"
             ><svg
               fill="currentcolor"
               width="1em"
@@ -65,9 +66,10 @@
             >
               <path
                 d="M9.46 11.039l-.48-4.039h-.98v-1.382c.87 0 2-.697 2-1.618h6.185l2.113-4 1.359.634-1.817 3.366h4.199c0 .922 1.092 1.618 1.961 1.618v1.382h-1l-2 17s-15.839.007-17.094-.005c-2.168-.068-3.017-1.656-3.041-3.743-.569-.472-.909-1.485-.861-2.409.044-.872.467-1.674 1.139-2.203.669-3.206 3.591-4.594 7.28-4.64.352 0 .698.013 1.037.039zm-6.466 9.957h-.002c.031.791.267.979.954.999 1.241.013 8.514 0 9.098-.009.679-.022.92-.269.96-.943 0 0-4.384.036-11.01-.047zm8.513-9.608c2.212.616 3.855 1.986 4.344 4.247.676.529 1.101 1.333 1.145 2.208.048.931-.437 1.866-.996 2.418.018.643-.061 1.23-.235 1.739h3.5l1.735-15h-10l.507 4.388zm2.493 5.612l-3.831.005c-.962.007-1.433 1.342-3.068 1.326-1.732-.018-1.855-1.313-2.723-1.309l-1.454-.022c-.54.046-.899.472-.923.943-.026.523.354 1.033 1.005 1.053h11.008c.645-.034 1.01-.539.985-1.053-.027-.49-.438-.92-.999-.943zm-.52-2.006c-.971-1.579-3.186-1.994-5.042-1.994-1.859.025-3.981.417-4.942 1.997l1.098.021c1.443.009 1.549 1.487 2.517 1.482.839-.004 1.404-1.492 2.834-1.494.141-.001 2.675-.012 3.535-.012z"
-              /></svg
-            >Collations</a
-          >
+              />
+            </svg>
+            Collations
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/show-selection"
@@ -84,9 +86,10 @@
                   clip-rule="evenodd"
                   d="M20.413 6.926c-.912.911-2.304.942-3.215.03-.91-.911-.885-2.307.027-3.218L14.74 1.253 1.128 14.865l2.484 2.485c.911-.912 2.262-.921 3.173-.01.912.91.927 2.287.015 3.198l2.46 2.46L22.872 9.384l-2.46-2.46Z"
                 ></path>
-              </g></svg
-            >Billets</a
-          >
+              </g>
+            </svg>
+            Billets
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"
@@ -102,13 +105,20 @@
                 clip-rule="evenodd"
                 d="M12 1.75A8.25 8.25 0 0 1 20.25 10c0 3.036-2.648 6.964-7.91 11.866l-.34.317-.695-.65C6.279 16.786 3.75 12.966 3.75 10A8.25 8.25 0 0 1 12 1.75Zm0 4.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5Z"
                 fill="currentcolor"
-              ></path></svg
-            >Cinémas</a
-          >
+              ></path>
+            </svg>
+            Cinémas
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"
-            ><svg
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a
+            class="nav-link"
+            data-bs-toggle="modal"
+            href="#loginModal"
+            role="button"
+            aria-controls="loginModal"
+          >
+            <svg
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
@@ -126,11 +136,55 @@
                 stroke="currentcolor"
                 stroke-linejoin="bevel"
               ></path></svg
-            >Compte</a
-          >
+            >Connexion
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="/profile">
+            <svg
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M16.75 8a4.75 4.75 0 1 1-9.5 0 4.75 4.75 0 0 1 9.5 0Z"
+                stroke="currentcolor"
+                stroke-linejoin="bevel"
+              ></path>
+              <path
+                d="M4.427 20.75s-2.019-6 7.573-6 7.573 6 7.573 6"
+                stroke="currentcolor"
+                stroke-linejoin="bevel"
+              ></path></svg
+            >Profile
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" (click)="logout()" style="cursor: pointer"
+            ><svg
+              fill="currentcolor"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16 12.771h-3.091c-.542 0-.82-.188-1.055-.513l-1.244-1.674-2.029 2.199 1.008 1.562c.347.548.373.922.373 1.42v4.235h-1.962v-3.981c-.016-1.1-1.695-2.143-2.313-1.253l-1.176 1.659c-.261.372-.706.498-1.139.498h-3.372v-1.906l2.532-.001c.397 0 .741-.14.928-.586l1.126-2.75c.196-.41.46-.782.782-1.102l2.625-2.6-.741-.647c-.223-.195-.521-.277-.812-.227l-2.181.381-.342-1.599 2.992-.571c.561-.107 1.042.075 1.461.462l2.882 2.66c.456.414.924 1.136 1.654 2.215.135.199.323.477.766.477h2.328v1.642zm-2.982-5.042c1.02-.195 1.688-1.182 1.493-2.201-.172-.901-.96-1.528-1.845-1.528-1.186 0-2.07 1.078-1.85 2.234.196 1.021 1.181 1.69 2.202 1.495zm4.982-5.729v15l6 5v-20h-6z"
+              />
+            </svg>
+            Deconnexion
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center" href="#"
+          <a
+            class="nav-link"
+            data-bs-toggle="offcanvas"
+            href="#offcanvasExample"
+            role="button"
+            aria-controls="offcanvasExample"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -144,17 +198,10 @@
             >
               <title>Search</title>
               <circle cx="10.5" cy="10.5" r="7.5" />
-              <path d="M21 21l-5.2-5.2" /></svg
-            ><a
-              class="nav-link"
-              data-bs-toggle="offcanvas"
-              href="#offcanvasExample"
-              role="button"
-              aria-controls="offcanvasExample"
-            >
-              Rechercher
-            </a></a
-          >
+              <path d="M21 21l-5.2-5.2" />
+            </svg>
+            Rechercher
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
@@ -175,8 +222,9 @@
               >
                 <path
                   d="M12.02 0c6.614.011 11.98 5.383 11.98 12 0 6.623-5.376 12-12 12-6.623 0-12-5.377-12-12 0-6.617 5.367-11.989 11.981-12h.039zm3.694 16h-7.427c.639 4.266 2.242 7 3.713 7 1.472 0 3.075-2.734 3.714-7m6.535 0h-5.523c-.426 2.985-1.321 5.402-2.485 6.771 3.669-.76 6.671-3.35 8.008-6.771m-14.974 0h-5.524c1.338 3.421 4.34 6.011 8.009 6.771-1.164-1.369-2.059-3.786-2.485-6.771m-.123-7h-5.736c-.331 1.166-.741 3.389 0 6h5.736c-.188-1.814-.215-3.925 0-6m8.691 0h-7.685c-.195 1.8-.225 3.927 0 6h7.685c.196-1.811.224-3.93 0-6m6.742 0h-5.736c.062.592.308 3.019 0 6h5.736c.741-2.612.331-4.835 0-6m-12.825-7.771c-3.669.76-6.671 3.35-8.009 6.771h5.524c.426-2.985 1.321-5.403 2.485-6.771m5.954 6.771c-.639-4.266-2.242-7-3.714-7-1.471 0-3.074 2.734-3.713 7h7.427zm-1.473-6.771c1.164 1.368 2.059 3.786 2.485 6.771h5.523c-1.337-3.421-4.339-6.011-8.008-6.771"
-                /></svg
-              ><span class="mx-1">EN</span>
+                />
+              </svg>
+              <span class="mx-1">EN</span>
             </div>
           </a>
         </li>

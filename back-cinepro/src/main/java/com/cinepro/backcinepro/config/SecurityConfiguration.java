@@ -31,9 +31,8 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfiguration {
 
     private static final String[] WHITE_LIST_URL = {
-            "/allMovies/all",
-            "/allMovies/movie/{id}",
-            "/allMovies/image/{id}",
+            "/films/**",
+            "/cinemas/**",
             "/api/v1/auth/**",
             "/v2/api-docs",
             "/v3/api-docs",
@@ -49,31 +48,44 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req ->
-                        req.requestMatchers(WHITE_LIST_URL)
-                                .permitAll()
-                                .requestMatchers("/api/v1/management/**").hasAnyRole(ADMINISTRATEUR.name(), AGENTCINEMA.name())
-                                .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMINISTRATEUR_READ.name(), AGENTCINEMA_READ.name())
-                                .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMINISTRATEUR_CREATE.name(), AGENTCINEMA_CREATE.name())
-                                .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMINISTRATEUR_UPDATE.name(), AGENTCINEMA_UPDATE.name())
-                                .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMINISTRATEUR_DELETE.name(), AGENTCINEMA_DELETE.name())
-                                .anyRequest()
-                                .authenticated()
-                )
-                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .logout(logout ->
-                        logout.logoutUrl("/api/v1/auth/logout")
-                                .addLogoutHandler(logoutHandler)
-                                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
-                )
-        ;
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(req ->
+//                        req.requestMatchers(WHITE_LIST_URL)
+//                                .permitAll()
+//                                .requestMatchers("/api/v1/management/**").hasAnyRole(ADMINISTRATEUR.name(), AGENTCINEMA.name())
+//                                .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMINISTRATEUR_READ.name(), AGENTCINEMA_READ.name())
+//                                .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMINISTRATEUR_CREATE.name(), AGENTCINEMA_CREATE.name())
+//                                .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMINISTRATEUR_UPDATE.name(), AGENTCINEMA_UPDATE.name())
+//                                .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMINISTRATEUR_DELETE.name(), AGENTCINEMA_DELETE.name())
+//                                .anyRequest()
+//                                .authenticated()
+//                )
+//                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+//                .authenticationProvider(authenticationProvider)
+//                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+//                .logout(logout ->
+//                        logout.logoutUrl("/api/v1/auth/logout")
+//                                .addLogoutHandler(logoutHandler)
+//                                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+//                )
+//        ;
+//
+//        return http.build();
+//    }
+//
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+            .csrf(AbstractHttpConfigurer::disable)
+            .authorizeRequests(authorizeRequests ->
+                    authorizeRequests
+                            .anyRequest().permitAll()
+            )
+            .sessionManagement(session -> session.disable()); // Disable session management
 
-        return http.build();
-    }
+    return http.build();
+}
 }
