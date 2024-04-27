@@ -12,16 +12,16 @@
           >
             Tous les genres
           </button>
+
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Comédie</a></li>
+            
+            <li><a class="dropdown-item" href="#" (click)="selectedGenre = 'Action'">Action</a></li>
+            <li><a class="dropdown-item" href="#" (click)="selectedGenre = 'Comédie'">Comédie</a></li>
+            <li><a class="dropdown-item" href="#" (click)="selectedGenre = 'Drame'">Drame</a></li>
             <li>
-              <a class="dropdown-item" href="#">Drame</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">...</a>
-            </li>
-          </ul>
+              <a class="dropdown-item" href="#" (click)="selectedGenre = '...'">...</a></li>
+            </ul>
+          
         </li>
         <li class="nav-item dropdown">
           <button
@@ -44,6 +44,7 @@
     </div>
     <div class="container">
       <div class="row">
+        
         <div *ngFor="let film of films" class="col-md-6 col-lg-4">
           <div class="card shadow-sm m-2">
             <img
