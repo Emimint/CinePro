@@ -5,4 +5,6 @@ export class Adresse {
   nomRue: string;
   ville: string;
   pays: string;
+  latitude: number;
+  longitude: number;
 }

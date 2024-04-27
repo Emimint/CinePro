@@ -9,20 +9,14 @@ declare var initMap: any;
   templateUrl: './theater-list-container.component.html',
   styleUrl: './theater-list-container.component.css',
 })
-export class TheaterListContainerComponent implements OnInit {
+export class TheaterListContainerComponent implements AfterViewInit {
   cinemas: Cinema[] = [];
-  montrealLocations: { name: string; longitude: number; latitude: number }[] = [
-    { name: 'Downtown Montreal', longitude: -73.5673, latitude: 45.5017 },
-    { name: 'Montreal Botanical Garden', longitude: -73.559, latitude: 45.56 },
-    { name: 'Mount Royal', longitude: -73.5877, latitude: 45.5 },
-    { name: 'Old Port of Montreal', longitude: -73.5501, latitude: 45.5091 },
-    { name: 'Olympic Stadium', longitude: -73.5517, latitude: 45.5583 },
-  ];
+  cinemasPositions: { name: string; longitude: number; latitude: number }[] =
+    [];
 
   constructor(private cinemaService: CinemaService) {}
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.getCinemas();
-    initMap(this.montrealLocations);
   }
 
   public getCinemas(): void {
@@ -30,6 +24,7 @@ export class TheaterListContainerComponent implements OnInit {
       (cinemas) => {
         this.cinemas = cinemas;
         this.getCinemasAddresses();
+        initMap(this.getCinemasPositions());
       },
       (error) => {
         console.error('Error fetching cinemas:', error);
@@ -37,11 +32,33 @@ export class TheaterListContainerComponent implements OnInit {
     );
   }
 
-  private getCinemasAddresses(): void {
+  public getCinemasPositions(): {
+    name: string;
+    longitude: number;
+    latitude: number;
+  }[] {
+    this.cinemasPositions = [];
+    this.cinemas.forEach((cinema) => {
+      this.cinemasPositions.push({
+        name: cinema.nomCinema,
+        longitude: cinema.adresse.longitude,
+        latitude: cinema.adresse.latitude,
+      });
+    });
+    return this.cinemasPositions;
+  }
+
+  public getCinemasAddresses(): void {
     this.cinemas.forEach((cinema) => {
       this.cinemaService.getCinemaAddressById(cinema.id).subscribe(
         (adresse) => {
           cinema.adresse = adresse;
+          this.cinemasPositions.push({
+            name: cinema.nomCinema,
+            longitude: cinema.adresse.longitude,
+            latitude: cinema.adresse.latitude,
+          });
+          initMap(this.cinemasPositions);
         },
         (error) => {
           console.error('Error fetching address for cinema:', error);
