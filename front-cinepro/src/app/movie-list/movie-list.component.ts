@@ -10,6 +10,7 @@ import { FilmService } from '../services/film.service';
 })
 export class MovieListComponent implements OnInit {
   films: Film[] = [];
+  selectedGenre: string = '';
 
   constructor(private filmService: FilmService) {}
   ngOnInit(): void {
@@ -38,4 +39,15 @@ export class MovieListComponent implements OnInit {
       }
     );
   }
+
+   
+  filterByGenre(film: Film): boolean {  
+       // Si aucun genre n'est sélectionné, afficher tous les films
+    if (!this.selectedGenre || this.selectedGenre === '...')
+       {       return true;     } 
+    else {       
+      // Sinon, vérifier si le genre du film correspond au genre sélectionnéreturn 
+      film.categorie === this.selectedGenre;     
+    }   } 
+
 }

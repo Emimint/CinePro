@@ -60,7 +60,7 @@
         >
           <select
             class="form-select form-select-lg bg-dark border-0"
-            (change)="onCinemaSelection()"
+            (change)="onCinemaSelection($event)"
           >
             <option selected>Vos cinémas</option>
             <option *ngFor="let cinema of cinemas" [value]="cinema.nomCinema">

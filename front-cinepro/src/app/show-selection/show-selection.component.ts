@@ -56,6 +56,21 @@ export class ShowSelectionComponent implements OnInit {
     this.getCinemas();
   }
 
+  onCinemaSelection(event: any): void {
+    const selectedCinemaName = event.target.value;
+    console.log('selectedCinema', selectedCinemaName);
+
+    this.selectedCinema = this.cinemas.find(
+      (cinema: Cinema) => cinema.nomCinema === selectedCinemaName
+    );
+
+    // this.seances = this.seances.filter(
+    //   (seance: Seance) =>
+    //     this.filmService.getCinemaBySeance(seance.id)?.id ===
+    //     this.selectedCinema.id
+    // );
+  }
+
   getSeances(): void {
     if (!this.selectedDate) {
       this.filmService.getFilmSeances(this.selectedMovie.id).subscribe(
@@ -97,13 +112,5 @@ export class ShowSelectionComponent implements OnInit {
       }
     );
     console.log('cinemas', this.cinemas);
-  }
-
-  onCinemaSelection(): void {
-    console.log('Selected cinema:', this.selectedCinema);
-    this.selectedCinema = this.cinemas.find(
-      (cinema: Cinema) => cinema.id === Number(this.cinemaId)
-    );
-    console.log('Selected cinema:', this.selectedCinema);
   }
 }

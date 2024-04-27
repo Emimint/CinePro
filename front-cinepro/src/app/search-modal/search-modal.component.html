@@ -1,24 +1,3 @@
-<!-- Buttons ou lien pour ouvrir le modal -->
-<!-- PS: On remplacera avec le button de mainpage-navbar -->
-<!-- <a
-  class="btn btn-primary"
-  data-bs-toggle="offcanvas"
-  href="#offcanvasExample"
-  role="button"
-  aria-controls="offcanvasExample"
->
-  Recherche (avec Link with href)
-</a>
-<button
-  class="btn btn-primary"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#offcanvasExample"
-  aria-controls="offcanvasExample"
->
-  Recherche (Button with data-bs-target)
-</button> -->
-
 <!-- Modal de recherche -->
 <div
   class="offcanvas offcanvas-end"
@@ -41,11 +20,17 @@
   </div>
   <div class="offcanvas-body py-2 flex-grow-0">
     <div class="input-group mb-3 border border-1 rounded-2">
+      <div ng-app="myApp" ng-controller="namesCtrl"></div>
       <input
-        type="text"
+        type="search"
         class="form-control bg-transparent border-0 text-white"
+        (ngModelChange)="searchFilm(key.value)"
+        #key="ngModel"
+        ngModel
+        name="key"
         placeholder="Recherche"
         aria-label="Recherche"
+        id="Recherche"
         aria-describedby="button-addon2"
       />
       <span class="input-group-append">
@@ -60,127 +45,46 @@
   </div>
 
   <!-- Films trouves -->
-  <div class="container-fluid resultats mt-2 overflow-scroll flex-grow-1">
-    <div
-      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
-      style="max-width: 540px"
-    >
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BN2QyZGU4ZDctOWMzMy00NTc5LThlOGQtODhmNDI1NmY5YzAwXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg"
-            class="img-fluid rounded-start"
-            alt="dune"
-          />
-        </div>
-        <div class="col-md-8 d-flex align-items-center">
-          <div class="card-body">
-            <h5 class="card-title">Dune: part two</h5>
+  <ng-container *ngIf="films.length > 0; else pasResultat">
+    <div class="container-fluid resultats mt-2 overflow-scroll flex-grow-1">
+      <div
+        class="card mb-5 resultat bg-transparent text-white shadow-lg border-2"
+        style="max-width: 540px"
+      >
+        <div class="row g-0">
+          <div *ngFor="let film of films">
+            <div class="col-md-7">
+              <!-- <div class="card shadow-sm m-2"> -->
+              <img
+                src="{{ film.image?.imageUrl }}"
+                class="w-100"
+                alt="{{ film.titre }}"
+                width="100%"
+                height="225"
+                margin="10"
+              />
+            </div>
+            <div class="col-md-12 d-flex align-items-center">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a routerLink="/description/{{ film.id }}"
+                    >{{ film.titre }}
+                  </a>
+                </h5>
+                <p>Categorie: {{ film.categorie }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </ng-container>
+  <ng-template #pasResultat>
+    <!-- Aucun resultat -->
     <div
-      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
-      style="max-width: 540px"
+      class="text-white p-3 m-2 fw-bold shadow flex-grow-1 d-flex align-items-center justify-content-center"
     >
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/0/05/Argylle_poster.jpg"
-            class="img-fluid rounded-start"
-            alt="Argylle_poster"
-          />
-        </div>
-        <div class="col-md-8 d-flex align-items-center">
-          <div class="card-body">
-            <h5 class="card-title">Argylle</h5>
-          </div>
-        </div>
-      </div>
+      <p>Aucun resultat</p>
     </div>
-    <div
-      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
-      style="max-width: 540px"
-    >
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/0/05/Argylle_poster.jpg"
-            class="img-fluid rounded-start"
-            alt="Argylle_poster"
-          />
-        </div>
-        <div class="col-md-8 d-flex align-items-center">
-          <div class="card-body">
-            <h5 class="card-title">Argylle</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
-      style="max-width: 540px"
-    >
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/0/05/Argylle_poster.jpg"
-            class="img-fluid rounded-start"
-            alt="Argylle_poster"
-          />
-        </div>
-        <div class="col-md-8 d-flex align-items-center">
-          <div class="card-body">
-            <h5 class="card-title">Argylle</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
-      style="max-width: 540px"
-    >
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/0/05/Argylle_poster.jpg"
-            class="img-fluid rounded-start"
-            alt="Argylle_poster"
-          />
-        </div>
-        <div class="col-md-8 d-flex align-items-center">
-          <div class="card-body">
-            <h5 class="card-title">Argylle</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="card mb-3 resultat bg-transparent text-white shadow-lg border-2"
-      style="max-width: 540px"
-    >
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BN2QyZGU4ZDctOWMzMy00NTc5LThlOGQtODhmNDI1NmY5YzAwXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg"
-            class="img-fluid rounded-start"
-            alt="dune"
-          />
-        </div>
-        <div class="col-md-8 d-flex align-items-center">
-          <div class="card-body">
-            <h5 class="card-title">Dune: part two</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Aucun resultat -->
-  <!-- <div
-    class="text-white p-3 m-2 fw-bold shadow flex-grow-1 d-flex align-items-center justify-content-center"
-  >
-    <p>Aucun resultat</p>
-  </div> -->
+  </ng-template>
 </div>
