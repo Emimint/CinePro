@@ -42,7 +42,7 @@ function toggleActive(element) {
   element.classList.add("active");
 }
 
-function initMap() {
+function initMap(locations) {
   const infoLocation = document.getElementById("info-location");
 
   function getLocation() {
@@ -73,10 +73,22 @@ function initMap() {
 
     map.setView([latitude, longitude], 12);
 
+    locations.forEach(function (location) {
+      addMarker(map, location.longitude, location.latitude, location.name);
+    });
+
     L.marker([longitude, latitude])
       .addTo(map)
       .bindPopup("Votre position")
       .openPopup();
+  }
+
+  var markers = [];
+
+  function addMarker(map, lng, lat, name) {
+    var marker = L.marker([lat, lng]).addTo(map);
+    marker.bindPopup(name);
+    markers.push(marker);
   }
 
   $('a[data-bs-toggle="tab"]').on("shown.bs.tab", function (e) {

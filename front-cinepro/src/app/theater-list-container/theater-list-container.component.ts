@@ -2,23 +2,27 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CinemaService } from '../services/cinema.service';
 import { Cinema } from '../models/cinema';
 
-declare const initMap: any;
+declare var initMap: any;
 
 @Component({
   selector: 'app-theater-list-container',
   templateUrl: './theater-list-container.component.html',
   styleUrl: './theater-list-container.component.css',
 })
-export class TheaterListContainerComponent implements OnInit, AfterViewInit {
+export class TheaterListContainerComponent implements OnInit {
   cinemas: Cinema[] = [];
-  markers: any = [];
+  montrealLocations: { name: string; longitude: number; latitude: number }[] = [
+    { name: 'Downtown Montreal', longitude: -73.5673, latitude: 45.5017 },
+    { name: 'Montreal Botanical Garden', longitude: -73.559, latitude: 45.56 },
+    { name: 'Mount Royal', longitude: -73.5877, latitude: 45.5 },
+    { name: 'Old Port of Montreal', longitude: -73.5501, latitude: 45.5091 },
+    { name: 'Olympic Stadium', longitude: -73.5517, latitude: 45.5583 },
+  ];
 
   constructor(private cinemaService: CinemaService) {}
   ngOnInit(): void {
     this.getCinemas();
-  }
-  ngAfterViewInit(): void {
-    initMap();
+    initMap(this.montrealLocations);
   }
 
   public getCinemas(): void {
@@ -45,10 +49,4 @@ export class TheaterListContainerComponent implements OnInit, AfterViewInit {
       );
     });
   }
-
-  // public addMarker(lng, lat, name) {
-  //   var marker = L.marker([lng, lat]).addTo(map);
-  //   marker.bindPopup(name);
-  //   this.markers.push(marker);
-  // }
 }
