@@ -11,6 +11,7 @@ export class SeatBookingStepComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit() {
+    // Initialisation de la carte des sièges du côté frontend :
     initSeatMap(3, 5, 8);
   }
 }

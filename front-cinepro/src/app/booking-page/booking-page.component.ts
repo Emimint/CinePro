@@ -9,7 +9,7 @@ import { interval, Subscription } from 'rxjs';
 export class BookingPageComponent implements OnInit {
   currentStep: number = 1;
   formData: any = {};
-  timerCounter: number = 20; // change with 300 seconds (i.e 5 minutes) during production.
+  timerCounter: number = 20; // on peut changer à 300 secondes (i.e. 5 minutes) en production.
   timerSubscription: Subscription;
   source = interval(1000);
 
@@ -46,6 +46,7 @@ export class BookingPageComponent implements OnInit {
     }
   }
 
+  // Code pour mettre à jour le visuel de la barre de progression :
   updateProgressBar() {
     const allSteps = document.querySelectorAll("[class^='step-container']");
     allSteps.forEach((step: any) => {

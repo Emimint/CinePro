@@ -24,7 +24,7 @@ export class MovieListComponent implements OnInit {
         this.films.forEach((film) => this.fetchFilmImage(film));
       },
       (error) => {
-        console.error('Error fetching movies:', error);
+        console.error('Erreur lors de la récupération du film:', error);
       }
     );
   }
@@ -35,22 +35,22 @@ export class MovieListComponent implements OnInit {
         film.image = image;
       },
       (error) => {
-        console.error("Erreur lors de la recuperation de l'image:", error);
+        console.error("Erreur lors de la récupération de l'image:", error);
       }
     );
   }
 
-    filterByGenre(): void {  
-      var filteredGenre;
-      // Si aucun genre n'est sélectionné, afficher tous les films
-      if (!this.selectedGenre||this.selectedGenre==='Tous') {
-        filteredGenre=this.films;
-      } else {
-        // Filtrer les films par genre
-        filteredGenre = this.films.filter(film => film.categorie.toLowerCase().includes(this.selectedGenre.toLowerCase()));
-        
-      }
-      return filteredGenre;
+  filterByGenre(): void {
+    var filteredGenre;
+    // Si aucun genre n'est sélectionné, afficher tous les films :
+    if (!this.selectedGenre || this.selectedGenre === 'Tous') {
+      filteredGenre = this.films;
+    } else {
+      // Filtrer les films par genre :
+      filteredGenre = this.films.filter((film) =>
+        film.categorie.toLowerCase().includes(this.selectedGenre.toLowerCase())
+      );
     }
-
+    return filteredGenre;
+  }
 }

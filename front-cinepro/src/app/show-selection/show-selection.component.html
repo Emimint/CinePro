@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <div class="show-selection">
-  <!-- Search bar elements: -->
+  <!------- Barre de recherche  ------->
   <div class="text-white">
     <div>
       <div class="h1 p-3 mx-3">Tickets</div>
@@ -92,15 +92,15 @@
       </div>
     </div>
   </div>
+  <!---------- Informations sur le film ---------->
   <div class="container-fluid">
     <div class="row gap-1">
       <ng-container *ngIf="selectedMovie; else noMovieSelected">
-        <!-- Movie-ticket component -->
         <div>
           <div class="container">
             <div class="row p-2">
               <div class="col-sm-12 col-lg-4 m-3">
-                <!-- Background Image -->
+                <!---------------- Image -------------------->
                 <img
                   *ngIf="selectedMovie?.image?.imageUrl"
                   src="{{ selectedMovie?.image?.imageUrl }}"
@@ -110,7 +110,7 @@
                 />
               </div>
               <div class="col-sm-12 col-lg-3 mt-3 mb-3">
-                <!-- Movie Name -->
+                <!-------- Titre -------->
                 <h2 class="my-2">
                   <a href="#" style="text-decoration: none">{{
                     film?.titre
@@ -118,7 +118,7 @@
                 </h2>
                 <div class="mt-3">
                   <a routerLink="/booking" class="btn btn-primary col-md-15">
-                    <i class="fa fa-ticket"></i>Acheter un Ticket
+                    <i class="fa fa-ticket"></i>Acheter un ticket
                   </a>
                 </div>
                 <div class="d-flex" style="height: 2rem">
@@ -194,7 +194,7 @@
                   class="info-link link-opacity-100"
                   id="moreInfoBtn"
                   onclick=" moreInfo()"
-                  >Plus Informations</a
+                  >Moins d'information</a
                 >
               </h4>
               <h4>
@@ -202,23 +202,19 @@
                   class="info-link d-none link-opacity-100"
                   id="lessInfoBtn"
                   onclick=" moreInfo()"
-                  >Moins Informations</a
+                  >Plus d'information</a
                 >
               </h4>
             </div>
 
-            <!-- Review -->
+            <!-------- Description --------->
             <div id="moreInfo">
               <p>
                 {{ selectedMovie?.description }}
               </p>
-              <!-- Heading -->
               <h5><span>RÉALISATEURS</span>:</h5>
-              <!-- Director Name -->
               <h6>{{ selectedMovie?.listeRealisateurs }}</h6>
-              <!-- Heading -->
               <h5><span>DISTRIBUTION</span>:</h5>
-              <!-- Paragraph -->
               <p>
                 {{ selectedMovie?.listeActeurs }}
               </p>
@@ -234,10 +230,10 @@
         </div>
       </ng-template>
 
-      <!-- Movie show list -->
+      <!------- Liste des séances ------->
       <main *ngIf="seances.length > 0; else noSeances" class="col">
         <div class="album py-5 bg-transparent">
-          <h3>Toutes les seances</h3>
+          <h3>Toutes les séances</h3>
           <div class="container">
             <div class="row">
               <div *ngFor="let seance of seances">
@@ -255,7 +251,7 @@
           class="col d-flex justify-content-center align-items-center bg-transparent text-white mh-25"
         >
           <p class="border border-2 rounded-pill p-3">
-            {{ seances.length === 0 ? "Aucune seance" : "" }}
+            {{ seances.length === 0 ? "Aucune séance" : "" }}
           </p>
         </div>
       </ng-template>

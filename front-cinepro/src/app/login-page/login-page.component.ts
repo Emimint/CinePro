@@ -29,9 +29,9 @@ export class LoginPageComponent {
   ) {
     this.loginForm = this.formBuilder.group({
       courriel: ['', [Validators.required, Validators.email]],
-      // DECOMMENTER LES LIGNES SUIVANTES POUR ACTIVER LES VALIDATIONS DU MOT DE PASSE !!!!!
-      // password: ['', [Validators.required, this.passwordValidator]],
       password: [''],
+      // À decommenter en production :
+      // password: ['', [Validators.required, this.passwordValidator]],
       nom: ['', [Validators.minLength(3)]],
       prenom: ['', [Validators.minLength(3)]],
     });

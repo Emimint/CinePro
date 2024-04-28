@@ -9,12 +9,10 @@ import { AuthService } from '../services/auth.service';
 export class MenuComponent {
   constructor(private authService: AuthService) {}
 
-  // Check if user is logged in
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
 
-  // Log out user
   logout(): void {
     this.authService.logout();
   }

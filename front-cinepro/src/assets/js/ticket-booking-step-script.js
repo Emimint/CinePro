@@ -7,29 +7,30 @@ function showSeatInfo(seatId, seatElement) {
   });
 
   const seatInfo = document.querySelector(`.${seatElement}`);
-  const [section, row, column] = seatId.split("-").slice(1); // Extract section, row, and column from seatId
+  const [section, row, column] = seatId.split("-").slice(1); // On extrait la section, le rang, et la colonne de seatId
   const textContent = `Seat ${column}, row ${row}, section ${section}`;
 
   const currentSeat = document.getElementById(seatId);
   currentSeat.style.boxShadow = "0 0 10px rgba(255,255,255, 0.5)";
 
   seatElement === "seat-selection"
-    ? (seatInfo.textContent = "Votre selection: " + textContent)
+    ? (seatInfo.textContent = "Votre sélection: " + textContent)
     : (seatInfo.textContent = "Siege courant: " + textContent);
 
   return textContent;
 }
 
+// Fonction qui permet d'activer ou de désactiver un siège :
 function toggleSeatStatus(seatId, isDisabled = false) {
   const seatElement = document.getElementById(seatId);
   if (!seatElement) {
-    console.error(`Seat with ID ${seatId} not found.`);
+    console.error(`Siège avec ID ${seatId} n'a pas été trouvé.`);
     return;
   }
 
   const svgElement = seatElement.querySelector("svg");
   if (!svgElement) {
-    console.error(`SVG not found inside seat ${seatId}.`);
+    console.error(`SVG non trouvé dans ${seatId}.`);
     return;
   }
 
@@ -43,6 +44,7 @@ function toggleSeatStatus(seatId, isDisabled = false) {
   showSeatInfo(seatId, "seat-selection");
 }
 
+// Méthode qui génère un nombre aléatoire de sièges réservés :
 function randomlyToggleSeats(rows, columns, sections) {
   const seatsToToggle = [];
 
@@ -56,12 +58,13 @@ function randomlyToggleSeats(rows, columns, sections) {
   seatsToToggle.forEach((seatId) => toggleSeatStatus(seatId, true));
 }
 
+// Méthode qui génère la carte des sièges :
 function generateSeatMap(rows, columns, sections) {
   let seatMapHTML =
     '<div class="mx-auto px-5 seat-map d-flex flex-wrap gap-5 justify-content-center mx-5 upside-down">';
 
   for (let s = 1; s <= sections; s++) {
-    // Iterate over sections in increasing order
+    // On itère sur les sections :
     seatMapHTML += `<div id="section-${s}" class="section d-flex flex-column">`;
     for (let i = 1; i <= rows; i++) {
       seatMapHTML += `<div class="d-flex flex-row">`;
@@ -74,6 +77,7 @@ function generateSeatMap(rows, columns, sections) {
     seatMapHTML += `</div>`;
   }
 
+  // On ajoute la légende des sièges à la fin :
   seatMapHTML += `   </div><div
      class="legend m-2 w-100 p-3 d-flex flex-column align-items-center"
    >
@@ -97,6 +101,7 @@ function generateSeatMap(rows, columns, sections) {
   return seatMapHTML;
 }
 
+// Appel de la fonction initSeatMap() :
 function initSeatMap(rows, columns, sections) {
   const theaterSeatMap = generateSeatMap(rows, columns, sections);
   const seatMap = document.getElementById("seat-map");

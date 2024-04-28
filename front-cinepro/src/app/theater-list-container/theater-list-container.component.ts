@@ -26,7 +26,7 @@ export class TheaterListContainerComponent implements AfterViewInit {
         this.getCinemasAddresses();
       },
       (error) => {
-        console.error('Error fetching cinemas:', error);
+        console.error('Erreur lors de la récupération des cinémas:', error);
       }
     );
   }
@@ -44,11 +44,14 @@ export class TheaterListContainerComponent implements AfterViewInit {
           try {
             initMap(this.cinemasPositions);
           } catch (error) {
-            console.warn('initMap not ready');
+            console.warn('initMap non prêt');
           }
         },
         (error) => {
-          console.error('Error fetching address for cinema:', error);
+          console.error(
+            'Erreur lors de la récupération des adresses des cinémas:',
+            error
+          );
         }
       );
     });

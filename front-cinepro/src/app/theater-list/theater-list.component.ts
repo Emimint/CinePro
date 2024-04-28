@@ -9,7 +9,7 @@ import { Cinema } from '../models/cinema';
 export class TheaterListComponent implements OnInit {
   @Input() cinemas: any;
   ngOnInit(): void {
-    console.log('cinemas', this.cinemas);
+    console.log('cinémas', this.cinemas);
   }
 
   public getCinemaAddress(cinema: Cinema): string {

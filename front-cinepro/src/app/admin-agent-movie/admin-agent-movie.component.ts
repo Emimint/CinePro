@@ -36,6 +36,7 @@ export class AdminAgentMovieComponent {
   ngOnInit(): void {
     this.getFilms();
     this.getCinemas();
+
     this.addForm = this.formBuilder.group({
       titre: ['', Validators.required],
       langue: [''],
@@ -60,7 +61,7 @@ export class AdminAgentMovieComponent {
         this.films = films;
       },
       (error) => {
-        console.error('Error fetching movies:', error);
+        console.error('Erreur lors de la récupération des films:', error);
       }
     );
   }
@@ -72,7 +73,7 @@ export class AdminAgentMovieComponent {
         this.getCinemasAddresses();
       },
       (error) => {
-        console.error('Error fetching cinemas:', error);
+        console.error('Erreur lors de la récupération des cinemas:', error);
       }
     );
   }
@@ -84,7 +85,10 @@ export class AdminAgentMovieComponent {
           cinema.adresse = adresse;
         },
         (error) => {
-          console.error('Error fetching address for cinema:', error);
+          console.error(
+            'Erreur lors de la récupération des adresses des cinémas:',
+            error
+          );
         }
       );
     });
@@ -133,7 +137,7 @@ export class AdminAgentMovieComponent {
     }
   }
 
-  // public onUpdateFilm(filmId: number): void {
+  // Fonction pour modifier des films (Test) :
   public onUpdateFilm(): void {
     // if (this.updateForm.valid) {
     //   const formData = new FormData();
@@ -200,18 +204,17 @@ export class AdminAgentMovieComponent {
       file: [''],
     });
     this.onUpdateFilm();
-    // this.onUpdateFilm(film.id);
   }
 
   public deleteFilm(filmId: number): void {
-    if (confirm('Are you sure you want to delete this film?')) {
+    if (confirm('Voulez-vous vraiment supprimer le film?')) {
       this.filmService.deleteFilm(filmId).subscribe(
         (response) => {
-          console.log('Film deleted successfully:', response);
+          console.log('Film supprimé avec succès:', response);
           this.router.navigate(['/admin-agent-movie']);
         },
         (error) => {
-          console.error('Error deleting film:', error);
+          console.error('Erreur lors de la suppression:', error);
         }
       );
     }

@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <!-- Films trouves -->
+  <!-- Films trouvés -->
   <ng-container *ngIf="films.length > 0; else pasResultat">
     <div class="container-fluid resultats mt-2 overflow-scroll flex-grow-1">
       <div
@@ -54,7 +54,6 @@
         <div class="row g-0">
           <div *ngFor="let film of films">
             <div class="col-md-7">
-              <!-- <div class="card shadow-sm m-2"> -->
               <img
                 src="{{ film.image?.imageUrl }}"
                 class="w-100"
@@ -71,7 +70,7 @@
                     >{{ film.titre }}
                   </a>
                 </h5>
-                <p>Categorie: {{ film.categorie }}</p>
+                <p>Catégorie: {{ film.categorie }}</p>
               </div>
             </div>
           </div>
@@ -79,12 +78,12 @@
       </div>
     </div>
   </ng-container>
+  <!-- Aucun resultat -->
   <ng-template #pasResultat>
-    <!-- Aucun resultat -->
     <div
       class="text-white p-3 m-2 fw-bold shadow flex-grow-1 d-flex align-items-center justify-content-center"
     >
-      <p>Aucun resultat</p>
+      <p>Aucun résultat</p>
     </div>
   </ng-template>
 </div>

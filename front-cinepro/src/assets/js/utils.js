@@ -1,14 +1,14 @@
-/*********************************************************
+/*****************************************************************
  *
  *
  *                    utils.js
  *
- * This file contains utility functions for most of the project front-end.
+ *        Ensemble des fonctions utiles du projet
  *
  *
- *******************************************************/
+ *******************************************************************/
 
-// Movie-ticket component function to toggle the display of the moreInfo div :
+// Fonction de movie-ticket component pour afficher/commenter les infos du film :
 function moreInfo() {
   var moreInfo = document.getElementById("moreInfo");
   var moreInfoBtn = document.getElementById("moreInfoBtn");
@@ -25,15 +25,7 @@ function moreInfo() {
   }
 }
 
-// Theater list component function to toggle the display of the moreInfo div :
-function toggleActive(element) {
-  var allElements = document.querySelectorAll(".list-group-item");
-  allElements.forEach(function (el) {
-    el.classList.remove("active");
-  });
-  element.classList.add("active");
-}
-
+// Fonction de theater-list container component pour initialiser la carte :
 function initMap(locations) {
   const infoLocation = document.getElementById("info-location");
 

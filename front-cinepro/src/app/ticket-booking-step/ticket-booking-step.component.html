@@ -1,32 +1,36 @@
 <div class="card">
-    <div class="row">
-      <div class="col-md-8 cart">
-        <app-movie-ticket [backgroundColor]="''" [color]="'black'" class="col"></app-movie-ticket>
-        <!-- Récompenses Show -->
-        <div class="row border-bottom">
-          <div class="row main align-items-center">
-            <h3><b>Vos points récompense Show</b></h3>
-            <!-- Ligne de tarification -->
-            <div class="col-12 d-flex justify-content-between">
-              <p>Votre total de points</p>
-              <p>157 points</p>
-            </div>
+  <div class="row">
+    <div class="col-md-8 cart">
+      <app-movie-ticket
+        [backgroundColor]="''"
+        [color]="'black'"
+        class="col"
+      ></app-movie-ticket>
+      <!-- Points Show -->
+      <div class="row border-bottom">
+        <div class="row main align-items-center">
+          <h3><b>Vos points récompense Show</b></h3>
+          <!-- Ligne de tarification -->
+          <div class="col-12 d-flex justify-content-between">
+            <p>Votre total de points</p>
+            <p>157 points</p>
           </div>
         </div>
-        <!-- Coupons / Code promos -->
-        <div class="row border-top">
-          <div class="row main align-items-center">
-            <h3><b>Bons commerciaux ou code promotionnel</b></h3>
-            <!-- Ligne de tarification -->
-            <div class="col-12 d-flex flex-column">
-              <p>
-                Ajoutez un code de votre bon ou un code promotionnel à appliquer à
-                vos billets (limite de un coupon par réservation) :
-              </p>
-              <input type="text" />
-            </div>
+      </div>
+      <!-- Coupons / Code promos -->
+      <div class="row border-top">
+        <div class="row main align-items-center">
+          <h3><b>Bons commerciaux ou code promotionnel</b></h3>
+          <!-- Ligne de tarification -->
+          <div class="col-12 d-flex flex-column">
+            <p>
+              Ajoutez un code de votre bon ou un code promotionnel à appliquer à
+              vos billets (limite de un coupon par réservation) :
+            </p>
+            <input type="text" />
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>

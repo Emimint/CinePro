@@ -1,5 +1,6 @@
 <app-menu></app-menu>
 <div class="container-fluid">
+  <!--------------------------------------- Modal pour ajouter des films--------------------------------- -->
   <div
     class="modal fade"
     id="addFilmModal"
@@ -180,6 +181,7 @@
   </div>
 
   <div class="p-0 d-flex h-100">
+    <!------------------------- Sidebar (menu contextuel avec les differents onglets)------------------- -->
     <div
       id="bdSidebar"
       class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white offcanvas-lg offcanvas-start"
@@ -237,6 +239,7 @@
           <i class="fa fa-bars"></i>
         </a>
       </div>
+      <!-------------------------------------  Onglet pour les Films --------------------------------------- -->
       <div *ngIf="currentTab === 'Films'" id="Films" class="tabcontent">
         <div class="table-title">
           <div class="row align-items-center">
@@ -329,6 +332,7 @@
           </tbody>
         </table>
       </div>
+      <!-------------------------------------  Onglet pour les Clients --------------------------------------- -->
       <div *ngIf="currentTab === 'Clients'" id="Clients" class="tabcontent">
         <div class="table-title">
           <div class="row align-items-center">
@@ -495,6 +499,7 @@
           </tbody>
         </table>
       </div>
+      <!-------------------------------------  Onglet pour les Promotions --------------------------------------- -->
       <div
         *ngIf="currentTab === 'Promotions'"
         id="Promotions"
@@ -662,6 +667,7 @@
           </tbody>
         </table>
       </div>
+      <!-------------------------------------  Onglet pour les Reservations --------------------------------------- -->
       <div
         *ngIf="currentTab === 'Reservations'"
         id="Reservations"
@@ -831,7 +837,7 @@
           </tbody>
         </table>
       </div>
-
+      <!-------------------------------------  Onglet pour les Cinemas --------------------------------------- -->
       <div *ngIf="currentTab === 'Cinemas'" id="Cinema" class="tabcontent">
         <div class="table-title">
           <div class="row align-items-center">
