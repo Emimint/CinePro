@@ -1,7 +1,5 @@
 package com.cinepro.backcinepro.salledecinema;
 
-import com.cinepro.backcinepro.salledecinema.SalleDeCinema;
-import com.cinepro.backcinepro.salledecinema.SalleDeCinemaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

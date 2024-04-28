@@ -63,7 +63,7 @@ public class FilmController {
         Film film = optionalFilm.get();
         Image image = film.getImage();
         if (image == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Indicates that the request was successful but there is no content to return
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         return new ResponseEntity<>(image, HttpStatus.OK);
@@ -97,11 +97,9 @@ public class FilmController {
         return new ResponseEntity<List<Cinema>>(cinemas, HttpStatus.OK);
     }
 
-
-
     @PostMapping("/ajouter")
-    // ****TO DEACTIVATE SPRING SECURITY ****
-//    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    // ****Pour activer SPRING SECURITY ****
+    //    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> uploadFilm(@RequestParam("file") MultipartFile multipartFile,
                                               @RequestParam("titre") String titre,
                                               @RequestParam("langue") String langue,
@@ -120,7 +118,7 @@ public class FilmController {
             return new ResponseEntity<>("Image non valide!", HttpStatus.BAD_REQUEST);
         }
 
-        // Upload image to Cloudinary
+        // Téléchargement de l' image vers Cloudinary :
         Map result = cloudinaryService.upload(multipartFile);
         Image image = new Image((String) result.get("original_filename"),
                 (String) result.get("url"),

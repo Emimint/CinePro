@@ -9,8 +9,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@Getter
-//@Setter
 @Entity
 public class Adresse {
     @Id

@@ -102,7 +102,8 @@ public class CinemaController {
 
 
     @PostMapping("/ajouter")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    // ****Pour activer SPRING SECURITY ****
+    //    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> addCinema(
             @RequestParam("nomCinema") String nomCinema,
             @RequestParam("ville") String ville,
@@ -135,7 +136,7 @@ public class CinemaController {
 
     private void initCinema(Cinema cinema) {
         Random random = new Random();
-        int numSalleDeCinemas = random.nextInt(8) + 3; // Generate random number between 3 and 10
+        int numSalleDeCinemas = random.nextInt(8) + 3; // Génère un nombre aléatoire entre 3 et 10
 
         for (int i = 0; i < numSalleDeCinemas; i++) {
             SalleDeCinema salleDeCinema = new SalleDeCinema();
@@ -154,7 +155,8 @@ public class CinemaController {
 
 
     @PutMapping("/modifier/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    // ****Pour activer SPRING SECURITY ****
+    //    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<Cinema> updateCinema(@PathVariable Long id, @RequestBody Cinema cinema) {
         if (!cinemaService.exists(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -165,7 +167,8 @@ public class CinemaController {
     }
 
     @DeleteMapping("/supprimer/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    // ****Pour activer SPRING SECURITY ****
+    //    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> deleteCinema(@PathVariable Long id) {
         Optional<Cinema> optionalCinema = cinemaService.getCinemaById(id);
         if (optionalCinema.isEmpty()) {
@@ -179,6 +182,7 @@ public class CinemaController {
             adresseService.delete(adresse.getId());
         }
 
+        // On supprime de façon récursive les salles de cinéma et les sièges associés :
         List<SalleDeCinema> salleDeCinemas = cinema.getSallesDeCinemas();
         if (salleDeCinemas != null && !salleDeCinemas.isEmpty()) {
             for (SalleDeCinema salleDeCinema : salleDeCinemas) {
@@ -196,7 +200,6 @@ public class CinemaController {
                 }
             }
         }
-
 
         cinemaService.delete(id);
 

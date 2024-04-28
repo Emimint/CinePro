@@ -1,7 +1,5 @@
 package com.cinepro.backcinepro.adresse;
 
-import com.cinepro.backcinepro.adresse.Adresse;
-import com.cinepro.backcinepro.adresse.AdresseRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

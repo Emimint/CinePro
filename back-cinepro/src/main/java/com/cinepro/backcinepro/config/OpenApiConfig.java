@@ -10,6 +10,8 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
+
+// Fichier de la librairie Swagger permettant de générer la documentation de l'API :
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(

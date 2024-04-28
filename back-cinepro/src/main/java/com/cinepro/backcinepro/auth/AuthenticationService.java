@@ -27,8 +27,6 @@ public class AuthenticationService {
 
         Optional<User> existingUser = repository.findByEmail(request.getEmail());
         if (existingUser.isPresent()) {
-            // User with the same email already exists, return an error or handle it as needed
-            // For example, you can throw an exception or return an error response
             throw new RuntimeException("Cette adresse email existe déjà");
         }
 

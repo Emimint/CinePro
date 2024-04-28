@@ -1,7 +1,5 @@
 package com.cinepro.backcinepro.adresse;
 
-
-import com.cinepro.backcinepro.adresse.Adresse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

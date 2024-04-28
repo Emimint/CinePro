@@ -3,14 +3,10 @@ package com.cinepro.backcinepro.user;
 
 import com.cinepro.backcinepro.auth.ChangePasswordRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
 import java.security.Principal;
 
 
@@ -23,19 +19,19 @@ public class UserService {
 
         var user = (User) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
 
-        // check if the current password is correct
+        // vérifie si le mot de passe actuel est le bon :
         if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
             throw new IllegalStateException("Wrong password");
         }
-        // check if the two new passwords are the same
+        // vérifie si les deux nouveaux mots de passe sont identiques :
         if (!request.getNewPassword().equals(request.getConfirmationPassword())) {
             throw new IllegalStateException("Password are not the same");
         }
 
-        // update the password
+        // mets à jour le mot de passe de l'utilisateur :
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
 
-        // save the new password
+        // enregistre l'entité utilisateur dans la base de données :
         repository.save(user);
     }
 }

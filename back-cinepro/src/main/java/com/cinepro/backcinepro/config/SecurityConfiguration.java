@@ -49,6 +49,8 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
 
+
+    // À décommenter en production (Permissions et Autorisation) :
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //        http
@@ -79,7 +81,7 @@ public class SecurityConfiguration {
 //    }
 
 
-    // ****TO DEACTIVATE SPRING SECURITY ****
+    // ****Pour désactiver SPRING SECURITY ****
 @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http

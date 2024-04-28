@@ -13,7 +13,7 @@ import java.util.Collections;
 
 @Configuration
 public class CorsConfig {
-
+    // Fichier de configuration qui permet d'établir la communication entre le backend et le frontend :
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();

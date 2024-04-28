@@ -1,6 +1,5 @@
 package com.cinepro.backcinepro.auth;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Data
