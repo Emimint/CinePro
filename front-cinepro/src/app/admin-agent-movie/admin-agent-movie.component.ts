@@ -196,4 +196,18 @@ export class AdminAgentMovieComponent {
     this.onUpdateFilm();
     // this.onUpdateFilm(film.id);
   }
+
+  public deleteFilm(filmId: number): void {
+    if (confirm('Are you sure you want to delete this film?')) {
+      this.filmService.deleteFilm(filmId).subscribe(
+        (response) => {
+          console.log('Film deleted successfully:', response);
+          window.location.reload();
+        },
+        (error) => {
+          console.error('Error deleting film:', error);
+        }
+      );
+    }
+  }
 }

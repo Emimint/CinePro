@@ -319,7 +319,9 @@
                     (click)="openUpdateModal(film)"
                     ><i class="fas fa-pencil-alt"></i
                   ></a>
-                  <a class="delete-icon"><i class="fas fa-trash-alt"></i></a>
+                  <a class="delete-icon" (click)="deleteFilm(film.id)"
+                    ><i class="fas fa-trash-alt"></i
+                  ></a>
                 </div>
               </td>
             </tr>
