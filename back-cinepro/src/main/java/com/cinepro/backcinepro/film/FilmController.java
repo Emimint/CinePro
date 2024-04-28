@@ -100,6 +100,7 @@ public class FilmController {
 
 
     @PostMapping("/ajouter")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> uploadFilm(@RequestParam("file") MultipartFile multipartFile,
                                               @RequestParam("titre") String titre,
                                               @RequestParam("langue") String langue,
@@ -185,6 +186,7 @@ public class FilmController {
     }
 
     @PutMapping("/update/{filmId}")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> updateFilm(
             @PathVariable Long filmId,
             @RequestParam("titre") String titre,
@@ -254,6 +256,7 @@ public class FilmController {
         return new ResponseEntity<>("Film mis à jour avec succès.", HttpStatus.OK);
     }
     @DeleteMapping("/delete/{filmId}")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> deleteFilm(@PathVariable Long filmId) throws IOException {
         Optional<Film> optionalFilm = filmService.findById(filmId);
         if (optionalFilm.isEmpty()) {
