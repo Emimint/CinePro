@@ -1,0 +1,31 @@
+/* tslint:disable */
+/* eslint-disable */
+import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { StrictHttpResponse } from '../../strict-http-response';
+import { RequestBuilder } from '../../request-builder';
+
+import { Image } from '../../models/image';
+
+export interface GetFilmImage$Params {
+  filmId: number;
+}
+
+export function getFilmImage(http: HttpClient, rootUrl: string, params: GetFilmImage$Params, context?: HttpContext): Observable<StrictHttpResponse<Image>> {
+  const rb = new RequestBuilder(rootUrl, getFilmImage.PATH, 'get');
+  if (params) {
+    rb.path('filmId', params.filmId, {});
+  }
+
+  return http.request(
+    rb.build({ responseType: 'blob', accept: '*/*', context })
+  ).pipe(
+    filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
+    map((r: HttpResponse<any>) => {
+      return r as StrictHttpResponse<Image>;
+    })
+  );
+}
+
+getFilmImage.PATH = '/films/image/{filmId}';
