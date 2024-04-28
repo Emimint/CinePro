@@ -14,14 +14,49 @@
           </button>
 
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item"  (click)="selectedGenre = 'Tous'; filterByGenre()">Tous</a></li>
-            <li><a class="dropdown-item"  (click)="selectedGenre = 'Action'; filterByGenre()">Action</a></li>
-            <li><a class="dropdown-item"  (click)="selectedGenre = 'Comédie'; filterByGenre()">Comédie</a></li>
-            <li><a class="dropdown-item"  (click)="selectedGenre = 'Drame'; filterByGenre()">Drame</a></li>
-            <li><a class="dropdown-item"  (click)="selectedGenre = 'Fantaisie'; filterByGenre()">Fantaisie</a></li>
-            <li><a class="dropdown-item"  (click)="selectedGenre = 'Horreur'; filterByGenre()">Horreur</a></li>
-            </ul>
-          
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selectedGenre = 'Tous'; filterByGenre()"
+                >Tous</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selectedGenre = 'Action'; filterByGenre()"
+                >Action</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selectedGenre = 'Comédie'; filterByGenre()"
+                >Comédie</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selectedGenre = 'Drame'; filterByGenre()"
+                >Drame</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selectedGenre = 'Fantaisie'; filterByGenre()"
+                >Fantaisie</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selectedGenre = 'Horreur'; filterByGenre()"
+                >Horreur</a
+              >
+            </li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
           <button
@@ -43,15 +78,15 @@
       </ul>
     </div>
     <div class="container">
-      <div class="row">       
+      <div class="row">
         <div *ngFor="let film of filterByGenre()" class="col-md-6 col-lg-4">
           <div class="card shadow-sm m-2">
             <img
               src="{{ film.image?.imageUrl }}"
-              class="w-100"
+              class="w-100 image-fluid"
               alt="{{ film.titre }}"
               width="100%"
-              height="225"
+              height="425"
             />
             <h5 class="card-title mx-2">{{ film.titre }}</h5>
             <small class="mx-2">{{ film.categorie }}</small>
