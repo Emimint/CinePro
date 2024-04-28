@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Film } from '../models/film';
 import { FilmService } from '../services/film.service';
 import { Cinema } from '../models/cinema';
 import { CinemaService } from '../services/cinema.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+declare var $: any;
 
 @Component({
   selector: 'app-admin-agent-movie',
@@ -17,11 +20,13 @@ export class AdminAgentMovieComponent {
   cinemas: Cinema[] = [];
   addForm: FormGroup;
   updateForm: FormGroup;
+  @ViewChild('addFilmModal') addFilmModal!: ElementRef;
 
   constructor(
     private formBuilder: FormBuilder,
     private filmService: FilmService,
-    private cinemaService: CinemaService
+    private cinemaService: CinemaService,
+    private router: Router
   ) {}
 
   openTab(tabName: string) {
@@ -122,7 +127,8 @@ export class AdminAgentMovieComponent {
       this.filmService.addFilm(formData).subscribe((response) => {
         console.error('Successfully added movie:', response);
         this.resetForm(this.addForm);
-        window.location.reload();
+        this.closeModal();
+        this.router.navigate(['/admin-agent-movie']);
       });
     }
   }
@@ -202,12 +208,16 @@ export class AdminAgentMovieComponent {
       this.filmService.deleteFilm(filmId).subscribe(
         (response) => {
           console.log('Film deleted successfully:', response);
-          window.location.reload();
+          this.router.navigate(['/admin-agent-movie']);
         },
         (error) => {
           console.error('Error deleting film:', error);
         }
       );
     }
+  }
+
+  closeModal(): void {
+    $(this.addFilmModal.nativeElement).modal('hide');
   }
 }
