@@ -128,7 +128,7 @@ export class AdminAgentMovieComponent {
         console.error('Successfully added movie:', response);
         this.resetForm(this.addForm);
         this.closeModal();
-        this.router.navigate(['/admin-agent-movie']);
+        this.router.navigate(['admin-agent-movie']);
       });
     }
   }

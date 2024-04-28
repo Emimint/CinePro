@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -11,7 +12,7 @@ export class AuthService {
   private apiServerUrl = environment.apiUrl;
   private tokenKey = 'token';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<any> {
     return this.http
@@ -46,7 +47,7 @@ export class AuthService {
       .pipe(
         map((response) => {
           localStorage.setItem(this.tokenKey, response.token);
-          window.location.reload();
+          this.router.navigate(['/accueil']);
           return response;
         }),
         catchError(this.handleError)
@@ -56,6 +57,7 @@ export class AuthService {
   logout() {
     try {
       localStorage.removeItem(this.tokenKey);
+      this.router.navigate(['/accueil']);
     } catch (error) {
       console.error(
         'Erreur lors de la suppression du jeton depuis le stockage local:',

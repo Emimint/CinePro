@@ -25,14 +25,6 @@ function moreInfo() {
   }
 }
 
-// Show selection page component function to enable the date picker:
-$(function () {
-  $("#datepicker").datepicker();
-  $("#format").on("change", function () {
-    $("#datepicker").datepicker("option", "dateFormat", $(this).val());
-  });
-});
-
 // Theater list component function to toggle the display of the moreInfo div :
 function toggleActive(element) {
   var allElements = document.querySelectorAll(".list-group-item");

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,7 +6,10 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-login-page',
@@ -14,12 +17,15 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './login-page.component.css',
 })
 export class LoginPageComponent {
+  errorMessage: Array<string> = [];
   loginForm?: FormGroup;
   isNewUser: boolean = false;
+  @ViewChild('loginModal') loginModal!: ElementRef;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       courriel: ['', [Validators.required, Validators.email]],
@@ -32,39 +38,26 @@ export class LoginPageComponent {
   }
 
   submitForm(): void {
+    this.errorMessage = [];
     if (this.loginForm.valid) {
       if (this.isNewUser) {
-        this.authService
-          .register(
-            this.loginForm.value.nom,
-            this.loginForm.value.prenom,
-            this.loginForm.value.courriel,
-            this.loginForm.value.password
-          )
-          .subscribe(
-            (response) => {
-              console.log('Enregistrement réussi');
-              this.resetForm();
-            },
-            (error) => {
-              console.log("Erreur lors de l'enregistrement.");
-            }
-          );
       } else {
         const email = this.loginForm.value.courriel;
         const password = this.loginForm.value.password;
         this.authService.login(email, password).subscribe(
           (response) => {
             console.log('Login réussi');
+            this.router.navigate(['/accueil']);
             this.resetForm();
           },
           (error) => {
+            this.errorMessage.push('Mot de passe ou courriel incorrect.');
             console.log('Erreur de connexion');
           }
         );
       }
     } else {
-      console.log('Formulaire invalide');
+      this.errorMessage.push('Formulaire invalide.');
       this.resetForm();
     }
   }
@@ -93,5 +86,9 @@ export class LoginPageComponent {
     if (this.loginForm) {
       this.loginForm.reset();
     }
+  }
+
+  closeModal(): void {
+    $(this.loginModal.nativeElement).modal('hide');
   }
 }
